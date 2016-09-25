@@ -29,7 +29,7 @@ var articles = {
         date: 'Sep 25 2016',
         content: `
                 <p>
-                    I have experience in DB2 programming using DB2SQL on Mainframe
+                    I am an experienced DB2 programmer using DB2SQL on Mainframe
                 </p>
                 ` 
     },
