@@ -18,7 +18,7 @@ app.get('/ui/madi.png', function (req, res) {
 });
 
 app.get('/ProgLang', function (req, res) {
-  res.send('More than 7 years work experience as Mainframe COBOL programmer and OCJP6 certified');
+  res.sendFile(path.join(__dirname, 'ui', 'ProgLang.html'));
 });
 
 app.get('/FavAuthrs', function (req, res) {
