@@ -17,6 +17,17 @@ app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
 
+app.get('/ProgLang', function (req, res) {
+  res.send('More than 7 years work experience as Mainframe COBOL programmer and OCJP6 certified');
+});
+
+app.get('/FavAuthrs', function (req, res) {
+  res.send('R.K. Narayan and P.G.Wodehouse are my all time favourtie authors');
+});
+
+app.get('/Databases', function (req, res) {
+  res.send('Experienced DB2 programmer using SQL in COBOL on Mainframes');
+});
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
 app.listen(8080, function () {
