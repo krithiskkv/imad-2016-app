@@ -5,23 +5,45 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var ProgLang = {
-    title: 'Programming Languages | krithiskkv',
-    heading: 'Programming Experience',
-    date: 'Sep 25 2016',
-    content: `
-            <p>
-                I have more than 7 years experience as a COBOL/JCL programmer. 
-                I have worked in the capacity of a programmer and a Team Lead. 
-            </p>
-            <p>
-                I am OCJP6 certified. 
-                I scored 86% in the OCJP6 certification exam dated 30 August 2016.
-            </p>
-            <p> 
-                Currently learning Web and mobile Application development at IMAD
-            </p>` 
-};   
+var articles = {
+     ProgLang: {
+        title: 'Programming Languages | krithiskkv',
+        heading: 'Programming Experience',
+        date: 'Sep 25 2016',
+        content: `
+                <p>
+                    I have more than 7 years experience as a COBOL/JCL programmer. 
+                    I have worked in the capacity of a programmer and a Team Lead. 
+                </p>
+                <p>
+                    I am OCJP6 certified. 
+                    I scored 86% in the OCJP6 certification exam dated 30 August 2016.
+                </p>
+                <p> 
+                    Currently learning Web and mobile Application development at IMAD
+                </p>` 
+    },
+     Databases: {
+        title: 'Databases | krithiskkv',
+        heading: 'Databases known',
+        date: 'Sep 25 2016',
+        content: `
+                <p>
+                    I have experience in DB2 programming using DB2SQL on Mainframe
+                </p>
+                ` 
+    },
+     FavAuthrs: {
+        title: 'Favourite Authors | krithiskkv',
+        heading: 'My Favourite Authors',
+        date: 'Sep 25 2016',
+        content: `
+                <p>
+                    R.K. Narayan and P.G.Wodehouse are my all time favourite authors 
+                </p>
+                ` 
+    }
+};
 
 function createTemplate(data) {
             var title = data.title;
@@ -71,16 +93,9 @@ app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
 
-app.get('/ProgLang', function (req, res) {
-  res.send(createTemplate(ProgLang));
-});
-
-app.get('/FavAuthrs', function (req, res) {
-  res.send('R.K. Narayan and P.G.Wodehouse are my all time favourtie authors');
-});
-
-app.get('/Databases', function (req, res) {
-  res.send('Experienced DB2 programmer using SQL in COBOL on Mainframes');
+app.get('/:articleName', function (req, res) {
+  var articleName = req.params.articleName;    
+  res.send(createTemplate(articles[articleName]));
 });
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
