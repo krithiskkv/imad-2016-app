@@ -5,6 +5,60 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+var ProgLang = {
+    title: 'Programming Languages | krithiskkv',
+    heading: 'Programming Experience',
+    date: 'Sep 25 2016',
+    content: `
+            <p>
+                I have more than 7 years experience as a COBOL/JCL programmer. 
+                I have worked in the capacity of a programmer and a Team Lead. 
+            </p>
+            <p>
+                I am OCJP6 certified. 
+                I scored 86% in the OCJP6 certification exam dated 30 August 2016.
+            </p>
+            <p> 
+                Currently learning Web and mobile Application development at IMAD
+            </p>` 
+};   
+
+function createTemplate(Data) {
+            var title = data.title;
+            var heading = data.heading;
+            var date = data.date;
+            var content = data.content;
+            var htmlTemplate = `<html>
+            <head>
+                <title>
+                    ${title} 
+                </title>
+                <meta name = "viewport" content = "width=device-width, initial-sccale=1" />
+                <link href="/ui/style.css" rel="stylesheet" />
+            </head>
+            <body>
+                <div>
+                    <a href="/">Home</a> 
+                </div>
+            <hr/>
+            <h3>
+                ${heading}
+            </h3>
+            <div class="container">
+                <div>
+                    ${date}
+                </div>
+                <div>
+                    ${content}
+                </div>
+            </div>
+            </body>
+            </html>
+            `;
+            return htmlTemplate;
+}
+
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
@@ -18,7 +72,7 @@ app.get('/ui/madi.png', function (req, res) {
 });
 
 app.get('/ProgLang', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'ProgLang.html'));
+  res.send(createTemplate(ProgLang));
 });
 
 app.get('/FavAuthrs', function (req, res) {
