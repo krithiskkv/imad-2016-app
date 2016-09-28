@@ -36,9 +36,8 @@ button.onclick = function () {
 
 var submit = document.getElementById('submit_btn');
 submit.onclick = function() {
-      var request = newXMLHttpRequest();
-      
-      request.onreadystatechange = function () {
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function () {
         if (request.readyState === XMLHttpRequest.DONE) {
           if (request.status === 200) {
               //var names = ['names1', 'names2', 'names3'];
@@ -50,12 +49,10 @@ submit.onclick = function() {
                 }
                 var ul = document.getElementById('namelist');
                 ul.innerHTML = list;
-          }
-         }
-      };
+            }
+        }
+    };
     
-
-
     var nameInput = document.getElementById('name');
     var name = nameInput.value;
 
