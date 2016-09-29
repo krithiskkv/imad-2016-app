@@ -15,13 +15,17 @@ var articles = {
                     I have more than 7 years experience as a COBOL/JCL programmer. 
                     I have worked in the capacity of a programmer and a Team Lead. 
                 </p>
-                <p>
-                    I am OCJP6 certified. 
-                    I scored 86% in the OCJP6 certification exam dated 30 August 2016.
-                </p>
                 <p> 
                     Currently learning Web and mobile Application development at IMAD
-                </p>` 
+                </p>
+                <p> Certifications: </p>
+                <p>
+                    I am OCJP6 certified. 
+                    I scored 86% in the OCJP6 certification exam dated 31 August 2016.
+                </p>
+                <p> I am a Cognizant certified Banking and Financial Services Professional </p>
+                <p> I am a Cognizant certified Derivatives Professional </p>
+                ` 
     },
      Databases: {
         title: 'Databases | krithiskkv',
@@ -30,6 +34,7 @@ var articles = {
         content: `
                 <p>
                     I am an experienced DB2 programmer using DB2SQL on Mainframe
+                    DB2 is a database in MVS built on top of the VSAM file system
                 </p>
                 ` 
     },
