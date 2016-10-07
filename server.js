@@ -102,6 +102,10 @@ app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
 });
 
+app.get('/ui/background-home.png', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'background-home.png'));
+});
+
 var counter = 0;
 app.get('/counter', function(req, res) {
     counter = counter + 1;
