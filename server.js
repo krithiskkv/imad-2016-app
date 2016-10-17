@@ -79,6 +79,15 @@ function createTemplate(data) {
                     ${content}
                 </div>
             </div>
+            <div class="footer">  
+                <button id="counter" style="width:500;height:500"> Like </button>  <span id="count"> 0 </span> Likes
+                <br/>
+                <div> Please leave your comments on this page below: </div>
+                <textarea rows="2" cols="50" class="scrollabletextbox" id="name" name="comments" > </textarea>
+                <br/>
+                <input type="submit" id="submit_btn" value="Submit"> </input>
+                <ul id="namelist"> </ul>
+            </div>
             </body>
             </html>
             `;
