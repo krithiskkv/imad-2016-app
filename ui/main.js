@@ -17,8 +17,8 @@
 
 var button = document.getElementById('counter');
 button.onclick = function () {
+    console.log(articleName);
     var request = new XMLHttpRequest();
-    
     request.onreadystatechange = function() {
         if (request.readyState === XMLHttpRequest.DONE) {
             if (request.status === 200) {
@@ -36,6 +36,7 @@ button.onclick = function () {
 
 var submit = document.getElementById('submit_btn');
 submit.onclick = function() {
+    console.log(articleName);
     var request = new XMLHttpRequest();
     request.onreadystatechange = function () {
         if (request.readyState === XMLHttpRequest.DONE) {
