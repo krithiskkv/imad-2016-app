@@ -80,7 +80,7 @@ function createTemplate(data) {
                 </div>
             </div>
             <div class="footer">  
-                <button id="counter" onclick="likeFunction()" > Like </button>  <span id="count"> 0 </span> Likes
+                <button id="counter"> Like </button>  <span id="count"> 0 </span> Likes
                 <br/>
                 <div> Please leave your comments on this page below: </div>
                 <textarea rows="2" cols="50" class="scrollabletextbox" id="name" name="comments" > </textarea>
@@ -88,6 +88,8 @@ function createTemplate(data) {
                 <input type="submit" id="submit_btn" value="Submit"> </input>
                 <ul id="namelist"> </ul>
             </div>
+            <script type="text/javascript" src="/ui/main.js">
+            </script>
             </body>
             </html>
             `;
