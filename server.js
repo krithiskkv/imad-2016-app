@@ -58,7 +58,7 @@ function createTemplate(data) {
             var heading = data.heading;
             var date = data.date;
             var content = data.content;
-            data.count = 0;
+            var count = 0;
             switch (data.heading) {
                 case "Programming Experience":
                     count = counter2;
