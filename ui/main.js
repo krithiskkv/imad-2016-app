@@ -17,7 +17,7 @@
 
 var button = document.getElementById('counter');
 button.onclick = function () {
-    console.log(document.getElementById('heading').value);
+    console.log(document.getElementById('heading').innerHTLM);
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
         if (request.readyState === XMLHttpRequest.DONE) {
@@ -28,7 +28,7 @@ button.onclick = function () {
             }
         }
     };
-    switch (document.getElementById('heading').value) {
+    switch (document.getElementById('heading').innerHTML) {
         case "Home Page":
               request.open('GET', 'http://krithiskkv.imad.hasura-app.io/counter1', true);
               break;
