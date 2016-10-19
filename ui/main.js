@@ -17,7 +17,7 @@
 
 var button = document.getElementById('counter');
 button.onclick = function () {
-    // console.log(articleName);
+    console.log(document.getElementById('heading').value);
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
         if (request.readyState === XMLHttpRequest.DONE) {
