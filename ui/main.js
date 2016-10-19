@@ -28,8 +28,22 @@ button.onclick = function () {
             }
         }
     };
+    switch (document.getElementById('heading').value) {
+        case "Home Page":
+              request.open('GET', 'http://krithiskkv.imad.hasura-app.io/counter1', true);
+              break;
+        case "My Favourtie Authors":
+              request.open('GET', 'http://krithiskkv.imad.hasura-app.io/counter2', true);
+              break;
+        case "Programming Experience":
+              request.open('GET', 'http://krithiskkv.imad.hasura-app.io/counter3', true);
+              break;
+        case "Databases Known":
+              request.open('GET', 'http://krithiskkv.imad.hasura-app.io/counter4', true);
+              break;
+              
+    }
     
-    request.open('GET', 'http://krithiskkv.imad.hasura-app.io/counter', true);
     request.send(null);
 };
 
