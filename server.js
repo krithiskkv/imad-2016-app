@@ -56,40 +56,42 @@ function createTemplate(data) {
             var date = data.date;
             var content = data.content;
             var htmlTemplate = `<html>
+            
             <head>
-                <title style="color:white">
+                <title>
                     ${title} 
                 </title>
                 <meta name = "viewport" content = "width=device-width, initial-scale=1" />
                 <link href="/ui/style.css" rel="stylesheet" />
             </head>
-            <body link="white">
+            <body>
                 <div>
                     <a href="/">Home</a> 
                 </div>
-            <hr/>
-            <h3 id="heading">
-                ${heading}
-            </h3>
-            <div class="container">
-                <div>
-                    ${date}
+                <hr/>
+                <div class="container">
+                    <h3 id="heading">
+                        ${heading}
+                    </h3>
+                
+                    <div>
+                        ${date}
+                    </div>
+                    <div>
+                        ${content}
+                    </div>
+                    <div class="footer">  
+                        <button id="counter"> Like </button>  <span id="count"> 0 </span> Likes
+                        <br/>
+                        <div> Please leave your comments on this page below: </div>
+                        <textarea rows="2" cols="50" class="scrollabletextbox" id="name" name="comments" > </textarea>
+                        <br/>
+                        <input type="submit" id="submit_btn" value="Submit"> </input>
+                        <ul id="namelist"> </ul>
+                    </div>
+                    <script type="text/javascript" src="/ui/main.js">
+                    </script>
                 </div>
-                <div>
-                    ${content}
-                </div>
-                <div class="footer">  
-                    <button id="counter"> Like </button>  <span id="count"> 0 </span> Likes
-                    <br/>
-                    <div> Please leave your comments on this page below: </div>
-                    <textarea rows="2" cols="50" class="scrollabletextbox" id="name" name="comments" > </textarea>
-                    <br/>
-                    <input type="submit" id="submit_btn" value="Submit"> </input>
-                    <ul id="namelist"> </ul>
-                </div>
-            </div>
-            <script type="text/javascript" src="/ui/main.js">
-            </script>
             </body>
             </html>
             `;
