@@ -25,7 +25,8 @@ var articles = {
                 </p>
                 <p> I am a Cognizant certified Banking and Financial Services Professional </p>
                 <p> I am a Cognizant certified Derivatives Professional </p>
-                ` 
+                ` ,
+        count
     },
      Databases: {
         title: 'Databases | krithiskkv',
@@ -36,7 +37,8 @@ var articles = {
                     I am an experienced DB2 programmer using DB2SQL on Mainframe
                     DB2 is a database in MVS built on top of the VSAM file system
                 </p>
-                ` 
+                ` ,
+        count
     },
      FavAuthrs: {
         title: 'Favourite Authors | krithiskkv',
@@ -46,7 +48,8 @@ var articles = {
                 <p>
                     R.K. Narayan and P.G.Wodehouse are my all time favourite authors 
                 </p>
-                ` 
+                ` ,
+        count        
     }
 };
 
@@ -55,7 +58,7 @@ function createTemplate(data) {
             var heading = data.heading;
             var date = data.date;
             var content = data.content;
-            var count = 0;
+            data.count = 0;
             switch (data.heading) {
                 case "Programming Experience":
                     count = counter2;
