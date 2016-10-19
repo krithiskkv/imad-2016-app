@@ -71,7 +71,22 @@ submit.onclick = function() {
     var nameInput = document.getElementById('name');
     var name = nameInput.value;
 
-    request.open('GET', 'http://krithiskkv.imad.hasura-app.io/submit-name?name=' + name, true);
+    switch ((document.getElementById('heading').innerHTML).trim()) {
+        case "Home Page":
+              request.open('GET', 'http://krithiskkv.imad.hasura-app.io/submit-name1?name=' + name, true);
+              break;
+        case "My Favourite Authors":
+              request.open('GET', 'http://krithiskkv.imad.hasura-app.io/submit-name2?name=' + name, true);
+              break;
+        case "Programming Experience":
+              request.open('GET', 'http://krithiskkv.imad.hasura-app.io/submit-name3?name=' + name, true);
+              break;
+        case "Databases known":
+              request.open('GET', 'http://krithiskkv.imad.hasura-app.io/submit-name4?name=' + name, true);
+              break;
+              
+    }
+    
     request.send(null);
 
 };
