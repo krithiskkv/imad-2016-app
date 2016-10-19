@@ -117,10 +117,28 @@ app.get('/ui/background.jpg', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'background.jpg'));
 });
 
-var counter = 0;
-app.get('/counter', function(req, res) {
-    counter = counter + 1;
-    res.send(counter.toString());
+var counter1 = 0;
+app.get('/counter1', function(req, res) {
+    counter1 = counter1 + 1;
+    res.send(counter1.toString());
+});
+
+var counter2 = 0;
+app.get('/counter2', function(req, res) {
+    counter2 = counter2 + 1;
+    res.send(counter2.toString());
+});
+
+var counter3 = 0;
+app.get('/counter3', function(req, res) {
+    counter3 = counter3 + 1;
+    res.send(counter3.toString());
+});
+
+var counter4 = 0;
+app.get('/counter4', function(req, res) {
+    counter4 = counter4 + 1;
+    res.send(counter4.toString());
 });
 
 var names = [];
