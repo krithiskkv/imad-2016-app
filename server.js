@@ -60,12 +60,13 @@ function createTemplate(data) {
                 case "ProgLang":
                     count = counter2;
                     break;
-                case "FavAuthrs":
+                case "Databases":
                     count = counter3;
                     break;
-                case "Databases":
+                case "FavAuthrs":
                     count = counter4;
                     break;
+                
             }
             
             
