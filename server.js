@@ -56,6 +56,18 @@ function createTemplate(data) {
             var date = data.date;
             var content = data.content;
             var count = 0;
+            switch (articleName) {
+                case "ProgLang":
+                    count = counter2;
+                    break;
+                case "FavAuthrs":
+                    count = counter3;
+                    break;
+                case "Databases":
+                    count = counter4;
+                    break;
+            }
+            
             
             var htmlTemplate = `<html>
             <head>
