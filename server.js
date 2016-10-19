@@ -141,11 +141,32 @@ app.get('/counter4', function(req, res) {
     res.send(counter4.toString());
 });
 
-var names = [];
-app.get('/submit-name', function(req, res) {
-    var name = req.query.name;
-    names.push(name);
-    res.send(JSON.stringify(names));
+var names1 = [];
+app.get('/submit-name1', function(req, res) {
+    var name1 = req.query.name;
+    names1.push(name1);
+    res.send(JSON.stringify(names1));
+});
+
+var names2 = [];
+app.get('/submit-name2', function(req, res) {
+    var name2 = req.query.name;
+    names2.push(name2);
+    res.send(JSON.stringify(names2));
+});
+
+var names3 = [];
+app.get('/submit-name3', function(req, res) {
+    var name3 = req.query.name;
+    names3.push(name3);
+    res.send(JSON.stringify(names3));
+});
+
+var names4 = [];
+app.get('/submit-name4', function(req, res) {
+    var name4 = req.query.name;
+    names4.push(name4);
+    res.send(JSON.stringify(names4));
 });
 
 app.get('/:articleName', function (req, res) {
