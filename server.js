@@ -56,14 +56,14 @@ function createTemplate(data) {
             var date = data.date;
             var content = data.content;
             var count = 0;
-            switch (articleName) {
-                case "ProgLang":
+            switch (data.heading) {
+                case "Programming Experience":
                     count = counter2;
                     break;
-                case "Databases":
+                case "Databases known":
                     count = counter3;
                     break;
-                case "FavAuthrs":
+                case "My Favourite Authors":
                     count = counter4;
                     break;
                 
