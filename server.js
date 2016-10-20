@@ -122,24 +122,36 @@ app.get('/ui/background.jpg', function (req, res) {
 });
 
 var counter1 = 0;
+app.get('/initcounter1', function(req, res) {
+    res.send(counter1.toString());
+});
 app.get('/counter1', function(req, res) {
     counter1 = counter1 + 1;
     res.send(counter1.toString());
 });
 
 var counter2 = 0;
+app.get('/initcounter2', function(req, res) {
+    res.send(counter2.toString());
+});
 app.get('/counter2', function(req, res) {
     counter2 = counter2 + 1;
     res.send(counter2.toString());
 });
 
 var counter3 = 0;
+app.get('/initcounter3', function(req, res) {
+    res.send(counter3.toString());
+});
 app.get('/counter3', function(req, res) {
     counter3 = counter3 + 1;
     res.send(counter3.toString());
 });
 
 var counter4 = 0;
+app.get('/initcounter4', function(req, res) {
+    res.send(counter4.toString());
+});
 app.get('/counter4', function(req, res) {
     counter4 = counter4 + 1;
     res.send(counter4.toString());
