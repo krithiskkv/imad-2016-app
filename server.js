@@ -25,9 +25,8 @@ var articles = {
                 </p>
                 <p> I am a Cognizant certified Banking and Financial Services Professional </p>
                 <p> I am a Cognizant certified Derivatives Professional </p>
-                ` ,
-        count
-    },
+                ` 
+        },
      Databases: {
         title: 'Databases | krithiskkv',
         heading: 'Databases known',
@@ -37,8 +36,8 @@ var articles = {
                     I am an experienced DB2 programmer using DB2SQL on Mainframe
                     DB2 is a database in MVS built on top of the VSAM file system
                 </p>
-                ` ,
-        count
+                `
+        
     },
      FavAuthrs: {
         title: 'Favourite Authors | krithiskkv',
@@ -48,8 +47,7 @@ var articles = {
                 <p>
                     R.K. Narayan and P.G.Wodehouse are my all time favourite authors 
                 </p>
-                ` ,
-        count        
+                `    
     }
 };
 
@@ -59,19 +57,6 @@ function createTemplate(data) {
             var date = data.date;
             var content = data.content;
             var count = 0;
-            switch (data.heading) {
-                case "Programming Experience":
-                    count = counter2;
-                    break;
-                case "Databases known":
-                    count = counter3;
-                    break;
-                case "My Favourite Authors":
-                    count = counter4;
-                    break;
-                
-            }
-            
             
             var htmlTemplate = `<html>
             <head>
@@ -98,7 +83,7 @@ function createTemplate(data) {
                         ${content}
                     </div>
                     <div class="footer">  
-                        <button id="counter"> Like </button>  <span id="count"> ${count}  </span> Likes
+                        <button id="counter"> Like </button>  <span id="count">   </span> Likes
                         <br/>
                         <div> Please leave your comments on this page below: </div>
                         <textarea rows="2" cols="50" class="scrollabletextbox" id="name" name="comments" > </textarea>
