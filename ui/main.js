@@ -26,16 +26,16 @@ initrequest.onreadystatechange = function() {
 };
 switch ((document.getElementById('heading').innerHTML).trim()) {
         case "Home Page":
-              request.open('GET', 'http://krithiskkv.imad.hasura-app.io/initcounter1', true);
+              initrequest.open('GET', 'http://krithiskkv.imad.hasura-app.io/initcounter1', true);
               break;
         case "My Favourite Authors":
-              request.open('GET', 'http://krithiskkv.imad.hasura-app.io/initcounter2', true);
+              initrequest.open('GET', 'http://krithiskkv.imad.hasura-app.io/initcounter2', true);
               break;
         case "Programming Experience":
-              request.open('GET', 'http://krithiskkv.imad.hasura-app.io/initcounter3', true);
+              initrequest.open('GET', 'http://krithiskkv.imad.hasura-app.io/initcounter3', true);
               break;
         case "Databases known":
-              request.open('GET', 'http://krithiskkv.imad.hasura-app.io/initcounter4', true);
+              initrequest.open('GET', 'http://krithiskkv.imad.hasura-app.io/initcounter4', true);
               break;
               
     }
