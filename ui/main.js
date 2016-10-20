@@ -15,9 +15,9 @@
 //    var interval = setInterval(moveRight, 50);
 //};
 var initrequest = new XMLHttpRequest();
-request.onreadystatechange = function() {
-    if (request.readyState === XMLHttpRequest.DONE) {
-        if (request.status === 200) {
+initrequest.onreadystatechange = function() {
+    if (initrequest.readyState === XMLHttpRequest.DONE) {
+        if (initrequest.status === 200) {
             var initcounter = request.responseText;
             var initspan = document.getElementById('count');
             initspan.innerHTML = initcounter.toString();
