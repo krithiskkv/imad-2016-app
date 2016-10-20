@@ -18,7 +18,7 @@ var initrequest = new XMLHttpRequest();
 initrequest.onreadystatechange = function() {
     if (initrequest.readyState === XMLHttpRequest.DONE) {
         if (initrequest.status === 200) {
-            var initcounter = request.responseText;
+            var initcounter = initrequest.responseText;
             var initspan = document.getElementById('count');
             initspan.innerHTML = initcounter.toString();
         }
