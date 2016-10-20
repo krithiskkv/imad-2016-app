@@ -40,7 +40,7 @@ switch ((document.getElementById('heading').innerHTML).trim()) {
               
     }
     
-    request.send(null);
+initrequest.send(null);
 
 
 var button = document.getElementById('counter');
