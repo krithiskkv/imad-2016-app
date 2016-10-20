@@ -14,13 +14,13 @@
 //img.onclick = function() {
 //    var interval = setInterval(moveRight, 50);
 //};
-var request = new XMLHttpRequest();
+var initrequest = new XMLHttpRequest();
 request.onreadystatechange = function() {
     if (request.readyState === XMLHttpRequest.DONE) {
         if (request.status === 200) {
             var initcounter = request.responseText;
             var initspan = document.getElementById('count');
-            initspan.innerHTML = counter.toString();
+            initspan.innerHTML = initcounter.toString();
         }
     }
 };
