@@ -14,17 +14,45 @@
 //img.onclick = function() {
 //    var interval = setInterval(moveRight, 50);
 //};
+var request = new XMLHttpRequest();
+request.onreadystatechange = function() {
+    if (request.readyState === XMLHttpRequest.DONE) {
+        if (request.status === 200) {
+            var initcounter = request.responseText;
+            var initspan = document.getElementById('count');
+            initspan.innerHTML = counter.toString();
+        }
+    }
+};
+switch ((document.getElementById('heading').innerHTML).trim()) {
+        case "Home Page":
+              request.open('GET', 'http://krithiskkv.imad.hasura-app.io/initcounter1', true);
+              break;
+        case "My Favourite Authors":
+              request.open('GET', 'http://krithiskkv.imad.hasura-app.io/initcounter2', true);
+              break;
+        case "Programming Experience":
+              request.open('GET', 'http://krithiskkv.imad.hasura-app.io/initcounter3', true);
+              break;
+        case "Databases known":
+              request.open('GET', 'http://krithiskkv.imad.hasura-app.io/initcounter4', true);
+              break;
+              
+    }
+    
+    request.send(null);
+
 
 var button = document.getElementById('counter');
 button.onclick = function () {
-    console.log((document.getElementById('heading').innerHTML).trim());
+//    console.log((document.getElementById('heading').innerHTML).trim());
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
         if (request.readyState === XMLHttpRequest.DONE) {
             if (request.status === 200) {
                 var counter = request.responseText;
                 var span = document.getElementById('count');
-                span.innerHTML = counter.toString();
+                span.innerHTML = initcounter.toString();
             }
         }
     };
