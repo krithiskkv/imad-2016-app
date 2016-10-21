@@ -98,7 +98,7 @@ submit.onclick = function() {
     
     var nameInput = document.getElementById('name');
     var name = nameInput.value;
-    if (name != "") {
+    if (name !== "") {
         document.getElementById('name').value="";
 
         switch ((document.getElementById('heading').innerHTML).trim()) {
