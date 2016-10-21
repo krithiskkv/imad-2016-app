@@ -78,10 +78,14 @@ button.onclick = function () {
 
 var submit = document.getElementById('submit_btn');
 submit.onclick = function() {
-    var request = new XMLHttpRequest();
-    request.onreadystatechange = function () {
-        if (request.readyState === XMLHttpRequest.DONE) {
-          if (request.status === 200) {
+    var nameInput = document.getElementById('name');
+    var name = nameInput.value;
+    if (name !== "") {
+        var request = new XMLHttpRequest();
+
+        request.onreadystatechange = function () {
+            if (request.readyState === XMLHttpRequest.DONE) {
+            if (request.status === 200) {
                 var names = request.responseText;
                 names = JSON.parse(names);
                 var list = '';
@@ -90,15 +94,11 @@ submit.onclick = function() {
                 }
                 var ul = document.getElementById('namelist');
                 ul.innerHTML = list;
+                }
             }
-        }
-    };
+        };
     
-    var nameInput = document.getElementById('name');
-    var name = nameInput.value;
-    if (name !== "") {
         document.getElementById('name').value="";
-
         switch ((document.getElementById('heading').innerHTML).trim()) {
             case "Home Page":
               request.open('GET', 'http://krithiskkv.imad.hasura-app.io/submit-name1?name=' + name, true);
@@ -114,10 +114,9 @@ submit.onclick = function() {
               break;
               
         }
-    }
     
     request.send(null);
-    
+    }
 };
 
 
