@@ -34,7 +34,7 @@ switch ((document.getElementById('heading').innerHTML).trim()) {
         case "Programming Experience":
               initrequest.open('GET', 'http://krithiskkv.imad.hasura-app.io/initcounter3', true);
               break;
-        case "Databases known":
+        case "Databases Known":
               initrequest.open('GET', 'http://krithiskkv.imad.hasura-app.io/initcounter4', true);
               break;
               
@@ -66,7 +66,7 @@ button.onclick = function () {
         case "Programming Experience":
               request.open('GET', 'http://krithiskkv.imad.hasura-app.io/counter3', true);
               break;
-        case "Databases known":
+        case "Databases Known":
               request.open('GET', 'http://krithiskkv.imad.hasura-app.io/counter4', true);
               break;
               
@@ -79,7 +79,6 @@ button.onclick = function () {
 var submit = document.getElementById('submit_btn');
 submit.onclick = function() {
     // console.log(articleName);
-    document.getElementById('name').value="";
     var request = new XMLHttpRequest();
     request.onreadystatechange = function () {
         if (request.readyState === XMLHttpRequest.DONE) {
@@ -98,6 +97,7 @@ submit.onclick = function() {
     };
     
     var nameInput = document.getElementById('name');
+    document.getElementById('name').value="";
     var name = nameInput.value;
 
     switch ((document.getElementById('heading').innerHTML).trim()) {
@@ -110,14 +110,14 @@ submit.onclick = function() {
         case "Programming Experience":
               request.open('GET', 'http://krithiskkv.imad.hasura-app.io/submit-name3?name=' + name, true);
               break;
-        case "Databases known":
+        case "Databases Known":
               request.open('GET', 'http://krithiskkv.imad.hasura-app.io/submit-name4?name=' + name, true);
               break;
               
     }
     
     request.send(null);
-
+    
 };
 
 
