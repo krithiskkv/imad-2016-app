@@ -79,6 +79,7 @@ button.onclick = function () {
 var submit = document.getElementById('submit_btn');
 submit.onclick = function() {
     // console.log(articleName);
+    document.getElementById('name').value="";
     var request = new XMLHttpRequest();
     request.onreadystatechange = function () {
         if (request.readyState === XMLHttpRequest.DONE) {
