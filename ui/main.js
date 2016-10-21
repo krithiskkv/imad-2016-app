@@ -97,8 +97,8 @@ submit.onclick = function() {
     };
     
     var nameInput = document.getElementById('name');
-    document.getElementById('name').value="";
     var name = nameInput.value;
+    document.getElementById('name').value="";
 
     switch ((document.getElementById('heading').innerHTML).trim()) {
         case "Home Page":
