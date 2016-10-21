@@ -80,7 +80,7 @@ var submit = document.getElementById('submit_btn');
 submit.onclick = function() {
     var nameInput = document.getElementById('name');
     var name = nameInput.value;
-    if (name !== "") {
+    if (name != "") {
         var request = new XMLHttpRequest();
 
         request.onreadystatechange = function () {
