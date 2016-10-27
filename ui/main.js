@@ -80,6 +80,7 @@ var submit = document.getElementById('submit_btn');
 submit.onclick = function() {
     var nameInput = document.getElementById('name');
     var name = nameInput.value;
+    console.log('hi'+ name + 'hi')
     if (name > "") {
         var request = new XMLHttpRequest();
 
