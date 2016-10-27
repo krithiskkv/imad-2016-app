@@ -95,7 +95,7 @@ function createTemplate(data) {
                         <input id="counter" type="image" src="/ui/like.png" alt="Submit" width="50" height="20">
                         <span id="count">   </span> Likes
                         <br/>
-                        <div> Please leave your comments on this page below: </div>
+                        <div> Write a comment... </div>
                         <textarea rows="2" cols="50" class="scrollabletextbox" id="name" name="comments" > </textarea>
                         <br/>
                         <input type="submit" id="submit_btn" value="Submit"> </input>
