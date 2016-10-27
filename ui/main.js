@@ -81,7 +81,7 @@ submit.onclick = function() {
     var nameInput = document.getElementById('name');
     var name = nameInput.value;
     console.log('hi'+ name + 'hi')
-    if (name > "") {
+    if (name > " ") {
         var request = new XMLHttpRequest();
 
         request.onreadystatechange = function () {
