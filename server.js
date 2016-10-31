@@ -131,17 +131,18 @@ app.get('/test-db', function (req,res) {
 app.get('/articles/:articleName', function (req, res) {
       var articleName = req.params.articleName; 
       console.log(articleName);
-      pool.query("SELECT title, heading, date, content FROM article WHERE articlename = 'ProgLang'", function(err,result) {
+      pool.query("SELECT title, heading, date, content FROM article WHERE articlename='ProgLang'", function(err,result) {
         if (err) {
            res.status(500).send(err.toString());
         } else {
-            if (result.rows.length === 0) {
-                res.send('Article not found');
-            } else {
-                var articleData = JSON.stringify(result.rows[0]);
-                console.log(articleData);
-                res.send(createTemplate(articleData));
-            }
+            res.send(JSON.stringify(result.rows));
+           // if (result.rows.length === 0) {
+        //        res.send('Article not found');
+         //   } else {
+         //       var articleData = JSON.stringify(result.rows[0]);
+         //       console.log(articleData);
+         //       res.send(createTemplate(articleData));
+         //   }
         }
      }); 
  });
