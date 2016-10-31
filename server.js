@@ -119,7 +119,7 @@ var pool = new Pool(config);
 
 app.get('/test-db', function (req,res) {
     console.log('test-db');
-    pool.query("SELECT title, heading, date, content FROM article WHERE articlename='ProgLang'", function(err,result) {
+    pool.query("SELECT * FROM article WHERE articlename='ProgLang'", function(err,result) {
         if (err) {
             res.status(500).send(err.toString());
         } else {
