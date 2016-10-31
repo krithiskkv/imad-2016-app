@@ -128,6 +128,7 @@ app.get('/test-db', function (req,res) {
     });
 });
 
+var articleData=" ";
 app.get('/articles/:articleName', function (req, res) {
       var articleName = req.params.articleName; 
       console.log(articleName);
@@ -138,12 +139,14 @@ app.get('/articles/:articleName', function (req, res) {
              if (result.rows.length === 0) {
                 res.send('Article not found');
             } else {
-                var articleData = JSON.stringify(result.rows[0]);
+                articleData = JSON.stringify(result.rows[0]);
                 res.send(createTemplate(articleData));
             }
         }
      }); 
  });
+ 
+ 
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
