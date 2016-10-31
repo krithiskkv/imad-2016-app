@@ -18,7 +18,7 @@ var articles = {
      ProgLang: {
         title: 'Programming Languages | krithiskkv',
         heading: 'Programming Experience',
-         date: 'Sep 25 2016',
+        date: 'Sep 25 2016',
         content: `
                 <p>
                     I have more than 7 years experience as a COBOL/JCL programmer. 
