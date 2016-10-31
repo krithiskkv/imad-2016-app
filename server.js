@@ -18,7 +18,7 @@ var articles = {
      ProgLang: {
         title: 'Programming Languages | krithiskkv',
         heading: 'Programming Experience',
-        date: 'Sep 25 2016',
+         date: 'Sep 25 2016',
         content: `
                 <p>
                     I have more than 7 years experience as a COBOL/JCL programmer. 
@@ -217,7 +217,10 @@ app.get('/:articleName', function (req, res) {
   res.send(createTemplate(articles[articleName]));
 });
 
-
+app.get('/articles/:articleName', function (req, res) {
+  var articleName = req.params.articleName;    
+  res.send(createTemplate(articles[articleName]));
+});
 
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
