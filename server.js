@@ -66,7 +66,7 @@ function createTemplate(data) {
             var date = data.date;
             var content = data.content;
             var count = 0;
-            
+            console.log(title);
             var htmlTemplate = `<html>
             <head>
                 <title>
@@ -135,14 +135,12 @@ app.get('/articles/:articleName', function (req, res) {
         if (err) {
            res.status(500).send(err.toString());
         } else {
-            res.send(JSON.stringify(result.rows[0]));
-           // if (result.rows.length === 0) {
-        //        res.send('Article not found');
-         //   } else {
-         //       var articleData = JSON.stringify(result.rows[0]);
-         //       console.log(articleData);
-         //       res.send(createTemplate(articleData));
-         //   }
+             if (result.rows.length === 0) {
+                res.send('Article not found');
+            } else {
+                var articleData = JSON.stringify(result.rows[0]);
+                res.send(createTemplate(articleData));
+            }
         }
      }); 
  });
