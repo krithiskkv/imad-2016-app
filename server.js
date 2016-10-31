@@ -29,7 +29,7 @@ var articles = {
                 </p>
                 <p> Certifications: </p>
                 <p>
-                    I am OCJP6 certified. 
+                    I am an Oracle Certified Java Programmer. 
                     I scored 86% in the OCJP6 certification exam dated 31 August 2016.
                 </p>
                 <p> I am a Cognizant certified Banking and Financial Services Professional </p>
