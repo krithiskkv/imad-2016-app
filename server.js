@@ -137,6 +137,7 @@ app.get('/articles/:articleName', function (req, res) {
                 res.send('Article not found');
             } else {
                 var articleData = JSON.stringify(result.rows[0]);
+                console.log(articleData);
                 res.send(createTemplate(articleData));
             }
         }
