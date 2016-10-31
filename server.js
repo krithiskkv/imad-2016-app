@@ -226,7 +226,8 @@ app.get('/articles/:articleName', function (req, res) {
             if (result.rows.length === 0) {
                 res.send('Article not found');
             } else {
-            res.send(JSON.stringify(result.rows[0]));
+                var articleData = JSON.stringify(result.rows[0]);
+                res.send(createTemplate(articles[articleData]));
             }
         }
 });
