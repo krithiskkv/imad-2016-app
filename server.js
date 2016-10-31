@@ -131,7 +131,7 @@ app.get('/test-db', function (req,res) {
 app.get('/articles/:articleName', function (req, res) {
       var articleName = req.params.articleName; 
       console.log(articleName);
-      pool.query("SELECT title, heading, date, content FROM article WHERE articlename = '" + articleName + "'", function(err,result) {
+      pool.query("SELECT title, heading, date, content FROM article WHERE articlename = 'ProgLang'", function(err,result) {
         if (err) {
            res.status(500).send(err.toString());
         } else {
