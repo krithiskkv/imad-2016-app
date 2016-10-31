@@ -208,7 +208,7 @@ app.get('/:articleName', function (req, res) {
 });
 
 app.get('/test-db', function (req,res) {
-    pool.query("SELECT title, heading, date, content FROM article WHERE articlename = 'ProgLang'", function(err,result) {
+    pool.query("SELECT title, heading, date, content FROM article", function(err,result) {
         if (err) {
             res.status(500).send(err.toString());
         } else {
