@@ -127,6 +127,22 @@ app.get('/test-db', function (req,res) {
     });
 });
 
+app.get('/articles/:articleName', function (req, res) {
+      var articleName = req.params.articleName; 
+      pool.query("SELECT title, heading, date, content FROM article WHERE articlename = '" + articleName + "'", function(err,result) {
+        if (err) {
+           res.status(500).send(err.toString());
+        } else {
+            if (result.rows.length === 0) {
+                res.send('Article not found');
+            } else {
+                var articleData = JSON.stringify(result.rows[0]);
+                res.send(createTemplate(articleData));
+            }
+        }
+     }); 
+ });
+
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 });
@@ -211,23 +227,6 @@ app.get('/submit-name4', function(req, res) {
     names4.push(name4);
     res.send(JSON.stringify(names4));
 });
-
-app.get('/articles/:articleName', function (req, res) {
-      var articleName = req.params.articleName; 
-      pool.query("SELECT title, heading, date, content FROM article WHERE articlename = '" + articleName + "'", function(err,result) {
-        if (err) {
-           res.status(500).send(err.toString());
-        } else {
-            if (result.rows.length === 0) {
-                res.send('Article not found');
-            } else {
-                var articleData = JSON.stringify(result.rows[0]);
-                res.send(createTemplate(articleData));
-            }
-        }
-     }); 
- });
-
 
 app.get('/:articleName', function (req, res) {
   var articleName = req.params.articleName;    
