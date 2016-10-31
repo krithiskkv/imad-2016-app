@@ -212,11 +212,6 @@ app.get('/submit-name4', function(req, res) {
     res.send(JSON.stringify(names4));
 });
 
-app.get('/:articleName', function (req, res) {
-  var articleName = req.params.articleName;    
-  res.send(createTemplate(articles[articleName]));
-});
-
 app.get('/articles/:articleName', function (req, res) {
       var articleName = req.params.articleName; 
       pool.query("SELECT title, heading, date, content FROM article WHERE articlename = '" + articleName + "'", function(err,result) {
@@ -232,6 +227,13 @@ app.get('/articles/:articleName', function (req, res) {
         }
  }); 
  });
+
+
+app.get('/:articleName', function (req, res) {
+  var articleName = req.params.articleName;    
+  res.send(createTemplate(articles[articleName]));
+});
+
 
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
