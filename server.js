@@ -66,7 +66,7 @@ function createTemplate(data) {
             var date = data.date;
             var content = data.content;
             var count = 0;
-            console.log(title);
+            console.log('title is' + title);
             var htmlTemplate = `<html>
             <head>
                 <title>
