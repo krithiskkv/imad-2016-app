@@ -9,7 +9,7 @@ var config = {
     host: 'db.imad.hasura-app.io',
     port: '5432',
     password: process.env.DB_PASSWORD
-}
+};
 
 var app = express();
 app.use(morgan('combined'));
@@ -227,7 +227,7 @@ app.get('/articles/:articleName', function (req, res) {
                 res.send('Article not found');
             } else {
                 var articleData = JSON.stringify(result.rows[0]);
-                res.send(createTemplate(articles[articleData]));
+                res.send(createTemplate(articleData));
             }
         }
 });
