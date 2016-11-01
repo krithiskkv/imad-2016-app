@@ -60,9 +60,9 @@ var articles = {
     }
 };
 
-function createTemplate(data) {
+function createTemplate (data) {
             console.log('data is' + data);
-            console.log('title is' + title);
+            console.log('title is' + data.title);
             var title = data.title;
             var heading = data.heading;
             var date = data.date;
