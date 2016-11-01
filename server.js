@@ -14,55 +14,10 @@ var config = {
 var app = express();
 app.use(morgan('combined'));
 
-/* var articles = {
-     ProgLang: {
-        title: 'Programming Languages | krithiskkv',
-        heading: 'Programming Experience',
-        date: 'Sep 25 2016',
-        content: `
-                <p>
-                    I have more than 7 years experience as a COBOL/JCL programmer. 
-                    I have worked in the capacity of a programmer and a Team Lead. 
-                </p>
-                <p> 
-                    Currently learning Web and mobile Application development at IMAD
-                </p>
-                <p> Certifications: </p>
-                <p>
-                    I am an Oracle Certified Java Programmer. 
-                    I scored 86% in the OCJP6 certification exam dated 31 August 2016.
-                </p>
-                <p> I am a Cognizant certified Banking and Financial Services Professional </p>
-                <p> I am a Cognizant certified Derivatives Professional </p>
-                ` 
-        },
-     Databases: {
-        title: 'Databases | krithiskkv',
-        heading: 'Databases known',
-        date: 'Sep 25 2016',
-        content: `
-                <p>
-                    I am an experienced DB2 programmer using DB2SQL on Mainframe
-                    DB2 is a database in MVS built on top of the VSAM file system
-                </p>
-                `
-        
-    },
-     FavAuthrs: {
-        title: 'Favourite Authors | krithiskkv',
-        heading: 'My Favourite Authors',
-        date: 'Sep 25 2016',
-        content: `
-                <p>
-                    R.K. Narayan and P.G.Wodehouse are my all time favourite authors 
-                </p>
-                `    
-    }
-}; */
+//fuction to create individual pages by injecting data specific to the pages into a template
 
 function createTemplate (data) {
-            console.log('data is' + data);
-            console.log('title is' + data.title);
+
             var title = data.title;
             var heading = data.heading;
             var date = data.date;
@@ -119,21 +74,9 @@ app.get('/', function (req, res) {
 
 var pool = new Pool(config);
 
-app.get('/test-db', function (req,res) {
-    console.log('test-db');
-    pool.query("SELECT * FROM article WHERE articlename='ProgLang'", function(err,result) {
-        if (err) {
-            res.status(500).send(err.toString());
-        } else {
-            res.send(JSON.stringify(result.rows));
-        }
-    });
-});
-
-
+//select data needed to build the page requested from the database and render it uing the createTemplate function
 app.get('/:articleName', function (req, res) {
       var articleName = req.params.articleName; 
-      console.log(articleName);
       pool.query("SELECT * FROM article WHERE articlename=$1", [req.params.articleName], function(err,result) {
         if (err) {
            res.status(500).send(err.toString());
@@ -169,6 +112,9 @@ app.get('/ui/main.js', function (req, res) {
 app.get('/ui/background.jpg', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'background.jpg'));
 });
+
+
+// /initcounter* obtains the current Likes counter for a page and /counter* increments the Likes counter by 1
 
 var counter1 = 0;
 app.get('/initcounter1', function(req, res) {
@@ -206,6 +152,8 @@ app.get('/counter4', function(req, res) {
     res.send(counter4.toString());
 });
 
+// /submit-name* obtains the current list of comments for a page
+
 var names1 = [];
 app.get('/submit-name1', function(req, res) {
     var name1 = req.query.name;
@@ -233,13 +181,6 @@ app.get('/submit-name4', function(req, res) {
     names4.push(name4);
     res.send(JSON.stringify(names4));
 });
-
-//app.get('/:articleName', function (req, res) {
-//  var articleName = req.params.articleName;    
-//  res.send(createTemplate(articles[articleName]));
-//});
-
-
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
 app.listen(8080, function () {
