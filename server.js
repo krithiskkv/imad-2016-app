@@ -147,7 +147,6 @@ app.get('/articles/:articleName', function (req, res) {
         }
      }); 
  });
- console.log(articleData);
  
 
 app.get('/ui/style.css', function (req, res) {
