@@ -27,6 +27,40 @@ switch ((document.getElementById('heading').innerHTML).trim()) {
     
 initrequest.send(null);
 
+var initcommrequest = new XMLHttpRequest();
+initcommrequest.onreadystatechange = function () {
+    if (inticommrequest.readyState === XMLHttpRequest.DONE) {
+    if (initcommrequest.status === 200) {
+        var names = request.responseText;
+        names = JSON.parse(names);
+        var list = '';
+        for (var i=0;i<names.length;i++) {
+          list += '<li>' + names[i] + '</li>';
+        }
+        var ul = document.getElementById('namelist');
+        ul.innerHTML = list;
+        }
+    }
+};
+    
+switch ((document.getElementById('heading').innerHTML).trim()) {
+    case "Home Page":
+      initcommrequest.open('GET', 'http://krithiskkv.imad.hasura-app.io/init-name1', true);
+      break;
+    case "My Favourite Authors":
+      initcommrequest.open('GET', 'http://krithiskkv.imad.hasura-app.io/init-name2', true);
+      break;
+    case "Programming Experience":
+      initcommrequest.open('GET', 'http://krithiskkv.imad.hasura-app.io/init-name3', true);
+      break;
+    case "Databases Known":
+      initcommrequest.open('GET', 'http://krithiskkv.imad.hasura-app.io/init-name4', true);
+      break;
+      
+}
+initcommrequest.send(null);
+
+
 //on clicking Like button request server to increment Like counter and render the new Like counter
 var button = document.getElementById('counter');
 button.onclick = function () {
