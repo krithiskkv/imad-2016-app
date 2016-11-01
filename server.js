@@ -14,7 +14,7 @@ var config = {
 var app = express();
 app.use(morgan('combined'));
 
-var articles = {
+/* var articles = {
      ProgLang: {
         title: 'Programming Languages | krithiskkv',
         heading: 'Programming Experience',
@@ -58,7 +58,7 @@ var articles = {
                 </p>
                 `    
     }
-};
+}; */
 
 function createTemplate (data) {
             console.log('data is' + data);
