@@ -131,7 +131,7 @@ app.get('/test-db', function (req,res) {
 });
 
 
-app.get('/articles/:articleName', function (req, res) {
+app.get('/:articleName', function (req, res) {
       var articleName = req.params.articleName; 
       console.log(articleName);
       pool.query("SELECT * FROM article WHERE articlename=$1", [req.params.articleName], function(err,result) {
@@ -234,10 +234,10 @@ app.get('/submit-name4', function(req, res) {
     res.send(JSON.stringify(names4));
 });
 
-app.get('/:articleName', function (req, res) {
-  var articleName = req.params.articleName;    
-  res.send(createTemplate(articles[articleName]));
-});
+//app.get('/:articleName', function (req, res) {
+//  var articleName = req.params.articleName;    
+//  res.send(createTemplate(articles[articleName]));
+//});
 
 
 
