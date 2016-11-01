@@ -142,7 +142,7 @@ app.get('/articles/:articleName', function (req, res) {
                 res.status(404).send('Article not found');
             } else {
                 articleData = JSON.stringify(result.rows[0]);
-                res.send(articleData);
+                res.send(createTemplate(articleData));
             }
         }
      }); 
