@@ -1,19 +1,4 @@
-// console.log('Loaded!');
-
-// var element = document.getElementById('main-text');
-// element.innerHTML = "New Value";
-
-//var img = document.getElementById('prof');
-//var marginLeft = 0;
-
-//function moveRight() {
-//    marginLeft = marginLeft + 1;
-//    img.style.marginLeft = marginLeft + 'px';
-//}
-
-//img.onclick = function() {
-//    var interval = setInterval(moveRight, 50);
-//};
+// request the server for the current value of Likes counter and render the response 
 var initrequest = new XMLHttpRequest();
 initrequest.onreadystatechange = function() {
     if (initrequest.readyState === XMLHttpRequest.DONE) {
@@ -42,10 +27,9 @@ switch ((document.getElementById('heading').innerHTML).trim()) {
     
 initrequest.send(null);
 
-
+//on clicking Like button request server to increment Like counter and render the new Like counter
 var button = document.getElementById('counter');
 button.onclick = function () {
-//    console.log((document.getElementById('heading').innerHTML).trim());
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
         if (request.readyState === XMLHttpRequest.DONE) {
@@ -75,12 +59,11 @@ button.onclick = function () {
     request.send(null);
 };
 
-
+//add the entered comment in the comment box and display the updated comments list on clicking Submit button
 var submit = document.getElementById('submit_btn');
 submit.onclick = function() {
     var nameInput = document.getElementById('name');
     var name = nameInput.value;
-    console.log('hi'+ name + 'hi')
     if (name > " ") {
         var request = new XMLHttpRequest();
 
