@@ -32,7 +32,7 @@ var initcommrequest = new XMLHttpRequest();
 initcommrequest.onreadystatechange = function () {
     if (initcommrequest.readyState === XMLHttpRequest.DONE) {
     if (initcommrequest.status === 200) {
-        var names = request.responseText;
+        var names = initcommrequest.responseText;
         names = JSON.parse(names);
         var list = '';
         for (var i=0;i<names.length;i++) {
