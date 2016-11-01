@@ -48,7 +48,7 @@ switch ((document.getElementById('heading').innerHTML).trim()) {
     case "Home Page":
       initcommrequest.open('GET', 'http://krithiskkv.imad.hasura-app.io/init-name1', true);
       break;
-    case "My Favourite Authors":
+    case "My favorite Authors":
       initcommrequest.open('GET', 'http://krithiskkv.imad.hasura-app.io/init-name2', true);
       break;
     case "Programming Experience":
@@ -79,7 +79,7 @@ button.onclick = function () {
         case "Home Page":
               request.open('GET', 'http://krithiskkv.imad.hasura-app.io/counter1', true);
               break;
-        case "My Favourite Authors":
+        case "My favorite Authors":
               request.open('GET', 'http://krithiskkv.imad.hasura-app.io/counter2', true);
               break;
         case "Programming Experience":
@@ -122,7 +122,7 @@ submit.onclick = function() {
             case "Home Page":
               request.open('GET', 'http://krithiskkv.imad.hasura-app.io/submit-name1?name=' + name, true);
               break;
-            case "My Favourite Authors":
+            case "My favorite Authors":
               request.open('GET', 'http://krithiskkv.imad.hasura-app.io/submit-name2?name=' + name, true);
               break;
             case "Programming Experience":
