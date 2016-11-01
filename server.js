@@ -134,9 +134,13 @@ app.get('/counter4', function(req, res) {
     res.send(counter4.toString());
 });
 
-// /submit-name* obtains the current list of comments for a page
+// /init-name* obtains the current list of comments for a page
+// /submit-name* adds the new comment into the comment list
 
 var names1 = [];
+app.get('/init-name1', function(req, res) {
+    res.send(JSON.stringify(names1));
+});
 app.get('/submit-name1', function(req, res) {
     var name1 = req.query.name;
     names1.push(name1);
@@ -144,6 +148,9 @@ app.get('/submit-name1', function(req, res) {
 });
 
 var names2 = [];
+app.get('/init-name2', function(req, res) {
+    res.send(JSON.stringify(names2));
+});
 app.get('/submit-name2', function(req, res) {
     var name2 = req.query.name;
     names2.push(name2);
@@ -151,6 +158,9 @@ app.get('/submit-name2', function(req, res) {
 });
 
 var names3 = [];
+app.get('/init-name3', function(req, res) {
+    res.send(JSON.stringify(names3));
+});
 app.get('/submit-name3', function(req, res) {
     var name3 = req.query.name;
     names3.push(name3);
@@ -158,6 +168,9 @@ app.get('/submit-name3', function(req, res) {
 });
 
 var names4 = [];
+app.get('/init-name4', function(req, res) {
+    res.send(JSON.stringify(names4));
+});
 app.get('/submit-name4', function(req, res) {
     var name4 = req.query.name;
     names4.push(name4);
