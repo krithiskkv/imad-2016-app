@@ -27,6 +27,7 @@ switch ((document.getElementById('heading').innerHTML).trim()) {
     
 initrequest.send(null);
 
+// request server for the current comment list and render the comments
 var initcommrequest = new XMLHttpRequest();
 initcommrequest.onreadystatechange = function () {
     if (inticommrequest.readyState === XMLHttpRequest.DONE) {
