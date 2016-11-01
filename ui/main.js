@@ -13,7 +13,7 @@ switch ((document.getElementById('heading').innerHTML).trim()) {
         case "Home Page":
               initrequest.open('GET', 'http://krithiskkv.imad.hasura-app.io/initcounter1', true);
               break;
-        case "My Favorite authors":
+        case "My favorite Authors":
               initrequest.open('GET', 'http://krithiskkv.imad.hasura-app.io/initcounter2', true);
               break;
         case "Programming Experience":
