@@ -61,12 +61,14 @@ var articles = {
 };
 
 function createTemplate(data) {
+            
+            console.log('title is' + title);
             var title = data.title;
             var heading = data.heading;
             var date = data.date;
             var content = data.content;
             var count = 0;
-            console.log('title is' + title);
+            
             var htmlTemplate = `<html>
             <head>
                 <title>
@@ -137,7 +139,7 @@ app.get('/articles/:articleName', function (req, res) {
            res.status(500).send(err.toString());
         } else {
              if (result.rows.length === 0) {
-                res.send('Article not found');
+                res.status(404).send('Article not found');
             } else {
                 articleData = JSON.stringify(result.rows[0]);
                 res.send(articleData);
