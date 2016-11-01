@@ -30,7 +30,7 @@ initrequest.send(null);
 // request server for the current comment list and render the comments
 var initcommrequest = new XMLHttpRequest();
 initcommrequest.onreadystatechange = function () {
-    if (inticommrequest.readyState === XMLHttpRequest.DONE) {
+    if (initcommrequest.readyState === XMLHttpRequest.DONE) {
     if (initcommrequest.status === 200) {
         var names = request.responseText;
         names = JSON.parse(names);
