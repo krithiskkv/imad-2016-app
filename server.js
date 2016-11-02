@@ -95,18 +95,6 @@ app.get('/ui/background.jpg', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'background.jpg'));
 });
 
-
-//increment the like counter and update article table with the new like counter
-
-function updatecounter(name, counter, req, res) {
- pool.query("UPDATE article SET likecount = $2 WHERE articlename = $1", [name, counter], function(err,result) {
-        if (err) {
-           res.status(500).send(err.toString()); }
-        else {
-             res.send(counter.toString()); }
-        });
-}
-
 //obtain the initial like count of an article from the article table
 
 function initcounter(name, req, res) {
@@ -136,6 +124,19 @@ pool.query("SELECT likecount FROM article WHERE articlename = $1" , [name], func
      });
 }
 
+
+//update article table with the incremented like counter
+
+function updatecounter(name, counter, req, res) {
+ pool.query("UPDATE article SET likecount = $2 WHERE articlename = $1", [name, counter], function(err,result) {
+        if (err) {
+           res.status(500).send(err.toString()); }
+        else {
+             res.send(counter.toString()); }
+        });
+}
+
+
 // /initcounter* obtains the current Likes counter for a page and /counter* increments the Likes counter by 1
 
 var counter1 = 0;
@@ -149,29 +150,29 @@ app.get('/counter1', function(req, res) {
 
 var counter2 = 0;
 app.get('/initcounter2', function(req, res) {
-    res.send(counter2.toString());
+    initcounter('FavAuthrs', req, res);
 });
 app.get('/counter2', function(req, res) {
     counter2 = counter2 + 1;
-    res.send(counter2.toString());
+    updatecounter('FavAuthrs', counter2, req, res);
 });
 
 var counter3 = 0;
 app.get('/initcounter3', function(req, res) {
-    res.send(counter3.toString());
+    initcounter('ProgLang', req, res);
 });
 app.get('/counter3', function(req, res) {
     counter3 = counter3 + 1;
-    res.send(counter3.toString());
+    updatecounter('ProgLang', counter3, req, res);
 });
 
 var counter4 = 0;
 app.get('/initcounter4', function(req, res) {
-    res.send(counter4.toString());
+    initcounter('Databases', req, res);
 });
 app.get('/counter4', function(req, res) {
     counter4 = counter4 + 1;
-    res.send(counter4.toString());
+    updatecounter('Databases', counter4, req, res);
 });
 
 // /init-name* obtains the current list of comments for a page
