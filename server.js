@@ -136,6 +136,7 @@ console.log(name);
 var counter1 = 0;
 app.get('/initcounter1', function(req, res) {
     counter1 = initcounter('HomePage');
+    console.log('counter1' + counter1);
     res.send(counter1.toString());
 });
 app.get('/counter1', function(req, res) {
