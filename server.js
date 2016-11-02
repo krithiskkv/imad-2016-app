@@ -125,7 +125,7 @@ console.log(name);
                 res.status(404).send('Article not found');
               } else {
                  console.log('found count' + result.rows[0].likecount);
-                return result.rows[0].likecount;
+                 return result.rows[0].likecount;
                 }
            }
      });
