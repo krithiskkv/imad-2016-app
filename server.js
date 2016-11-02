@@ -98,17 +98,14 @@ app.get('/ui/background.jpg', function (req, res) {
 
 //increment the like counter and update article table with the new like counter
 
-function updatecounter(name, counter) {
+function updatecounter(name, counter, req, res) {
  pool.query("UPDATE article SET likecount = $2 WHERE articlename = $1", [name, counter], function(err,result) {
         if (err) {
-           res.status(500).send(err.toString());
-        } else {
+           res.status(500).send(err.toString()); }
+        else {
              if (result.rows.length === 0) {
-                res.status(404).send('Article not found');
-              } else {
-                return result.rows[0].likecount;
-                }
-           }
+                res.status(404).send('Article not found'); }
+             }
      });
 }
 
@@ -154,7 +151,7 @@ app.get('/initcounter1', function(req, res) {
 });
 app.get('/counter1', function(req, res) {
     counter1 = counter1 + 1;
-//  updatecounter('HomePage', counter1);
+    updatecounter('HomePage', counter1);
     res.send(counter1.toString());
 });
 
