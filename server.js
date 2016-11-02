@@ -100,7 +100,7 @@ app.get('/ui/background.jpg', function (req, res) {
 
 var counter1 = 0;
 app.get('/initcounter1', function(req, res) {
-    pool.query("SELECT like_count FROM article WHERE article_name='HomePage'", [req.params.articleName], function(err,result) {
+    pool.query("SELECT likecount FROM article WHERE articlename='HomePage'", [req.params.articleName], function(err,result) {
         if (err) {
            res.status(500).send(err.toString());
         } else {
