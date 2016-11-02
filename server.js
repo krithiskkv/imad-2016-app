@@ -113,7 +113,7 @@ function initcounter(name) {
 }
 
 function initcounter(name) {
- pool.query("SELECT likecount FROM article WHERE articlename = " + name, function(err,result) {
+ pool.query("SELECT likecount FROM article WHERE articlename = $1", [name], function(err,result) {
         if (err) {
            res.status(500).send(err.toString());
         } else {
