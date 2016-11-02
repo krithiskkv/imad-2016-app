@@ -116,7 +116,7 @@ function updatecounter(name, counter) {
 
 function initcounter(name) {
 console.log(name);
- pool.query("SELECT likecount FROM article WHERE articlename = $1", [name], function(err,result) {
+ pool.query("SELECT likecount FROM article WHERE articlename = 'HomePage'", function(err,result) {
         if (err) {
            res.status(500).send(err.toString());
         } else {
