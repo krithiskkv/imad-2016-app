@@ -114,7 +114,7 @@ function updatecounter(name, counter) {
 
 //obtain the initial like count of an article from the article table
 
-function initcounter(name) {
+function initcounter(name, req, res) {
 console.log(name);
 pool.query("SELECT likecount FROM article WHERE articlename = 'HomePage'", function(err,result) {
         if (err) {
@@ -136,7 +136,7 @@ pool.query("SELECT likecount FROM article WHERE articlename = 'HomePage'", funct
 
 var counter1 = 0;
 app.get('/initcounter1', function(req, res) {
-    initcounter('HomePage');
+    initcounter('HomePage', req, res);
     console.log('counter1' + counter1);
     
 });
