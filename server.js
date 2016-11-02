@@ -116,7 +116,7 @@ function updatecounter(name, counter) {
 
 function initcounter(name) {
 console.log(name);
- pool.query("SELECT likecount FROM article WHERE articlename = 'HomePage'", function(err,result) {
+pool.query("SELECT likecount FROM article WHERE articlename = 'HomePage'", function(err,result) {
         if (err) {
            console.log('error in db call' + err);    
            res.status(500).send(err.toString());
@@ -125,7 +125,8 @@ console.log(name);
                 res.status(404).send('Article not found');
               } else {
                  console.log('found count' + result.rows[0].likecount);
-                 return result.rows[0].likecount;
+                 counter1 = result.rows[0].likecount;
+                 res.send(counter1.toString());
                 }
            }
      });
@@ -133,11 +134,11 @@ console.log(name);
 
 // /initcounter* obtains the current Likes counter for a page and /counter* increments the Likes counter by 1
 
-
+var counter1 = 0;
 app.get('/initcounter1', function(req, res) {
-    var counter1 = initcounter('HomePage');
+    initcounter('HomePage');
     console.log('counter1' + counter1);
-    res.send(counter1.toString());
+    
 });
 app.get('/counter1', function(req, res) {
     counter1 = counter1 + 1;
