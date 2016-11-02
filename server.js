@@ -125,9 +125,21 @@ pool.query("SELECT likecount FROM article WHERE articlename = $1" , [name], func
                 res.status(404).send('Article not found'); }
              else {
                  console.log('found count' + result.rows[0].likecount);
-                 counter1 = result.rows[0].likecount;
-                 res.send(counter1.toString()); }
-                
+                 switch(name) {
+                    case 'HomePage' :
+                        counter1 = result.rows[0].likecount;
+                        break;
+                    case 'FavAuthrs' :
+                        counter2 = result.rows[0].likecount;
+                        break;
+                    case 'ProgLang' :
+                        counter3 = result.rows[0].likecount;
+                        break;
+                    case 'Databases' :
+                        counter4 = result.rows[0].likecount;
+                        break;
+                    }
+                 res.send(result.rows[0].likecount.toString()); }
               }
      });
 }
@@ -216,7 +228,7 @@ app.get('/submit-name4', function(req, res) {
     res.send(JSON.stringify(names4));
 });
 
-//select data needed to build the page requested from the database and render it uing the createTemplate function
+//select data needed to build the page requested from the database and render it using the createTemplate function
 app.get('/:articleName', function (req, res) {
       pool.query("SELECT * FROM article WHERE articlename=$1", [req.params.articleName], function(err,result) {
         if (err) {
