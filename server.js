@@ -96,10 +96,10 @@ app.get('/ui/background.jpg', function (req, res) {
 });
 
 
-//obtain the initial like count of an article from the article table
+//increment the like counter and update article table with the new like counter
 
-function initcounter(name) {
- pool.query("SELECT likecount FROM article WHERE articlename = 'HomePage'", function(err,result) {
+function updatecounter(name, counter) {
+ pool.query("UPDATE article SET likecount = $2 WHERE articlename = $1", [name, counter], function(err,result) {
         if (err) {
            res.status(500).send(err.toString());
         } else {
@@ -111,6 +111,8 @@ function initcounter(name) {
            }
      });
 }
+
+//obtain the initial like count of an article from the article table
 
 function initcounter(name) {
  pool.query("SELECT likecount FROM article WHERE articlename = $1", [name], function(err,result) {
@@ -135,6 +137,7 @@ app.get('/initcounter1', function(req, res) {
 });
 app.get('/counter1', function(req, res) {
     counter1 = counter1 + 1;
+    updatecounter('HomePage', counter1);
     res.send(counter1.toString());
 });
 
