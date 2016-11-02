@@ -96,23 +96,32 @@ app.get('/ui/background.jpg', function (req, res) {
 });
 
 
-// /initcounter* obtains the current Likes counter for a page and /counter* increments the Likes counter by 1
+//obtain the initial like count of an article from the article table
 
-var counter1 = 0;
-app.get('/initcounter1', function(req, res) {
-    pool.query("SELECT likecount FROM article WHERE articlename='HomePage'", function(err,result) {
+function initcounter(name) {
+pool.query("SELECT likecount FROM article WHERE articlename = name", function(err,result) {
         if (err) {
            res.status(500).send(err.toString());
         } else {
              if (result.rows.length === 0) {
                 res.status(404).send('Article not found');
               } else {
-                counter1 = result.rows[0].likecount;
+                return result.rows[0].likecount;
                 }
            }
      });
+}
+
+
+// /initcounter* obtains the current Likes counter for a page and /counter* increments the Likes counter by 1
+
+var counter1 = 0;
+app.get('/initcounter1', function(req, res) {
+    counter1 = initcounter('HomePage');
     res.send(counter1.toString());
 });
+
+
 
 app.get('/counter1', function(req, res) {
     counter1 = counter1 + 1;
@@ -191,7 +200,6 @@ app.get('/submit-name4', function(req, res) {
 
 //select data needed to build the page requested from the database and render it uing the createTemplate function
 app.get('/:articleName', function (req, res) {
-      var articleName = req.params.articleName; 
       pool.query("SELECT * FROM article WHERE articlename=$1", [req.params.articleName], function(err,result) {
         if (err) {
            res.status(500).send(err.toString());
