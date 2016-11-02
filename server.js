@@ -115,6 +115,7 @@ function updatecounter(name, counter) {
 //obtain the initial like count of an article from the article table
 
 function initcounter(name) {
+console.log(name);
  pool.query("SELECT likecount FROM article WHERE articlename = $1", [name], function(err,result) {
         if (err) {
            res.status(500).send(err.toString());
