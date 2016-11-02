@@ -119,16 +119,16 @@ console.log(name);
 pool.query("SELECT likecount FROM article WHERE articlename = 'HomePage'", function(err,result) {
         if (err) {
            console.log('error in db call' + err);    
-           res.status(500).send(err.toString());
-        } else {
+           res.status(500).send(err.toString()); }
+        else {
              if (result.rows.length === 0) {
-                res.status(404).send('Article not found');
-              } else {
+                res.status(404).send('Article not found'); }
+             else {
                  console.log('found count' + result.rows[0].likecount);
                  counter1 = result.rows[0].likecount;
-                 res.send(counter1.toString());
-                }
-           }
+                 res.send(counter1.toString()); }
+                
+              }
      });
 }
 
