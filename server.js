@@ -118,6 +118,7 @@ function initcounter(name) {
 console.log(name);
  pool.query("SELECT likecount FROM article WHERE articlename = 'HomePage'", function(err,result) {
         if (err) {
+           console.log('error in db call' + err);    
            res.status(500).send(err.toString());
         } else {
              if (result.rows.length === 0) {
