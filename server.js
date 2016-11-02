@@ -105,6 +105,8 @@ function updatecounter(name, counter, req, res) {
         else {
              if (result.rows.length === 0) {
                 res.status(404).send('Article not found'); }
+             else {
+                res.send(counter.toString()); }
              }
      });
 }
@@ -147,7 +149,6 @@ app.get('/initcounter1', function(req, res) {
 app.get('/counter1', function(req, res) {
     counter1 = counter1 + 1;
     updatecounter('HomePage', counter1, req, res);
-    res.send(counter1.toString());
 });
 
 var counter2 = 0;
