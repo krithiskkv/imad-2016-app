@@ -112,16 +112,13 @@ function updatecounter(name, counter, req, res) {
 //obtain the initial like count of an article from the article table
 
 function initcounter(name, req, res) {
-console.log(name);
 pool.query("SELECT likecount FROM article WHERE articlename = $1" , [name], function(err,result) {
         if (err) {
-           console.log('error in db call' + err);    
            res.status(500).send(err.toString()); }
         else {
              if (result.rows.length === 0) {
                 res.status(404).send('Article not found'); }
              else {
-                 console.log('found count' + result.rows[0].likecount);
                  switch(name) {
                     case 'HomePage' :
                         counter1 = result.rows[0].likecount;
@@ -146,12 +143,10 @@ pool.query("SELECT likecount FROM article WHERE articlename = $1" , [name], func
 var counter1 = 0;
 app.get('/initcounter1', function(req, res) {
     initcounter('HomePage', req, res);
-    console.log('counter1' + counter1);
-    
 });
 app.get('/counter1', function(req, res) {
     counter1 = counter1 + 1;
-    updatecounter('HomePage', counter1);
+    updatecounter('HomePage', counter1, req, res);
     res.send(counter1.toString());
 });
 
