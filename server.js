@@ -99,7 +99,7 @@ app.get('/ui/background.jpg', function (req, res) {
 //obtain the initial like count of an article from the article table
 
 function initcounter(name) {
-pool.query("SELECT likecount FROM article WHERE articlename = name", function(err,result) {
+ pool.query("SELECT likecount FROM article WHERE articlename = 'HomePage'", function(err,result) {
         if (err) {
            res.status(500).send(err.toString());
         } else {
