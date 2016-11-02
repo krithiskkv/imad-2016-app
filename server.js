@@ -133,9 +133,9 @@ console.log(name);
 
 // /initcounter* obtains the current Likes counter for a page and /counter* increments the Likes counter by 1
 
-var counter1 = 0;
+
 app.get('/initcounter1', function(req, res) {
-    counter1 = initcounter('HomePage');
+    var counter1 = initcounter('HomePage');
     console.log('counter1' + counter1);
     res.send(counter1.toString());
 });
