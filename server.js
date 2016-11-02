@@ -142,7 +142,7 @@ app.get('/initcounter1', function(req, res) {
 });
 app.get('/counter1', function(req, res) {
     counter1 = counter1 + 1;
-    updatecounter('HomePage', counter1);
+//  updatecounter('HomePage', counter1);
     res.send(counter1.toString());
 });
 
