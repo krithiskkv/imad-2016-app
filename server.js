@@ -112,6 +112,19 @@ function initcounter(name) {
      });
 }
 
+function initcounter(name) {
+ pool.query("SELECT likecount FROM article WHERE articlename = " + name, function(err,result) {
+        if (err) {
+           res.status(500).send(err.toString());
+        } else {
+             if (result.rows.length === 0) {
+                res.status(404).send('Article not found');
+              } else {
+                return result.rows[0].likecount;
+                }
+           }
+     });
+}
 
 // /initcounter* obtains the current Likes counter for a page and /counter* increments the Likes counter by 1
 
@@ -120,9 +133,6 @@ app.get('/initcounter1', function(req, res) {
     counter1 = initcounter('HomePage');
     res.send(counter1.toString());
 });
-
-
-
 app.get('/counter1', function(req, res) {
     counter1 = counter1 + 1;
     res.send(counter1.toString());
