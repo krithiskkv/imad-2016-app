@@ -107,7 +107,7 @@ app.get('/initcounter1', function(req, res) {
              if (result.rows.length === 0) {
                 res.status(404).send('Article not found');
               } else {
-                counter1 = result.rows[0];
+                counter1 = result.rows[0].likecount;
                 }
            }
      });
