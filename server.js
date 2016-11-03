@@ -136,7 +136,7 @@ function updatecounter(name, counter, req, res) {
         });
 }
 
-function updtcomment(name, comment) {
+// function updtcomment(name, comment) {
     var date = new Date();
     var yyyy = date.getFullYear().toString();
     var mm = (date.getMonth()+1).toString();
@@ -151,7 +151,7 @@ function updtcomment(name, comment) {
                 ("0" + date.getMinutes()).slice(-2) + ":" + 
                 ("0" + date.getSeconds()).slice(-2));
     console.log(time);
-}
+//}
 
 // /initcounter* obtains the current Likes counter for a page and /counter* increments the Likes counter by 1
 
