@@ -152,7 +152,7 @@ function updtcomment(pgname, comment, commentlist, req, res) {
                 ("0" + date.getMinutes()).slice(-2) + ":" + 
                 ("0" + date.getSeconds()).slice(-2));
 
-    pool.query("SELECT id FROM article WHERE articlename = $1" , [name], function(err,result) {
+    pool.query("SELECT id FROM article WHERE articlename = $1" , [pgname], function(err,result) {
         if (err) {
            res.status(500).send(err.toString()); }
         else {
