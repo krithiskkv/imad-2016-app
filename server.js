@@ -136,6 +136,21 @@ function updatecounter(name, counter, req, res) {
         });
 }
 
+function updtcomment(name, comment) {
+    var todaysDate = new Date();
+    var yyyy = date.getFullYear().toString();
+    var mm = (date.getMonth()+1).toString();
+    var dd  = date.getDate().toString();
+
+    var mmChars = mm.split('');
+    var ddChars = dd.split('');
+
+    var date= yyyy + '-' + (mmChars[1]?mm:"0"+mmChars[0]) + '-' + (ddChars[1]?dd:"0"+ddChars[0]);
+    var time = (("0" + date.getHours()).slice(-2)   + ":" + 
+                ("0" + date.getMinutes()).slice(-2) + ":" + 
+                ("0" + date.getSeconds()).slice(-2));
+    
+}
 
 // /initcounter* obtains the current Likes counter for a page and /counter* increments the Likes counter by 1
 
@@ -175,8 +190,8 @@ app.get('/counter4', function(req, res) {
     updatecounter('Databases', counter4, req, res);
 });
 
-// /init-name* obtains the current list of comments for a page
-// /submit-name* adds the new comment into the comment list
+// /init-name* obtains the current list of comments for a page from the comment table
+// /submit-name* adds the new comment into the comment list and comment table
 
 var names1 = [];
 app.get('/init-name1', function(req, res) {
@@ -185,7 +200,7 @@ app.get('/init-name1', function(req, res) {
 app.get('/submit-name1', function(req, res) {
     var name1 = req.query.name;
     names1.push(name1);
-    res.send(JSON.stringify(names1));
+    updtcomment('HomePage', name1);
 });
 
 var names2 = [];
