@@ -159,10 +159,13 @@ function updtcomment(pgname, comment, commentlist, req, res) {
              if (result.rows.length === 0) {
                 res.status(404).send('Article not found'); }
              else {
-                    articleid = result.rows[0].id;
+                    var articleid = result.rows[0].id;
+                    console.log(articleid);
                     pool.query("INSERT INTO comment VALUES {articleid, comment, formatdate, time}", function(err,result) 
                     {
-                        if (err) { res.status(500).send(err.toString());  }
+                        if (err) { 
+                            console.log('err on inserting');
+                            res.status(500).send(err.toString());  }
                         else { 
                             res.send(JSON.stringify(commentlist));
                         }
