@@ -136,7 +136,7 @@ function updatecounter(name, counter, req, res) {
         });
 }
 
-// function updtcomment(name, comment) {
+function updtcomment(name, comment) {
     var date = new Date();
     var yyyy = date.getFullYear().toString();
     var mm = (date.getMonth()+1).toString();
@@ -146,12 +146,23 @@ function updatecounter(name, counter, req, res) {
     var ddChars = dd.split('');
 
     var formatdate= yyyy + '-' + (mmChars[1]?mm:"0"+mmChars[0]) + '-' + (ddChars[1]?dd:"0"+ddChars[0]);
-    console.log(formatdate);
+
     var time = (("0" + date.getHours()).slice(-2)   + ":" + 
                 ("0" + date.getMinutes()).slice(-2) + ":" + 
                 ("0" + date.getSeconds()).slice(-2));
-    console.log(time);
-//}
+
+    pool.query("SELECT id FROM article WHERE articlename = $1" , [name], function(err,result) {
+        if (err) {
+           res.status(500).send(err.toString()); }
+        else {
+             if (result.rows.length === 0) {
+                res.status(404).send('Article not found'); }
+             else {
+                    pool.query("INSERT INTO comment ", function(err,result) {});
+                    }
+              }
+     });
+}
 
 // /initcounter* obtains the current Likes counter for a page and /counter* increments the Likes counter by 1
 
