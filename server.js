@@ -160,7 +160,7 @@ function updtcomment(pgname, comment, commentlist, req, res) {
                 res.status(404).send('Article not found'); }
              else {
                     articleid = result.rows[0].id;
-                    pool.query("INSERT INTO comment VALUES {articleid, comment, formatdate, time", function(err,result) 
+                    pool.query("INSERT INTO comment VALUES {articleid, comment, formatdate, time}", function(err,result) 
                     {
                         if (err) { res.status(500).send(err.toString());  }
                         else { 
