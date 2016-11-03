@@ -136,7 +136,8 @@ function updatecounter(name, counter, req, res) {
         });
 }
 
-function updtcomment(name, comment) {
+//insert the new comment into the comment table and send updated comment list to the page
+function updtcomment(pgname, comment, commentlist, req, res) {
     var date = new Date();
     var yyyy = date.getFullYear().toString();
     var mm = (date.getMonth()+1).toString();
@@ -158,7 +159,14 @@ function updtcomment(name, comment) {
              if (result.rows.length === 0) {
                 res.status(404).send('Article not found'); }
              else {
-                    pool.query("INSERT INTO comment ", function(err,result) {});
+                    articleid = result.rows[0].id;
+                    pool.query("INSERT INTO comment VALUES {articleid, comment, formatdate, time", function(err,result) 
+                    {
+                        if (err) { res.status(500).send(err.toString());  }
+                        else { 
+                            res.send(JSON.stringify(commentlist));
+                        }
+                    });
                     }
               }
      });
@@ -212,7 +220,7 @@ app.get('/init-name1', function(req, res) {
 app.get('/submit-name1', function(req, res) {
     var name1 = req.query.name;
     names1.push(name1);
-    updtcomment('HomePage', name1);
+    updtcomment('HomePage', name1, names1, req, res);
 });
 
 var names2 = [];
