@@ -238,7 +238,7 @@ app.get('/counter4', function(req, res) {
 
 var names1 = [];
 app.get('/init-name1', function(req, res) {
-    //console.log('transferring to getcomment');
+    console.log('transferring to getcomment');
     getcomment('HomePage', req, res);
     //res.send(JSON.stringify(names1));
 });
