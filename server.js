@@ -147,10 +147,10 @@ function getcomment(pgname, req, res) {
             if (result.rows.length === 0) {
                 res.status(404).send('Article not found'); }
             else {
-                for (var i=0; i<result.rows.length(); i++) {
+                for (var i=0; i < result.rows.length; i++) {
                     names1.push(result.rows[i].comment); }
                 console.log(names1);
-                res.send('hardcoded comment'); }        
+                res.send(JSON.stringify(names1)); }        
         }
     });
 } 
