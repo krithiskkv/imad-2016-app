@@ -138,13 +138,14 @@ function updatecounter(pgname, counter, req, res) {
 
 //obtain comments for an article from comment table and send it as response
 
-function getcomment(pgname, req, res ) {
+function getcomment(pgname, req, res) {
     pool.query("SELECT comment FROM article AS a, comment AS b WHERE articlename = $1 AND article_id = id ORDER BY b.date ASC, b.time ASC", [pgname], function(err, result) {
         if (err) {
             res.status(500).send(err.toString()); }
         else { 
             for (var i=0; i<result.rows.length(); i++) {
                 names1.push(result.rows[i].comment); }
+            console.log(names1);
             res.send(JSON.stringify(names1));        
         }
     });
