@@ -167,8 +167,8 @@ function getcomment(pgname, req, res) {
                         names4 = cmntlist;
                         res.send(JSON.stringify(names4));
                         break;
-                    }
-                 }        
+                }
+            }        
         }
     });
 } 
