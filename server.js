@@ -139,15 +139,14 @@ function updatecounter(pgname, counter, req, res) {
 //obtain comments for an article from comment table and send it as response
 
 function getcomment(pgname, req, res ) {
-    pool.query("SELECT comment FROM article, comment WHERE articlename = $1 AND article_id = id ORDER BY date ASC, time ASC", [pgname], function(err, result) {
+    pool.query("SELECT comment FROM article AS a, comment AS b WHERE articlename = $1 AND article_id = id ORDER BY b.date ASC, b.time ASC", [pgname], function(err, result) {
         if (err) {
             res.status(500).send(err.toString()); }
         else { 
             for (var i=0; i<result.rows.length(); i++) {
                 names1.push(result.rows[i].comment); }
-            res.send(names1);        
+            res.send(JSON.stringify(names1));        
         }
-            
     });
 } 
 
@@ -235,7 +234,6 @@ app.get('/counter4', function(req, res) {
 var names1 = [];
 app.get('/init-name1', function(req, res) {
     getcomment('HomePage', req, res);
-    res.send(JSON.stringify(names1));
 });
 app.get('/submit-name1', function(req, res) {
     var name1 = req.query.name;
