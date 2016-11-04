@@ -239,8 +239,8 @@ app.get('/counter4', function(req, res) {
 var names1 = [];
 app.get('/init-name1', function(req, res) {
     //console.log('transferring to getcomment');
-    //getcomment('HomePage', req, res);
-    res.send(JSON.stringify(names1));
+    getcomment('HomePage', req, res);
+    //res.send(JSON.stringify(names1));
 });
 app.get('/submit-name1', function(req, res) {
     var name1 = req.query.name;
