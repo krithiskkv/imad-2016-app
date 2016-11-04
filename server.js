@@ -150,7 +150,7 @@ function getcomment(pgname, req, res) {
                 for (var i=0; i<result.rows.length(); i++) {
                     names1.push(result.rows[i].comment); }
                 console.log(names1);
-                res.send(JSON.stringify(names1)); }        
+                res.send('hardcoded comment'); }        
         }
     });
 } 
