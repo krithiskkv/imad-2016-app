@@ -139,6 +139,7 @@ function updatecounter(pgname, counter, req, res) {
 //obtain comments for an article from comment table and send it as response
 
 function getcomment(pgname, req, res) {
+    console.log('obtaining comments from db');
     pool.query("SELECT comment FROM article AS a, comment AS b WHERE articlename = $1 AND article_id = id ORDER BY b.date ASC, b.time ASC", [pgname], function(err, result) {
         if (err) {
             res.status(500).send(err.toString()); }
