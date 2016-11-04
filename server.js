@@ -127,14 +127,30 @@ pool.query("SELECT likecount FROM article WHERE articlename = $1" , [name], func
 
 //update article table with the incremented like counter
 
-function updatecounter(name, counter, req, res) {
- pool.query("UPDATE article SET likecount = $2 WHERE articlename = $1", [name, counter], function(err,result) {
+function updatecounter(pgname, counter, req, res) {
+ pool.query("UPDATE article SET likecount = $2 WHERE articlename = $1", [pgname, counter], function(err,result) {
         if (err) {
            res.status(500).send(err.toString()); }
         else {
              res.send(counter.toString()); }
         });
 }
+
+//obtain comments for an article from comment table and send it as response
+
+function getcomment(pgname, req, res ) {
+    pool.query("SELECT comment FROM article, comment WHERE articlename = $1 AND article_id = id ORDER BY date ASC, time ASC", [pgname], function(err, result) {
+        if (err) {
+            res.status(500).send(err.toString()); }
+        else { 
+            for (var i=0; i<result.rows.length(); i++) {
+                names1.push(result.rows[i].comment); }
+            res.send(names1);        
+        }
+            
+    });
+} 
+
 
 //insert the new comment into the comment table and send updated comment list to the page
 function updtcomment(pgname, comment, commentlist, req, res) {
@@ -160,14 +176,11 @@ function updtcomment(pgname, comment, commentlist, req, res) {
                 res.status(404).send('Article not found'); }
              else {
                     var articleid = result.rows[0].id;
-                    console.log(articleid);
                     datestring = formatdate.toString();
                     timestring = time.toString();
-                    console.log(datestring, timestring);
                     pool.query("INSERT INTO comment (article_id, comment, date, time) VALUES ($1, $2, $3, $4)", [articleid, comment, datestring, timestring], function(err,result) 
                     {
                         if (err) { 
-                            console.log('err on inserting');
                             res.status(500).send(err.toString());  }
                         else { 
                             res.send(JSON.stringify(commentlist));
@@ -221,6 +234,7 @@ app.get('/counter4', function(req, res) {
 
 var names1 = [];
 app.get('/init-name1', function(req, res) {
+    getcomment('HomePage', req, res);
     res.send(JSON.stringify(names1));
 });
 app.get('/submit-name1', function(req, res) {
