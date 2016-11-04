@@ -97,8 +97,8 @@ app.get('/ui/background.jpg', function (req, res) {
 
 //obtain the initial like count of an article from the article table
 
-function initcounter(name, req, res) {
-pool.query("SELECT likecount FROM article WHERE articlename = $1" , [name], function(err,result) {
+function initcounter(pgname, req, res) {
+pool.query("SELECT likecount FROM article WHERE articlename = $1" , [pgname], function(err,result) {
         if (err) {
            res.status(500).send(err.toString()); }
         else {
@@ -143,10 +143,13 @@ function getcomment(pgname, req, res) {
         if (err) {
             res.status(500).send(err.toString()); }
         else { 
-            for (var i=0; i<result.rows.length(); i++) {
-                names1.push(result.rows[i].comment); }
-            console.log(names1);
-            res.send(JSON.stringify(names1));        
+            if (result.rows.length === 0) {
+                res.status(404).send('Article not found'); }
+            else {
+                for (var i=0; i<result.rows.length(); i++) {
+                    names1.push(result.rows[i].comment); }
+                console.log(names1);
+                res.send(JSON.stringify(names1)); }        
         }
     });
 } 
