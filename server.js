@@ -147,10 +147,28 @@ function getcomment(pgname, req, res) {
             if (result.rows.length === 0) {
                 res.status(404).send('Article not found'); }
             else {
+                var cmntlist = [];
                 for (var i=0; i < result.rows.length; i++) {
-                    names1.push(result.rows[i].comment); }
-                console.log(names1);
-                res.send(JSON.stringify(names1)); }        
+                            cmntlist.push(result.rows[i].comment); }
+                switch(name) {
+                    case 'HomePage' :
+                        names1 = cmntlist;
+                        res.send(JSON.stringify(names1));
+                        break;
+                    case 'FavAuthrs' :
+                        names2 = cmntlist;
+                        res.send(JSON.stringify(names2));
+                        break;
+                    case 'ProgLang' :
+                        names3 = cmntlist;
+                        res.send(JSON.stringify(names3));
+                        break;
+                    case 'Databases' :
+                        names4 = cmntlist;
+                        res.send(JSON.stringify(names4));
+                        break;
+                    }
+                 }        
         }
     });
 } 
