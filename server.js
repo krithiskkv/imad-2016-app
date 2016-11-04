@@ -161,7 +161,9 @@ function updtcomment(pgname, comment, commentlist, req, res) {
              else {
                     var articleid = result.rows[0].id;
                     console.log(articleid);
-                    pool.query("INSERT INTO comment VALUES (articleid, comment, formatdate, time)", function(err,result) 
+                    datestring = formatdate.toString();
+                    timestring = time.toString();
+                    pool.query("INSERT INTO comment VALUES (articleid, comment, datestring, timesgtring)", function(err,result) 
                     {
                         if (err) { 
                             console.log('err on inserting');
