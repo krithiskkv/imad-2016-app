@@ -163,6 +163,7 @@ function updtcomment(pgname, comment, commentlist, req, res) {
                     console.log(articleid);
                     datestring = formatdate.toString();
                     timestring = time.toString();
+                    console.log(datestring, timestring);
                     pool.query("INSERT INTO comment VALUES (articleid, comment, datestring, timestring)", function(err,result) 
                     {
                         if (err) { 
