@@ -273,7 +273,7 @@ app.get('/init-name2', function(req, res) {
 app.get('/submit-name2', function(req, res) {
     var name2 = req.query.name;
     names2.push(name2);
-    res.send(JSON.stringify(names2));
+    updtcomment('FavAuthrs', name2, names2, req, res);
 });
 
 var names3 = [];
@@ -283,7 +283,7 @@ app.get('/init-name3', function(req, res) {
 app.get('/submit-name3', function(req, res) {
     var name3 = req.query.name;
     names3.push(name3);
-    res.send(JSON.stringify(names3));
+    updtcomment('ProgLang', name3, names3, req, res);
 });
 
 var names4 = [];
@@ -293,7 +293,7 @@ app.get('/init-name4', function(req, res) {
 app.get('/submit-name4', function(req, res) {
     var name4 = req.query.name;
     names4.push(name4);
-    res.send(JSON.stringify(names4));
+    updtcomment('Databases', name4, names4, req, res);
 });
 
 //select data needed to build the page requested from the database and render it using the createTemplate function
