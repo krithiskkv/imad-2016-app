@@ -256,9 +256,7 @@ app.get('/counter4', function(req, res) {
 
 var names1 = [];
 app.get('/init-name1', function(req, res) {
-    console.log('transferring to getcomment');
     getcomment('HomePage', req, res);
-    //res.send(JSON.stringify(names1));
 });
 app.get('/submit-name1', function(req, res) {
     var name1 = req.query.name;
@@ -268,7 +266,7 @@ app.get('/submit-name1', function(req, res) {
 
 var names2 = [];
 app.get('/init-name2', function(req, res) {
-    res.send(JSON.stringify(names2));
+    getcomment('FavAuthrs', req, res);
 });
 app.get('/submit-name2', function(req, res) {
     var name2 = req.query.name;
@@ -278,7 +276,7 @@ app.get('/submit-name2', function(req, res) {
 
 var names3 = [];
 app.get('/init-name3', function(req, res) {
-    res.send(JSON.stringify(names3));
+    getcomment('ProgLang', req, res);
 });
 app.get('/submit-name3', function(req, res) {
     var name3 = req.query.name;
@@ -288,7 +286,7 @@ app.get('/submit-name3', function(req, res) {
 
 var names4 = [];
 app.get('/init-name4', function(req, res) {
-    res.send(JSON.stringify(names4));
+    getcomment('Databases', req, res);
 });
 app.get('/submit-name4', function(req, res) {
     var name4 = req.query.name;
