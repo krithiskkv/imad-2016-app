@@ -17,7 +17,7 @@ var pool = new Pool(config);
 
 var app = express();
 app.use(morgan('combined'));
-app.user(bodyParser.json())
+app.use(bodyParser.json())
 
 //fuction to create individual pages by injecting data specific to the pages into a template
 
