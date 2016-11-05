@@ -18,17 +18,17 @@ body {
 }
 
 #main-text {
-    width: 250px;
+    width: 5000px;
     float: left;
 }
 
 #articles {
-    width: 250px;
+    width: 500px;
     float: left;
 }
 
 #footer {
-    width: 250px;
+    width: 500px;
     float: left;
 }
 
