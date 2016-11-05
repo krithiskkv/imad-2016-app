@@ -3,6 +3,7 @@ var morgan = require('morgan');
 var path = require('path');
 var Pool = require('pg').Pool;
 var crypto = require('crypto');
+var bodyParser = require('body-parser');
 
 var config = {
     user:'krithiskkv',
@@ -12,60 +13,63 @@ var config = {
     password: process.env.DB_PASSWORD
 };
 
+var pool = new Pool(config);
+
 var app = express();
 app.use(morgan('combined'));
+app.user(bodyParser.json())
 
 //fuction to create individual pages by injecting data specific to the pages into a template
 
 function createTemplate (data) {
 
-            var title = data.title;
-            var heading = data.heading;
-            var date = data.date;
-            var content = data.content;
-            var count = 0;
+    var title = data.title;
+    var heading = data.heading;
+    var date = data.date;
+    var content = data.content;
+    var count = 0;
+    
+    var htmlTemplate = `<html>
+        <head>
+            <title>
+                ${title} 
+            </title>
+            <meta name = "viewport" content = "width=device-width, initial-scale=1" />
+            <link href="/ui/style.css" rel="stylesheet" />
+        </head>
+        <body>
+            <div>
+                <a href="/">Home</a> 
+            </div>
+            <hr/>
+            <div class="container">
+                <h3 id="heading">
+                    ${heading}
+                </h3>
             
-            var htmlTemplate = `<html>
-            <head>
-                <title>
-                    ${title} 
-                </title>
-                <meta name = "viewport" content = "width=device-width, initial-scale=1" />
-                <link href="/ui/style.css" rel="stylesheet" />
-            </head>
-            <body>
                 <div>
-                    <a href="/">Home</a> 
+                    ${date.toDateString()}
                 </div>
-                <hr/>
-                <div class="container">
-                    <h3 id="heading">
-                        ${heading}
-                    </h3>
-                
-                    <div>
-                        ${date.toDateString()}
-                    </div>
-                    <div>
-                        ${content}
-                    </div>
-                    <div class="footer">  
-                        <input id="counter" type="image" src="/ui/like.png" alt="Submit" width="50" height="20">
-                        <span id="count">   </span> Likes
-                        <br/>
-                        <div> Write a comment... </div>
-                        <textarea rows="2" cols="50" class="scrollabletextbox" id="name" name="comments" ></textarea>
-                        <br/>
-                        <input type="submit" id="submit_btn" value="Submit"> </input>
-                        <ul id="namelist"> </ul>
-                    </div>
-                    <script type="text/javascript" src="/ui/main.js">
-                    </script>
+                <div>
+                    ${content}
                 </div>
-            </body>
-            </html>
-            `;
-            return htmlTemplate;
+                <div class="footer">  
+                    <input id="counter" type="image" src="/ui/like.png" alt="Submit" width="50" height="20">
+                    <span id="count">   </span> Likes
+                    <br/>
+                    <div> Write a comment... </div>
+                    <textarea rows="2" cols="50" class="scrollabletextbox" id="name" name="comments" ></textarea>
+                    <br/>
+                    <input type="submit" id="submit_btn" value="Submit"> </input>
+                    <ul id="namelist"> </ul>
+                </div>
+                <script type="text/javascript" src="/ui/main.js">
+                </script>
+            </div>
+        </body>
+        </html>
+        `;
+        return htmlTemplate;
 }
 
 function hash(input, salt) {
@@ -83,7 +87,17 @@ app.get('/hash/:input', function(req, res) {
     res.send(hashedString); 
 });
 
-var pool = new Pool(config);
+app.post('/createuser', function(req, res) {
+    var username = req.body.username;
+    var password = req.body.password;
+    var salt = crypto.randomBytes(128).toString('hex');
+    pool.query('INSERT INTO "user" (username, password) VALUES ($1, $2)', [username, password], function(err, result) {
+        if (err) {
+           res.status(500).send(err.toString()); }
+        else {
+             res.send('User successfully created' + username); }
+        });
+});
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
