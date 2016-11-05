@@ -53,7 +53,7 @@ function createTemplate (data) {
                         <span id="count">   </span> Likes
                         <br/>
                         <div> Write a comment... </div>
-                        <textarea rows="2" cols="50" class="scrollabletextbox" id="name" name="comments" > </textarea>
+                        <textarea rows="2" cols="50" class="scrollabletextbox" id="name" name="comments" ></textarea>
                         <br/>
                         <input type="submit" id="submit_btn" value="Submit"> </input>
                         <ul id="namelist"> </ul>
