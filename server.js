@@ -150,7 +150,7 @@ function getcomment(pgname, req, res) {
                 var cmntlist = [];
                 for (var i=0; i < result.rows.length; i++) {
                             cmntlist.push(result.rows[i].comment); }
-                switch(name) {
+                switch(pgname) {
                     case 'HomePage' :
                         names1 = cmntlist;
                         res.send(JSON.stringify(names1));
