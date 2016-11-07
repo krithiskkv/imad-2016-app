@@ -63,8 +63,8 @@ initcommrequest.send(null);
 
 
 //on clicking Like button request server to increment Like counter and render the new Like counter
-var button = document.getElementById('counter');
-button.onclick = function () {
+var button1 = document.getElementById('counter');
+button1.onclick = function () {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
         if (request.readyState === XMLHttpRequest.DONE) {
@@ -137,5 +137,22 @@ submit.onclick = function() {
     }
 };
 
-
+var button2 = document.getElementById('Login');
+button2.onclick = function () {
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function() {
+        if (request.readyState === XMLHttpRequest.DONE) {
+            if (request.status === 200) {
+                var counter = request.responseText;
+                var span = document.getElementById('count');
+                span.innerHTML = counter.toString();
+            }
+        }
+    };
+    
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+    request.open('POST', 'http://krithiskkv.imad.hasura-app.io/login', true);
+    request.send(JSON.stringify({username : username, password: password}));
+};
 
