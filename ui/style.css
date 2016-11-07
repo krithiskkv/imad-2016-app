@@ -21,21 +21,6 @@ body {
     display:inline-block;
 }
 
-#main-text {
-    width: 500px;
-    float: left;
-}
-
-#articles {
-    width: 500px;
-    float: left;
-}
-
-#footer {
-    width: 500px;
-    float: left;
-}
-
 .center {
     text-align: center;
 }
