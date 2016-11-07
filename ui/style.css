@@ -17,6 +17,10 @@ body {
                 padding-right: 20px;
 }
 
+#header {
+    display:inline-block;
+}
+
 #main-text {
     width: 500px;
     float: left;
