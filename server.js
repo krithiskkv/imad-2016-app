@@ -112,15 +112,14 @@ app.post('/login', function(req, res) {
                 res.status(403).send('Username/passsword is invalid!');
             }
             else {
-                
                 var dbString = result.rows[0].password;        
                 var salt = dbString.split('$')[2];
                 var hashedPwd = hash(password, salt);
                 
                 if (hashedPwd === dbString)
-                    res.send('Login Successful!');
+                   { res.send('Login Successful!'); }
                 else
-                    res.status(403).send('Username/passsword is invalid!');
+                    { res.status(403).send('Username/passsword is invalid!');}
             }    
         }
     });
