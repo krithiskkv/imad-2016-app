@@ -143,13 +143,17 @@ button2.onclick = function () {
     request.onreadystatechange = function() {
         if (request.readyState === XMLHttpRequest.DONE) {
             if (request.status === 200) {
-                var counter = request.responseText;
-                var span = document.getElementById('count');
-                span.innerHTML = counter.toString();
+                alert('Login successful');
+            }
+            else if (request.status === 403) {
+                    alert('Username/password does not exist');
+            }
+            else if (request.status === 500) {
+                alert('An error occured');
             }
         }
     };
-    
+
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
     request.open('POST', 'http://krithiskkv.imad.hasura-app.io/login', true);
