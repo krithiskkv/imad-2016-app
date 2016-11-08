@@ -23,6 +23,7 @@ app.use(session({
     secret: 'RandomSecret',
     cookie: { maxAge: 1000 * 60 * 60 * 24 * 30 }
 }));
+
 //fuction to create individual pages by injecting data specific to the pages into a template
 
 function createTemplate (data) {
@@ -114,7 +115,7 @@ app.post('/login', function(req, res) {
            res.status(500).send(err.toString()); }
         else {
             if (result.rows.length === 0) {
-                res.send(403).send('Username/passsword is invalid!');
+                res.status(403).send('Username/passsword is invalid!');
             }
             else {
                 var dbString = result.rows[0].password;
@@ -126,7 +127,7 @@ app.post('/login', function(req, res) {
                    { req.session.auth = {userid: result.rows[0].id};
                      res.send('Login Successful!'); }
                 else
-                    { res.send(403).send('Username/passsword is invalid!');}
+                    { res.status(403).send('Username/passsword is invalid!');}
             }    
         }
     });
