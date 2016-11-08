@@ -18,11 +18,13 @@ function checkLogin() {
 }
 
 function buildLogin() {
-    
+    var loginarea = document.getElementById('Login/Logout');
+    loginarea.innerHTML = `<input type=text id = username placeholder=username /> <input type=password id = password placeholder = password /> Existing user? <button id=Login>Login</button> New user? <button id=Register>Register</button>`;
 }
 
 function buildLogout() {
-    
+    var loginarea = document.getElementById('Login/Logout');
+    loginarea.innerHTML = `Welcome <button id=Logout>Logout</button>`;
 }
 
 // request the server for the current value of Likes counter and render the response 
