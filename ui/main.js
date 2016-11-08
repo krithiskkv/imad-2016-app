@@ -1,5 +1,5 @@
 
-checklogin();
+checkLogin();
 
 function checkLogin() {
     var request = new XMLHttpRequest();
