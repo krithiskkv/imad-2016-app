@@ -147,9 +147,13 @@ button2.onclick = function () {
             }
             else if (request.status === 403) {
                     alert('Username/password does not exist');
+                    document.getElementById('username').value = '';
+                    document.getElementById('password').value = '';
             }
             else if (request.status === 500) {
                 alert('An error occured');
+                document.getElementById('username').value = '';
+                document.getElementById('password').value = '';
             }
         }
     };
