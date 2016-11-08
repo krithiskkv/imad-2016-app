@@ -1,3 +1,6 @@
+
+
+
 // request the server for the current value of Likes counter and render the response 
 var initrequest = new XMLHttpRequest();
 initrequest.onreadystatechange = function() {
