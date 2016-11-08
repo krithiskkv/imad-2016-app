@@ -124,7 +124,7 @@ app.post('/login', function(req, res) {
                 var hashedPwd = hash(password, salt);
                 
                 if (hashedPwd === dbString)
-                   { req.session.auth = {userid: result.rows[0].id};
+                   { req.session.auth = {userId: result.rows[0].id};
                      res.send('Login Successful!'); }
                 else
                     { res.status(403).send('Username/passsword is invalid!');}
