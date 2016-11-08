@@ -1,4 +1,4 @@
-//as soon as the home page is loaded check to see if the user is logged in
+//as soon as the home page is loaded check to see if the user is logged in and build login/logout area accodingly
 checkLogin();
 
 function checkLogin() {
@@ -17,13 +17,13 @@ function checkLogin() {
     request.send(null);
 }
 
-//build header with login/registration form
+//build login/registration form
 function buildLogin() {
     var loginarea = document.getElementById('Login/Logout');
     loginarea.innerHTML = `<input type=text id = username placeholder=username /> <input type=password id = password placeholder = password /> Existing user? <button id=Login>Login</button> New user? <button id=Register>Register</button>`;
 }
 
-//build header with logout form
+//build logout form
 function buildLogout() {
     var loginarea = document.getElementById('Login/Logout');
     var username = document.getElementById('username');
