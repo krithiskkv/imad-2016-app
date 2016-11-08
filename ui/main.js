@@ -24,7 +24,8 @@ function buildLogin() {
 
 function buildLogout() {
     var loginarea = document.getElementById('Login/Logout');
-    loginarea.innerHTML = `Welcome <button id=Logout>Logout</button>`;
+    loginarea.innerHTML = `<h3>Welcome </h3> <i>$username</i> 
+                            <a href="/logout"`;
 }
 
 // request the server for the current value of Likes counter and render the response 
