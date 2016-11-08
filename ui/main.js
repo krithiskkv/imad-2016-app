@@ -24,6 +24,7 @@ function buildLogin() {
 
 function buildLogout() {
     var loginarea = document.getElementById('Login/Logout');
+    var username = document.getElementById('username');
     loginarea.innerHTML = `<h3>Welcome </h3> <i>$username</i> 
                             <a href="/logout"`;
 }
