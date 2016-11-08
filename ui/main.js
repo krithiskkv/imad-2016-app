@@ -1,5 +1,29 @@
 
+checklogin();
 
+function checkLogin() {
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function() {
+        if (initrequest.readyState === XMLHttpRequest.DONE) {
+            if (initrequest.status === 200) {
+                buildLogout();
+            }
+            else {
+                buildLogin();
+            }
+        }
+    };
+    request.open('GET', 'http://krithiskkv.imad.hasura-app.io/check-login', true);
+    request.send(null);
+}
+
+function buildLogin() {
+    
+}
+
+function buildLogout() {
+    
+}
 
 // request the server for the current value of Likes counter and render the response 
 var initrequest = new XMLHttpRequest();
@@ -97,7 +121,7 @@ button1.onclick = function () {
     request.send(null);
 };
 
-//add the entered comment in the comment box and display the updated comments list on clicking Submit button
+//on clicking Submit button, add the text in the comment box to the database and display the updated comments list 
 var submit = document.getElementById('submit_btn');
 submit.onclick = function() {
     var nameInput = document.getElementById('name');
