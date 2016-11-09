@@ -42,14 +42,13 @@ function buildLogin() {
                 }
             }
         };
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        request.open('POST', 'http://krithiskkv.imad.hasura-app.io/login', true);
+        request.setRequestHeader('Content-Type','application/json');
+        request.send(JSON.stringify({username : username, password: password}));
     };
 
-    var username = document.getElementById('username').value;
-    var password = document.getElementById('password').value;
-    request.open('POST', 'http://krithiskkv.imad.hasura-app.io/login', true);
-    request.setRequestHeader('Content-Type','application/json');
-    request.send(JSON.stringify({username : username, password: password}));
-    
     var button3 = document.getElementById('Register');
     button3.onclick = function () {
         var request = new XMLHttpRequest();
