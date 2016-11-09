@@ -4,8 +4,8 @@ checkLogin();
 function checkLogin() {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
-        if (initrequest.readyState === XMLHttpRequest.DONE) {
-            if (initrequest.status === 200) {
+        if (request.readyState === XMLHttpRequest.DONE) {
+            if (request.status === 200) {
                 buildLogout();
             }
             else {
