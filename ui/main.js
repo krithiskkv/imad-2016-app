@@ -22,6 +22,34 @@ function checkLogin() {
 function buildLogin() {
     var loginarea = document.getElementById('Login/Logout');
     loginarea.innerHTML = `<input type=text id = username placeholder=username /> <input type=password id = password placeholder = password /> Existing user? <button id=Login>Login</button> New user? <button id=Register>Register</button>`;
+    var button2 = document.getElementById('Login');
+    button2.onclick = function () {
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function() {
+        if (request.readyState === XMLHttpRequest.DONE) {
+            if (request.status === 200) {
+                alert('Login successful');
+            }
+            else if (request.status === 403) {
+                    alert('Username/password does not exist');
+                    document.getElementById('username').value = '';
+                    document.getElementById('password').value = '';
+            }
+            else if (request.status === 500) {
+                alert('An error occured');
+                document.getElementById('username').value = '';
+                document.getElementById('password').value = '';
+            }
+        }
+    };
+
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+    request.open('POST', 'http://krithiskkv.imad.hasura-app.io/login', true);
+    request.setRequestHeader('Content-Type','application/json');
+    request.send(JSON.stringify({username : username, password: password}));
+};
+
 }
 
 //build logout form
@@ -171,53 +199,5 @@ submit.onclick = function() {
     }
 };
 
-var button2 = document.getElementById('Login');
-button2.onclick = function () {
-    var request = new XMLHttpRequest();
-    request.onreadystatechange = function() {
-        if (request.readyState === XMLHttpRequest.DONE) {
-            if (request.status === 200) {
-                alert('Login successful');
-            }
-            else if (request.status === 403) {
-                    alert('Username/password does not exist');
-                    document.getElementById('username').value = '';
-                    document.getElementById('password').value = '';
-            }
-            else if (request.status === 500) {
-                alert('An error occured');
-                document.getElementById('username').value = '';
-                document.getElementById('password').value = '';
-            }
-        }
-    };
 
-    var username = document.getElementById('username').value;
-    var password = document.getElementById('password').value;
-    request.open('POST', 'http://krithiskkv.imad.hasura-app.io/login', true);
-    request.setRequestHeader('Content-Type','application/json');
-    request.send(JSON.stringify({username : username, password: password}));
-};
 
-var button3 = document.getElementById('Register');
-button3.onclick = function () {
-    var request = new XMLHttpRequest();
-    request.onreadystatechange = function() {
-        if (request.readyState === XMLHttpRequest.DONE) {
-            if (request.status === 200) {
-                alert('User ' + username + ' created successfully');
-            }
-            else if (request.status === 500) {
-                alert('An error occured');
-                document.getElementById('username').value = '';
-                document.getElementById('password').value = '';
-            }
-        }
-    };
-
-    var username = document.getElementById('username').value;
-    var password = document.getElementById('password').value;
-    request.open('POST', 'http://krithiskkv.imad.hasura-app.io/create-user', true);
-    request.setRequestHeader('Content-Type','application/json');
-    request.send(JSON.stringify({username : username, password: password}));
-};
