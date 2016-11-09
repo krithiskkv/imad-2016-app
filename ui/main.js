@@ -86,10 +86,10 @@ function buildLogin() {
 function buildLogout() {
     var loginarea = document.getElementById('Login/Logout');
     var username = document.getElementById('username').value;
-    loginarea.innerHTML = `<h3>Welcome </h3> <mark id=name></mark> 
+    loginarea.innerHTML = `<h3>Welcome </h3> <i>${username}</i> 
                             <a href="/logout">Logout</a>`;
-    var displayname = document.getElementById('name');
-    displayname.innerHTML = username;
+    //var displayname = document.getElementById('name');
+    //displayname.innerHTML = username;
 }
 
 // request the server for the current value of Likes counter and render the response 
