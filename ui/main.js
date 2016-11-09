@@ -6,7 +6,7 @@ function checkLogin() {
     request.onreadystatechange = function() {
         if (request.readyState === XMLHttpRequest.DONE) {
             if (request.status === 200) {
-                buildLogout();
+                buildLogout(this.responseText);
             }
             else {
                 buildLogin();
