@@ -6,7 +6,6 @@ function checkLogin() {
     request.onreadystatechange = function() {
         if (request.readyState === XMLHttpRequest.DONE) {
             if (request.status === 200) {
-                console.log('Login successful');
                 buildLogout();
             }
             else {
@@ -32,6 +31,7 @@ function buildLogin() {
                 if (request.readyState === XMLHttpRequest.DONE) {
                     if (request.status === 200) {
                         alert('Login successful');
+                        buildLogout();
                     }
                     else if (request.status === 403) {
                             alert('Username/password does not exist');
@@ -63,7 +63,7 @@ function buildLogin() {
             request.onreadystatechange = function() {
                 if (request.readyState === XMLHttpRequest.DONE) {
                     if (request.status === 200) {
-                        alert('User ' + username + ' created successfully');
+                        alert('User ' + username + ' created successfully. You can now login.');
                     }
                     else if (request.status === 500) {
                         alert('An error occured');
