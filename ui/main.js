@@ -6,7 +6,7 @@ function checkLogin() {
     request.onreadystatechange = function() {
         if (request.readyState === XMLHttpRequest.DONE) {
             if (request.status === 200) {
-                buildLogout();
+                buildLogout(this.responseText);
             }
             else {
                 buildLogin();
@@ -31,7 +31,7 @@ function buildLogin() {
                 if (request.readyState === XMLHttpRequest.DONE) {
                     if (request.status === 200) {
                         alert('Login successful');
-                        buildLogout(this.responseText);
+                        buildLogout(username);
                     }
                     else if (request.status === 403) {
                             alert('Username/password does not exist');
@@ -83,9 +83,8 @@ function buildLogin() {
 }
 
 //build logout form
-function buildLogout() {
+function buildLogout(username) {
     var loginarea = document.getElementById('Login/Logout');
-    var username = document.getElementById('username').value;
     loginarea.innerHTML = `<h3>Welcome </h3> <i>${username}</i> 
                             <a href="/logout">Logout</a>`;
     //var displayname = document.getElementById('name');
