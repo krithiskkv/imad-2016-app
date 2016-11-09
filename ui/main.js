@@ -6,10 +6,10 @@ function checkLogin() {
     request.onreadystatechange = function() {
         if (request.readyState === XMLHttpRequest.DONE) {
             if (request.status === 200) {
+                console.log('Login successful');
                 buildLogout();
             }
             else {
-                console.log('Check login failed');
                 buildLogin();
             }
         }
