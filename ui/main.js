@@ -85,7 +85,7 @@ function buildLogin() {
 //build logout form
 function buildLogout() {
     var loginarea = document.getElementById('Login/Logout');
-    var username = document.getElementById('username');
+    var username = document.getElementById('username').value;
     loginarea.innerHTML = `<h3>Welcome </h3> <mark id=name> ></mark> 
                             <a href="/logout"`;
     var displayname = document.getElementById('name');
