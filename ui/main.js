@@ -9,6 +9,7 @@ function checkLogin() {
                 buildLogout();
             }
             else {
+                console.log('Check login failed');
                 buildLogin();
             }
         }
