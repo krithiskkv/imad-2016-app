@@ -376,7 +376,7 @@ app.get('/submit-name4', function(req, res) {
 });
 
 //select data needed to build the page requested from the database and render it using the createTemplate function
-app.get('/:articleName', function (req, res) {
+app.get('/articles/:articleName', function (req, res) {
       pool.query("SELECT * FROM article WHERE articlename=$1", [req.params.articleName], function(err,result) {
         if (err) {
            res.status(500).send(err.toString());
