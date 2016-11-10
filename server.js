@@ -220,7 +220,6 @@ app.get('/initcmnt/:articleName', function(req, res) {
                     comments.push(result.rows[i].comment); 
                 }
                 res.send(JSON.stringify(comments));
-                }
             }        
         }
     });
