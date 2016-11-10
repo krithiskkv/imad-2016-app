@@ -125,33 +125,20 @@ var initcommrequest = new XMLHttpRequest();
 initcommrequest.onreadystatechange = function () {
     if (initcommrequest.readyState === XMLHttpRequest.DONE) {
     if (initcommrequest.status === 200) {
-        var names = initcommrequest.responseText;
-        names = JSON.parse(names);
+        var comments = initcommrequest.responseText;
+        comments = JSON.parse(comments);
         var list = '';
-        for (var i=0;i<names.length;i++) {
-          list += '<li>' + names[i] + '</li>';
+        for (var i=0;i<comments.length;i++) {
+          list += '<li>' + comments[i] + '</li>';
         }
-        var ul = document.getElementById('namelist');
+        var ul = document.getElementById('commlist');
         ul.innerHTML = list;
         }
     }
 };
     
-switch ((document.getElementById('heading').innerHTML).trim()) {
-    case "Home Page":
-      initcommrequest.open('GET', 'http://krithiskkv.imad.hasura-app.io/init-name1', true);
-      break;
-    case "My favorite Authors":
-      initcommrequest.open('GET', 'http://krithiskkv.imad.hasura-app.io/init-name2', true);
-      break;
-    case "Programming Experience":
-      initcommrequest.open('GET', 'http://krithiskkv.imad.hasura-app.io/init-name3', true);
-      break;
-    case "Databases Known":
-      initcommrequest.open('GET', 'http://krithiskkv.imad.hasura-app.io/init-name4', true);
-      break;
-      
-}
+var heading = document.getElementById('heading').innerHTML; 
+initcommrequest.open('GET', 'http://krithiskkv.imad.hasura-app.io/init-cmnt', + heading, true);
 initcommrequest.send(null);
 
 
@@ -190,18 +177,18 @@ button1.onclick = function () {
 //on clicking Submit button, add the text in the comment box to the database and display the updated comments list 
 var submit = document.getElementById('submit_btn');
 submit.onclick = function() {
-    var nameInput = document.getElementById('name');
-    var name = nameInput.value;
-    if (name > " ") {
+    var commInput = document.getElementById('comment');
+    var comment = commInput.value;
+    if (comment > " ") {
         var request = new XMLHttpRequest();
 
         request.onreadystatechange = function () {
             if (request.readyState === XMLHttpRequest.DONE) {
             if (request.status === 200) {
-                var names = request.responseText;
-                names = JSON.parse(names);
+                var comments = request.responseText;
+                comments = JSON.parse(comments);
                 var list = '';
-                for (var i=0;i<names.length;i++) {
+                for (var i=0;i<comments.length;i++) {
                   list += '<li>' + names[i] + '</li>';
                 }
                 var ul = document.getElementById('namelist');
@@ -210,10 +197,10 @@ submit.onclick = function() {
             }
         };
     
-        document.getElementById('name').value="";
+        document.getElementById('comment').value="";
         switch ((document.getElementById('heading').innerHTML).trim()) {
             case "Home Page":
-              request.open('GET', 'http://krithiskkv.imad.hasura-app.io/submit-name1?name=' + name, true);
+              request.open('GET', 'http://krithiskkv.imad.hasura-app.io/submit-cmnt' + comment, true);
               break;
             case "My favorite Authors":
               request.open('GET', 'http://krithiskkv.imad.hasura-app.io/submit-name2?name=' + name, true);
