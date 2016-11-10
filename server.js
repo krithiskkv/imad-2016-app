@@ -212,8 +212,8 @@ app.get('/counter/:articleName', function(req, res) {
 
 
 app.get('/initcmnt/:articleName', function(req, res) {
+    var comments = [];
     pool.query("SELECT comment FROM article AS a, comment AS b WHERE articlename = $1 AND article_id = id ORDER BY b.date DESC, b.time DESC", [req.params.articleName], function(err, result) {
-        var comments = [];
         if (err) {
             res.status(500).send(err.toString()); }
         else { 
