@@ -176,124 +176,6 @@ app.get('/ui/background.jpg', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'background.jpg'));
 });
 
-//obtain the initial like count of an article from the article table
-
-function initcounter(name, req, res) {
-pool.query("SELECT likecount FROM article WHERE articlename = $1" , [name], function(err,result) {
-        if (err) {
-           res.status(500).send(err.toString()); }
-        else {
-             if (result.rows.length === 0) {
-                res.status(404).send('Article not found'); }
-             else {
-                 switch(name) {
-                    case 'HomePage' :
-                        counter1 = result.rows[0].likecount;
-                        break;
-                    case 'FavAuthrs' :
-                        counter2 = result.rows[0].likecount;
-                        break;
-                    case 'ProgLang' :
-                        counter3 = result.rows[0].likecount;
-                        break;
-                    case 'Databases' :
-                        counter4 = result.rows[0].likecount;
-                        break;
-                    }
-                 res.send(result.rows[0].likecount.toString()); }
-              }
-     });
-}
-
-
-//update article table with the incremented like counter
-
-function updatecounter(pgname, counter, req, res) {
- pool.query("UPDATE article SET likecount = $2 WHERE articlename = $1", [pgname, counter], function(err,result) {
-        if (err) {
-           res.status(500).send(err.toString()); }
-        else {
-             res.send(counter.toString()); }
-        });
-}
-
-//obtain comments for an article from comment table and send it as response
-
-function getcomment(pgname, req, res) {
-    console.log('obtaining comments from db');
-    pool.query("SELECT comment FROM article AS a, comment AS b WHERE articlename = $1 AND article_id = id ORDER BY b.date DESC, b.time DESC", [pgname], function(err, result) {
-        if (err) {
-            res.status(500).send(err.toString()); }
-        else { 
-            if (result.rows.length === 0) {
-                res.status(404).send('Article not found'); }
-            else {
-                var cmntlist = [];
-                for (var i=0; i < result.rows.length; i++) {
-                            cmntlist.push(result.rows[i].comment); }
-                switch(pgname) {
-                    case 'HomePage' :
-                        names1 = cmntlist;
-                        res.send(JSON.stringify(names1));
-                        break;
-                    case 'FavAuthrs' :
-                        names2 = cmntlist;
-                        res.send(JSON.stringify(names2));
-                        break;
-                    case 'ProgLang' :
-                        names3 = cmntlist;
-                        res.send(JSON.stringify(names3));
-                        break;
-                    case 'Databases' :
-                        names4 = cmntlist;
-                        res.send(JSON.stringify(names4));
-                        break;
-                }
-            }        
-        }
-    });
-} 
-
-
-//insert the new comment into the comment table and send updated comment list to the page
-function updtcomment(pgname, comment, commentlist, req, res) {
-    var date = new Date();
-    var yyyy = date.getFullYear().toString();
-    var mm = (date.getMonth()+1).toString();
-    var dd  = date.getDate().toString();
-
-    var mmChars = mm.split('');
-    var ddChars = dd.split('');
-
-    var formatdate= yyyy + '-' + (mmChars[1]?mm:"0"+mmChars[0]) + '-' + (ddChars[1]?dd:"0"+ddChars[0]);
-
-    var time = (("0" + date.getHours()).slice(-2)   + ":" + 
-                ("0" + date.getMinutes()).slice(-2) + ":" + 
-                ("0" + date.getSeconds()).slice(-2));
-
-    pool.query("SELECT id FROM article WHERE articlename = $1" , [pgname], function(err,result) {
-        if (err) {
-           res.status(500).send(err.toString()); }
-        else {
-             if (result.rows.length === 0) {
-                res.status(404).send('Article not found'); }
-             else {
-                    var articleid = result.rows[0].id;
-                    datestring = formatdate.toString();
-                    timestring = time.toString();
-                    pool.query("INSERT INTO comment (article_id, comment, date, time) VALUES ($1, $2, $3, $4)", [articleid, comment, datestring, timestring], function(err,result) 
-                    {
-                        if (err) { 
-                            res.status(500).send(err.toString());  }
-                        else { 
-                            res.send(JSON.stringify(commentlist));
-                        }
-                    });
-                    }
-              }
-     });
-}
-
 // /initcounter/articleName obtains the current Likes counter for an article 
 
 var counter = 0;
@@ -322,10 +204,7 @@ app.get('/counter/:articleName', function(req, res) {
         });
 });
 
-
-
-// /init-name* obtains the current list of comments for a page from the comment table
-// /submit-name* adds the new comment into the comment list and comment table
+// /initcmnt obtains the current list of comments for a page from the comment table
 
 var comments = [];
 app.get('/initcmnt/:articleName', function(req, res) {
@@ -346,6 +225,8 @@ app.get('/initcmnt/:articleName', function(req, res) {
         }
     });
 });
+
+// /submit-cmnt adds the new comment into the comment list and comment table
 
 app.post('/submit-cmnt/:articleName', function(req, res) {
     var comment = req.body.comment; 
@@ -401,7 +282,7 @@ app.get('/articles/:articleName', function (req, res) {
             }
         }
      }); 
- });
+});
 
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
