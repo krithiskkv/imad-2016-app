@@ -251,17 +251,17 @@ app.post('/submit-cmnt/:articleName', function(req, res) {
             if (result.rows.length === 0) {
                 res.status(404).send('Article not found'); }
             else {
-                    var articleid = result.rows[0].id;
-                    datestring = formatdate.toString();
-                    timestring = time.toString();
-                    pool.query("INSERT INTO comment (article_id, comment, date, time) VALUES ($1, $2, $3, $4)", [articleid, comment, datestring, timestring], function(err,result) 
-                    {
-                        if (err) { 
-                            res.status(500).send(err.toString());  }
-                        else { 
-                            res.send(JSON.stringify(comments));
-                        }
-                    });
+                var articleid = result.rows[0].id;
+                datestring = formatdate.toString();
+                timestring = time.toString();
+                pool.query("INSERT INTO comment (article_id, comment, date, time) VALUES ($1, $2, $3, $4)", [articleid, comment, datestring, timestring], function(err,result) 
+                {
+                    if (err) { 
+                        res.status(500).send(err.toString());  }
+                    else { 
+                        res.send(JSON.stringify(comments));
+                }
+                });
             }
         }
     });
