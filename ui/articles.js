@@ -11,7 +11,7 @@ initrequest.onreadystatechange = function() {
     }
 };
 
-initrequest.open('GET', 'http://krithiskkv.imad.hasura-app.io/initcounter?articleName=' + articleName, true);
+initrequest.open('GET', 'http://krithiskkv.imad.hasura-app.io/initcounter/' + articleName, true);
 initrequest.send(null);
 
 // request server for the current comment list and render the comments
@@ -31,7 +31,7 @@ initcommrequest.onreadystatechange = function () {
     }
 };
     
-initcommrequest.open('GET', 'http://krithiskkv.imad.hasura-app.io/initcmnt?articleName=', + articleName, true);
+initcommrequest.open('GET', 'http://krithiskkv.imad.hasura-app.io/initcmnt/', + articleName, true);
 initcommrequest.send(null);
 
 
@@ -49,7 +49,7 @@ button1.onclick = function () {
         }
     };
 
-    request.open('GET', 'http://krithiskkv.imad.hasura-app.io/counter?articleName', + articleName, true);
+    request.open('GET', 'http://krithiskkv.imad.hasura-app.io/counter/' + articleName, true);
     request.send(null);
 };
 
@@ -76,8 +76,9 @@ submit.onclick = function() {
             }
         };
     
+        request.open('POST', 'http://krithiskkv.imad.hasura-app.io/submit-cmnt/' + articleName, true);
+        request.setRequestHeader('Content-Type','application/json');
+        request.send(JSON.stringify({comment : comment}));
         document.getElementById('comment').value="";
-        request.open('GET', 'http://krithiskkv.imad.hasura-app.io/submit-cmnt?articleName=' + articleName, true);
-        request.send(null);
     }
 };
