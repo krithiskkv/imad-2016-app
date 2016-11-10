@@ -294,85 +294,97 @@ function updtcomment(pgname, comment, commentlist, req, res) {
      });
 }
 
-// /initcounter* obtains the current Likes counter for a page and /counter* increments the Likes counter by 1
+// /initcounter/articleName obtains the current Likes counter for an article 
 
-var counter1 = 0;
-app.get('/initcounter1', function(req, res) {
-    initcounter('HomePage', req, res);
-});
-app.get('/counter1', function(req, res) {
-    counter1 = counter1 + 1;
-    updatecounter('HomePage', counter1, req, res);
-});
-
-var counter2 = 0;
-app.get('/initcounter2', function(req, res) {
-    initcounter('FavAuthrs', req, res);
-});
-app.get('/counter2', function(req, res) {
-    counter2 = counter2 + 1;
-    updatecounter('FavAuthrs', counter2, req, res);
+var counter = 0;
+app.get('/initcounter/:articleName', function(req, res) {
+    pool.query("SELECT likecount FROM article WHERE articlename = $1" , [req.params.articleName], function(err,result) {
+        if (err) {
+           res.status(500).send(err.toString()); }
+        else {
+             if (result.rows.length === 0) {
+                res.status(404).send('Article not found'); }
+             else {
+                  counter = result.rows[0].likecount;
+                  res.send(result.rows[0].likecount.toString()); }
+              }
+     });
 });
 
-var counter3 = 0;
-app.get('/initcounter3', function(req, res) {
-    initcounter('ProgLang', req, res);
-});
-app.get('/counter3', function(req, res) {
-    counter3 = counter3 + 1;
-    updatecounter('ProgLang', counter3, req, res);
+// /counter increments the Likes counter for an article by 1
+app.get('/counter/:articleName', function(req, res) {
+    counter = counter + 1;
+    pool.query("UPDATE article SET likecount = $2 WHERE articlename = $1", [req.params.articleName, counter], function(err,result) {
+        if (err) {
+           res.status(500).send(err.toString()); }
+        else {
+             res.send(counter.toString()); }
+        });
 });
 
-var counter4 = 0;
-app.get('/initcounter4', function(req, res) {
-    initcounter('Databases', req, res);
-});
-app.get('/counter4', function(req, res) {
-    counter4 = counter4 + 1;
-    updatecounter('Databases', counter4, req, res);
-});
+
 
 // /init-name* obtains the current list of comments for a page from the comment table
 // /submit-name* adds the new comment into the comment list and comment table
 
-var names1 = [];
-app.get('/init-name1', function(req, res) {
-    getcomment('HomePage', req, res);
-});
-app.get('/submit-name1', function(req, res) {
-    var name1 = req.query.name;
-    names1.push(name1);
-    updtcomment('HomePage', name1, names1, req, res);
-});
-
-var names2 = [];
-app.get('/init-name2', function(req, res) {
-    getcomment('FavAuthrs', req, res);
-});
-app.get('/submit-name2', function(req, res) {
-    var name2 = req.query.name;
-    names2.push(name2);
-    updtcomment('FavAuthrs', name2, names2, req, res);
-});
-
-var names3 = [];
-app.get('/init-name3', function(req, res) {
-    getcomment('ProgLang', req, res);
-});
-app.get('/submit-name3', function(req, res) {
-    var name3 = req.query.name;
-    names3.push(name3);
-    updtcomment('ProgLang', name3, names3, req, res);
+var comments = [];
+app.get('/initcmnt/:articleName', function(req, res) {
+    pool.query("SELECT comment FROM article AS a, comment AS b WHERE articlename = $1 AND article_id = id ORDER BY b.date DESC, b.time DESC", [req.params.articleName], function(err, result) {
+        if (err) {
+            res.status(500).send(err.toString()); }
+        else { 
+            if (result.rows.length === 0) {
+                res.status(404).send('Article not found'); }
+            else {
+                var cmntlist = [];
+                for (var i=0; i < result.rows.length; i++) {
+                    comments.push(result.rows[i].comment); 
+                }
+                res.send(JSON.stringify(comments));
+                }
+            }        
+        }
+    });
 });
 
-var names4 = [];
-app.get('/init-name4', function(req, res) {
-    getcomment('Databases', req, res);
-});
-app.get('/submit-name4', function(req, res) {
-    var name4 = req.query.name;
-    names4.push(name4);
-    updtcomment('Databases', name4, names4, req, res);
+app.post('/submit-cmnt/:articleName', function(req, res) {
+    var comment = req.body.comment; 
+    comments.push(comment);
+    var date = new Date();
+    var yyyy = date.getFullYear().toString();
+    var mm = (date.getMonth()+1).toString();
+    var dd  = date.getDate().toString();
+
+    var mmChars = mm.split('');
+    var ddChars = dd.split('');
+
+    var formatdate= yyyy + '-' + (mmChars[1]?mm:"0"+mmChars[0]) + '-' + (ddChars[1]?dd:"0"+ddChars[0]);
+
+    var time = (("0" + date.getHours()).slice(-2)   + ":" + 
+                ("0" + date.getMinutes()).slice(-2) + ":" + 
+                ("0" + date.getSeconds()).slice(-2));
+
+    pool.query("SELECT id FROM article WHERE articlename = $1" , [req.params.articleName], function(err,result) {
+        if (err) {
+           res.status(500).send(err.toString()); }
+        else {
+            if (result.rows.length === 0) {
+                res.status(404).send('Article not found'); }
+            else {
+                    var articleid = result.rows[0].id;
+                    datestring = formatdate.toString();
+                    timestring = time.toString();
+                    pool.query("INSERT INTO comment (article_id, comment, date, time) VALUES ($1, $2, $3, $4)", [articleid, comment, datestring, timestring], function(err,result) 
+                    {
+                        if (err) { 
+                            res.status(500).send(err.toString());  }
+                        else { 
+                            res.send(JSON.stringify(comments));
+                        }
+                    });
+            }
+        }
+    });
 });
 
 //select data needed to build the page requested from the database and render it using the createTemplate function
