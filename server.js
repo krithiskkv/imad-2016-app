@@ -68,7 +68,7 @@ function createTemplate (data) {
                     <input type="submit" id="submit_btn" value="Submit"> </input>
                     <ul id="commlist"> </ul>
                 </div>
-                <script type="text/javascript" src="/ui/articles.js">
+                <script type="text/javascript" src="/ui/main.js">
                 </script>
             </div>
         </body>
