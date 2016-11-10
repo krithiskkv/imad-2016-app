@@ -10,7 +10,7 @@ initrequest.onreadystatechange = function() {
         }
     }
 };
-
+console.log(articleName);
 initrequest.open('GET', 'http://krithiskkv.imad.hasura-app.io/initcounter/' + articleName, true);
 initrequest.send(null);
 
@@ -30,7 +30,7 @@ initcommrequest.onreadystatechange = function () {
         }
     }
 };
-    
+console.log(articleName);    
 initcommrequest.open('GET', 'http://krithiskkv.imad.hasura-app.io/initcmnt/', + articleName, true);
 initcommrequest.send(null);
 
