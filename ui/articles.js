@@ -31,7 +31,7 @@ initcommrequest.onreadystatechange = function () {
     }
 };
 console.log(articleName);    
-initcommrequest.open('GET', 'http://krithiskkv.imad.hasura-app.io/initcmnt/', + articleName, true);
+initcommrequest.open('GET', 'http://krithiskkv.imad.hasura-app.io/initcmnt/' + articleName, true);
 initcommrequest.send(null);
 
 
