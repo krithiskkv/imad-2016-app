@@ -29,7 +29,7 @@ function loadPersArticles() {
                 var articleData = JSON.parse(this.responseText);
                 for (var i=0; i< articleData.length; i++) {
                     content += `<li>
-                    <a href="/articles/${articleData[i].articlename}">${articleData[i].title}</a>
+                    <a href="/articles/${articleData[i].articlename}">${articleData[i].heading}</a>
                     (${articleData[i].date[0]})</li>`;
                 }
                 content += "</ul>";
@@ -54,7 +54,7 @@ function loadProfArticles() {
                 var articleData = JSON.parse(this.responseText);
                 for (var i=0; i< articleData.length; i++) {
                     content += `<li>
-                    <a href="/articles/${articleData[i].articlename}">${articleData[i].title}</a>
+                    <a href="/articles/${articleData[i].articlename}">${articleData[i].heading}</a>
                     (${articleData[i].date[0]})</li>`;
                 }
                 content += "</ul>";
