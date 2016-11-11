@@ -57,7 +57,7 @@ checkrequest.onreadystatechange = function() {
                             comments = JSON.parse(comments);
                             var list = '';
                             for (var i=0;i<comments.length;i++) {
-                              list += '<li>' + names[i] + '</li>';
+                              list += '<li>' + comments[i] + '</li>';
                             }
                             var ul = document.getElementById('namelist');
                             ul.innerHTML = list;
