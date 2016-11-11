@@ -95,8 +95,3 @@ button1.onclick = function () {
     request.open('GET', 'http://krithiskkv.imad.hasura-app.io/counter/' + articleName, true);
     request.send(null);
 };
-
-
-
-
-};
