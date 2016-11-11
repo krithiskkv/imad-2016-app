@@ -256,7 +256,7 @@ app.post('/submit-cmnt/:articleName', function(req, res) {
                 var articleid = result.rows[0].id;
                 datestring = formatdate.toString();
                 timestring = time.toString();
-                pool.query("INSERT INTO comment (article_id, comment, date, time) VALUES ($1, $2, $3, $4)", [articleid, comment, datestring, timestring], function(err,result) 
+                pool.query("INSERT INTO comment (article_id, comment, date, time, user_name) VALUES ($1, $2, $3, $4, $5)", [articleid, comment, datestring, timestring], function(err,result) 
                 {
                     if (err) { 
                         res.status(500).send(err.toString());  }
