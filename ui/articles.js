@@ -59,7 +59,7 @@ checkrequest.onreadystatechange = function() {
                             for (var i=0;i<comments.length;i++) {
                               list += '<li>' + comments[i] + '</li>';
                             }
-                            var ul = document.getElementById('namelist');
+                            var ul = document.getElementById('commlist');
                             ul.innerHTML = list;
                             }
                         }
