@@ -10,7 +10,6 @@ initrequest.onreadystatechange = function() {
         }
     }
 };
-console.log(articleName);
 initrequest.open('GET', 'http://krithiskkv.imad.hasura-app.io/initcounter/' + articleName, true);
 initrequest.send(null);
 
@@ -30,7 +29,6 @@ initcommrequest.onreadystatechange = function () {
         }
     }
 };
-console.log(articleName);    
 initcommrequest.open('GET', 'http://krithiskkv.imad.hasura-app.io/initcmnt/' + articleName, true);
 initcommrequest.send(null);
 
@@ -66,7 +64,6 @@ checkrequest.onreadystatechange = function() {
                             }
                         }
                     };
-                
                     request.open('POST', 'http://krithiskkv.imad.hasura-app.io/submit-cmnt/' + articleName, true);
                     request.setRequestHeader('Content-Type','application/json');
                     request.send(JSON.stringify({comment : comment}));
