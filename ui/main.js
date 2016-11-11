@@ -40,7 +40,7 @@ function loadPersArticles() {
         }
 };
     
-    request.open('GET', '/get-articles/personal', true);
+    request.open('GET', '/get-articles/Personal', true);
     request.send(null);
 }
 
@@ -65,7 +65,7 @@ function loadProfArticles() {
         }
 };
     
-    request.open('GET', '/get-articles/professional', true);
+    request.open('GET', '/get-articles/Professional', true);
     request.send(null);
 }
 
