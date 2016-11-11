@@ -231,7 +231,7 @@ app.get('/initcmnt/:articleName', function(req, res) {
 
 app.post('/submit-cmnt/:articleName', function(req, res) {
     var comment = req.body.comment; 
-    comments.push(comment);
+    comments.unshift(comment);
     var date = new Date();
     var yyyy = date.getFullYear().toString();
     var mm = (date.getMonth()+1).toString();
