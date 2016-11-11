@@ -57,7 +57,7 @@ checkrequest.onreadystatechange = function() {
                             comments = JSON.parse(comments);
                             var list = '';
                             for (var i=0;i<comments.length;i++) {
-                              list += '<li>' + comments[i] + '</li>';
+                              list += '<li>' + comments[i] + 'by' + username[i] + 'on' + date[i]'</li>';
                             }
                             var ul = document.getElementById('commlist');
                             ul.innerHTML = list;
