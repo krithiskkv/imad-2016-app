@@ -62,10 +62,7 @@ function createTemplate (data) {
                     <input id="counter" type="image" src="/ui/like.png" alt="Submit" width="50" height="20">
                     <span id="count">   </span> Likes
                     <br/>
-                    <div> Write a comment... </div>
-                    <textarea rows="2" cols="50" class="scrollabletextbox" id="comment" name="comments" ></textarea>
-                    <br/>
-                    <input type="submit" id="submit_btn" value="Submit"> </input>
+                    <div id="cmntInput"></div>
                     <ul id="commlist"> </ul>
                 </div>
                 <script type="text/javascript" src="/ui/articles.js">
