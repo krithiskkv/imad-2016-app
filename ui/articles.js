@@ -42,7 +42,7 @@ checkrequest.onreadystatechange = function() {
                 <textarea rows="2" cols="50" class="scrollabletextbox" id="comment" name="comments" ></textarea>
                 <br/>
                 <input type="submit" id="submit_btn" value="Submit"> </input>`;
-            document.getElementById('cmntinput').innerHTML = cmntarea;                
+            document.getElementById('cmntInput').innerHTML = cmntarea;                
             //on clicking Submit button, add the text in the comment box to the database and display the updated comments list 
             var submit = document.getElementById('submit_btn');
             submit.onclick = function() {
