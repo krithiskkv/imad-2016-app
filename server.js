@@ -103,7 +103,6 @@ app.post('/create-user', function(req, res) {
 });
 
 app.post('/login', function(req, res) {
-    console.log('Login Request');
     var username = req.body.username;
     var password = req.body.password;
     
@@ -116,7 +115,6 @@ app.post('/login', function(req, res) {
             }
             else {
                 var dbString = result.rows[0].password;
-                console.log(dbString);
                 var salt = dbString.split('$')[2];
                 var hashedPwd = hash(password, salt);
                 
@@ -210,7 +208,7 @@ app.get('/counter/:articleName', function(req, res) {
 var comments = [];
 app.get('/initcmnt/:articleName', function(req, res) {
     comments = [];
-    pool.query("SELECT b.comment, c.username, b.date, b.time FROM article AS a, comment AS b, 'user' AS c WHERE articlename = $1 AND article_id = id AND b.user_id = c.id ORDER BY b.date DESC, b.time DESC", [req.params.articleName], function(err, result) {
+    pool.query("SELECT b.comment, b.username, b.date, b.time FROM article AS a, comment AS b WHERE articlename = $1 AND article_id = id ORDER BY b.date DESC, b.time DESC", [req.params.articleName], function(err, result) {
         if (err) {
             res.status(500).send(err.toString()); }
         else { 
@@ -231,6 +229,7 @@ app.get('/initcmnt/:articleName', function(req, res) {
 
 app.post('/submit-cmnt/:articleName', function(req, res) {
     var comment = req.body.comment; 
+    var username = req.body.username;
     comments.unshift(comment);
     var date = new Date();
     var yyyy = date.getFullYear().toString();
@@ -256,7 +255,7 @@ app.post('/submit-cmnt/:articleName', function(req, res) {
                 var articleid = result.rows[0].id;
                 datestring = formatdate.toString();
                 timestring = time.toString();
-                pool.query("INSERT INTO comment (article_id, comment, date, time, user_name) VALUES ($1, $2, $3, $4, $5)", [articleid, comment, datestring, timestring], function(err,result) 
+                pool.query("INSERT INTO comment (article_id, comment, date, time, user_name) VALUES ($1, $2, $3, $4, $5)", [articleid, comment, datestring, timestring, username], function(err,result) 
                 {
                     if (err) { 
                         res.status(500).send(err.toString());  }
