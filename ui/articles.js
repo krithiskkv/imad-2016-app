@@ -18,7 +18,7 @@ var initcommrequest = new XMLHttpRequest();
 initcommrequest.onreadystatechange = function () {
     if (initcommrequest.readyState === XMLHttpRequest.DONE) {
     if (initcommrequest.status === 200) {
-        commentsData = JSON.parse(this.responseText);
+        var commentsData = JSON.parse(this.responseText);
         var list = '';
         for (var i=0;i<comments.length;i++) {
           list += '<li>' + commentsData[i].comment + '</li>' + '<span>' + commentsData[i].user_name + commentsData[i].date + '</span>';
