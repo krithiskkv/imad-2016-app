@@ -36,7 +36,7 @@ var checkrequest = new XMLHttpRequest();
 checkrequest.onreadystatechange = function() {
     if (checkrequest.readyState === XMLHttpRequest.DONE) {
         if (checkrequest.status === 200) {
-            var user_name = this.responseText;
+            var username = this.responseText;
             var cmntarea = `
                 Write a comment...
                 <br/>
@@ -58,7 +58,7 @@ checkrequest.onreadystatechange = function() {
                             comments = JSON.parse(comments);
                             var list = '';
                             for (var i=0;i<comments.length;i++) {
-                              list += '<li>' + comments[i] + 'by' + username[i] + 'on' + date[i] + '</li>';
+                              list += '<li>' + comments[i] + 'by' + user_name[i] + 'on' + date[i] + '</li>';
                             }
                             var ul = document.getElementById('commlist');
                             ul.innerHTML = list;
@@ -67,7 +67,7 @@ checkrequest.onreadystatechange = function() {
                     };
                     request.open('POST', 'http://krithiskkv.imad.hasura-app.io/submit-cmnt/' + articleName, true);
                     request.setRequestHeader('Content-Type','application/json');
-                    request.send(JSON.stringify({comment : comment, username : user_name}));
+                    request.send(JSON.stringify({comment : comment, username : username}));
                     document.getElementById('comment').value="";
                 }
             };
