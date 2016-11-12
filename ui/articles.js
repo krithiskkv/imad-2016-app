@@ -18,11 +18,10 @@ var initcommrequest = new XMLHttpRequest();
 initcommrequest.onreadystatechange = function () {
     if (initcommrequest.readyState === XMLHttpRequest.DONE) {
     if (initcommrequest.status === 200) {
-        var comments = initcommrequest.responseText;
-        comments = JSON.parse(comments);
+        commentsData = JSON.parse(this.responseText);
         var list = '';
         for (var i=0;i<comments.length;i++) {
-          list += '<li>' + comments[i] + '</li>' + '<span>' + user_name[i] + date[i] + '</span>';
+          list += '<li>' + commentsData[i].comment + '</li>' + '<span>' + commentsData[i].user_name + commentsData[i].date + '</span>';
         }
         var ul = document.getElementById('commlist');
         ul.innerHTML = list;
