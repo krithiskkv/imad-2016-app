@@ -219,7 +219,7 @@ app.get('/initcmnt/:articleName', function(req, res) {
                 for (var i=0; i < result.rows.length; i++) {
                     comments.push(result.rows[i].comment); 
                 }
-                res.send(JSON.stringify(comments));
+                res.send(JSON.stringify(result.rows));
             }        
         }
     });
