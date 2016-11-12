@@ -53,12 +53,10 @@ checkrequest.onreadystatechange = function() {
                     request.onreadystatechange = function () {
                         if (request.readyState === XMLHttpRequest.DONE) {
                         if (request.status === 200) {
-                            var comments = request.responseText;
-                            comments = JSON.parse(comments);
+                            var commentsData = JSON.parse(this.responseText);
                             var list = '';
-                            for (var i=0;i<comments.length;i++) {
-                              list += `'<li>' + comments[i] + '</li>'
-                                        '<span>' + user_name[i] - date[i] '</span>'`;
+                            for (var i=0;i<commentsData.length;i++) {
+                              list += '<li>' + commentsData[i].comment + '</li>' + '<span>' + ' by ' + commentsData[i].user_name + ' on ' + commentsData[i].date.split('T')[0] + '</span>';
                             }
                             var ul = document.getElementById('commlist');
                             ul.innerHTML = list;
