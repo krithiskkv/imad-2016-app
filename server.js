@@ -246,7 +246,7 @@ app.post('/submit-cmnt/:articleName', function(req, res) {
     var datestring = formatdate.toString();
     var timestring = time.toString();
     
-    var commentData = {'comment' : comment, 'user_name': username, 'date': dateString};
+    var commentData = {'comment' : comment, 'user_name': username, 'date': datestring};
     commentsData.unshift(commentData);
     pool.query("SELECT id FROM article WHERE articlename = $1" , [req.params.articleName], function(err,result) {
         if (err) {
