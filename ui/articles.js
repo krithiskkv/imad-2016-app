@@ -22,8 +22,7 @@ initcommrequest.onreadystatechange = function () {
         comments = JSON.parse(comments);
         var list = '';
         for (var i=0;i<comments.length;i++) {
-          list += `'<li>' + comments[i] + '</li>'
-                   '<span>' + user_name[i] - date[i] '</span>'`;
+          list += '<li>' + comments[i] + '</li>' + '<span>' + user_name[i] + date[i] + '</span>';
         }
         var ul = document.getElementById('commlist');
         ul.innerHTML = list;
