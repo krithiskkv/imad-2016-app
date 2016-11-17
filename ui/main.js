@@ -23,7 +23,7 @@ function loadPersArticles() {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function () {
         if (request.readyState === XMLHttpRequest.DONE) {
-            var articles = document.getElementById('Personal');
+            var articles = document.getElementById('PersList');
             if (request.status === 200) {
                 var content = '<ul>';
                 var articleData = JSON.parse(this.responseText);
@@ -48,7 +48,7 @@ function loadProfArticles() {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function () {
         if (request.readyState === XMLHttpRequest.DONE) {
-            var articles = document.getElementById('Professional');
+            var articles = document.getElementById('ProfList');
             if (request.status === 200) {
                 var content = '<ul>';
                 var articleData = JSON.parse(this.responseText);
