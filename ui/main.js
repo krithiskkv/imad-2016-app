@@ -25,14 +25,15 @@ function loadPersArticles() {
         if (request.readyState === XMLHttpRequest.DONE) {
             var articles = document.getElementById('PersList');
             if (request.status === 200) {
-                var content = '<ul>';
+                //var content = '<ul>';
+                var content = '';
                 var articleData = JSON.parse(this.responseText);
                 for (var i=0; i< articleData.length; i++) {
-                    content += `<li>
-                    <a href="/articles/${articleData[i].articlename}">${articleData[i].heading}</a>
-                    (${articleData[i].date.split('T')[0]})</li>`;
+                //    content += `<li>
+                    content += `<a href="/articles/${articleData[i].articlename}">${articleData[i].heading}</a>
+                    (${articleData[i].date.split('T')[0]})`;
                 }
-                content += "</ul>";
+                //content += "</ul>";
                 articles.innerHTML = content;
             } else {
                 articles.innerHTML('Oops! Could not load all articles!');
@@ -50,14 +51,15 @@ function loadProfArticles() {
         if (request.readyState === XMLHttpRequest.DONE) {
             var articles = document.getElementById('ProfList');
             if (request.status === 200) {
-                var content = '<ul>';
+                //var content = '<ul>';
+                var content = '';
                 var articleData = JSON.parse(this.responseText);
                 for (var i=0; i< articleData.length; i++) {
-                    content += `<li>
-                    <a href="/articles/${articleData[i].articlename}">${articleData[i].heading}</a>
+                //    content += `<li>
+                    content += `<a href="/articles/${articleData[i].articlename}">${articleData[i].heading}</a>
                     (${articleData[i].date.split('T')[0]})</li>`;
                 }
-                content += "</ul>";
+                //content += "</ul>";
                 articles.innerHTML = content;
             } else {
                 articles.innerHTML('Oops! Could not load all articles!');
