@@ -77,7 +77,7 @@ function buildLogin() {
     loginbtn.value = 'Login/Sign-up';
 }
 
-function buildLogout() { 
+function buildLogout(username) { 
     var loginbtn = document.getElementById('loginbtn');
     loginbtn.value = username;
 }
