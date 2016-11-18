@@ -75,12 +75,78 @@ function loadProfArticles() {
 function buildLogin() {
     var loginbtn = document.getElementById('loginbtn');
     loginbtn.innerHTML = 'Login/Sign-up';
-    console.log('building login' + loginbtn.value);
+    var loginarea = document.getElementById('loginarea');
+    loginarea.innerHTML = `<input type=text id = username placeholder=username /> 
+                            <br/> 
+                            <input type=password id = password placeholder = password /> 
+                            <br/>
+                            Existing user?  New user? 
+                            <br/>
+                            <button id=Login>Login</button>           <button id=Register>Register</button>`;
+    var button2 = document.getElementById('Login');
+    button2.onclick = function () {
+        var request = new XMLHttpRequest();
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        if (username > ' ' && password > ' ') {
+            request.onreadystatechange = function() {
+                if (request.readyState === XMLHttpRequest.DONE) {
+                    if (request.status === 200) {
+                        alert('Login successful');
+                        buildLogout(username);
+                    }
+                    else if (request.status === 403) {
+                            alert('Username/password does not exist');
+                            document.getElementById('username').value = '';
+                            document.getElementById('password').value = '';
+                    }
+                    else if (request.status === 500) {
+                        alert('An error occured');
+                        document.getElementById('username').value = '';
+                        document.getElementById('password').value = '';
+                    }
+                }
+            };
+            request.open('POST', 'http://krithiskkv.imad.hasura-app.io/login', true);
+            request.setRequestHeader('Content-Type','application/json');
+            request.send(JSON.stringify({username : username, password: password}));
+        }
+        else {
+            alert('Username/password cannot be blank');
+        }
+    };
+
+    var button3 = document.getElementById('Register');
+    button3.onclick = function () {
+        var request = new XMLHttpRequest();
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        if (username > ' ' && password > ' ') {
+            request.onreadystatechange = function() {
+                if (request.readyState === XMLHttpRequest.DONE) {
+                    if (request.status === 200) {
+                        alert('User ' + username + ' created successfully. You can now login.');
+                    }
+                    else if (request.status === 500) {
+                        alert('An error occured');
+                        document.getElementById('username').value = '';
+                        document.getElementById('password').value = '';
+                    }
+                }
+            };
+            request.open('POST', 'http://krithiskkv.imad.hasura-app.io/create-user', true);
+            request.setRequestHeader('Content-Type','application/json');
+            request.send(JSON.stringify({username : username, password: password}));
+        }
+        else {
+            alert('Username/password cannot be blank');
+        }
+    };
 }
 
 function buildLogout(username) { 
     var loginbtn = document.getElementById('loginbtn');
-    loginbtn.value = username;
+    loginbtn.innerHTML = username;
 }
 
 /*function buildLogin() {
