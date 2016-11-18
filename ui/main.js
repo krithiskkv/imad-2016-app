@@ -75,6 +75,7 @@ function loadProfArticles() {
 function buildLogin() {
     var loginbtn = document.getElementById('loginbtn');
     loginbtn.value = 'Login/Sign-up';
+    console.log('building login' + loginbtn.value);
 }
 
 function buildLogout(username) { 
