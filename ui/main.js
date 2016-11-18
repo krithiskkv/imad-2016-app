@@ -73,6 +73,16 @@ function loadProfArticles() {
 
 //build login/registration form
 function buildLogin() {
+    var loginbtn = document.getElementById('loginbtn');
+    loginbtn.value = 'Login/Sign-up';
+}
+
+function buildLogout() { 
+    var loginbtn = document.getElementById('loginbtn');
+    loginbtn.value = username;
+}
+
+/*function buildLogin() {
     var loginarea = document.getElementById('Login/Logout');
     loginarea.innerHTML = `<input type=text id = username placeholder=username /> <input type=password id = password placeholder = password /> Existing user? <button id=Login>Login</button> New user? <button id=Register>Register</button>`;
     var button2 = document.getElementById('Login');
@@ -144,7 +154,7 @@ function buildLogout(username) {
     //var displayname = document.getElementById('name');
     //displayname.innerHTML = username;
 }
-
+*/
 
 
 
