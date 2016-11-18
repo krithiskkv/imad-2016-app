@@ -74,7 +74,7 @@ function loadProfArticles() {
 //build login/registration form
 function buildLogin() {
     var loginbtn = document.getElementById('loginbtn');
-    loginbtn.value = 'Login/Sign-up';
+    loginbtn.innerHTML = 'Login/Sign-up';
     console.log('building login' + loginbtn.value);
 }
 
