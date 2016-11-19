@@ -56,7 +56,7 @@ function loadProfArticles() {
                 var articleData = JSON.parse(this.responseText);
                 for (var i=0; i< articleData.length; i++) {
                 //    content += `<li>
-                    content += `<a href="/articles/${articleData[i].articlename}">${articleData[i].articlename}</a>`
+                content += `<a href="/articles/${articleData[i].articlename}">${articleData[i].articlename}</a>`
                 //    (${articleData[i].date.split('T')[0]})`;
                 }
                 //content += "</ul>";
