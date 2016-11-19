@@ -13,6 +13,14 @@ initrequest.onreadystatechange = function() {
 initrequest.open('GET', 'http://krithiskkv.imad.hasura-app.io/initcounter/' + articleName, true);
 initrequest.send(null);
 
+function escapeHTML (text)
+{
+    var $text = document.createTextNode(text);
+    var $div = document.createElement('div');
+    $div.appendChild($text);
+    return $div.innerHTML;
+}
+
 // request server for the current comment list and render the comments
 var initcommrequest = new XMLHttpRequest();
 initcommrequest.onreadystatechange = function () {
@@ -21,7 +29,7 @@ initcommrequest.onreadystatechange = function () {
         var commentsData = JSON.parse(this.responseText);
         var list = '';
         for (var i=0;i<commentsData.length;i++) {
-          list += '<li>' + commentsData[i].comment + '</li>' + '<span>' + ' by ' + commentsData[i].user_name + ' on ' + commentsData[i].date.split('T')[0] + '</span>';
+          list += '<li>' + escapeHTML(commentsData[i].comment) + '</li>' + '<span>' + ' by ' + commentsData[i].user_name + ' on ' + commentsData[i].date.split('T')[0] + '</span>';
         }
         var ul = document.getElementById('commlist');
         ul.innerHTML = list;
