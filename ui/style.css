@@ -1,6 +1,6 @@
 body {
     font-family: calibri;
-    background-image: url("background.jpg");
+/*    background-image: url("background.jpg"); */
     margin-top: 20px;
 }
 
@@ -9,7 +9,7 @@ body {
 .container {    
                 max-width: 1500px;
                 margin: 0 auto;
-                color: white;
+                color: green;
                 font-family: calibri; 
                 font-size: medium;
                 padding-top: 20px;
