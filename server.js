@@ -33,6 +33,7 @@ function createTemplate (data) {
     var date = data.date;
     var content = data.content;
     var count = 0;
+    var bgimage = data.bgimage;
     
     var htmlTemplate = `<html>
         <head>
@@ -42,7 +43,7 @@ function createTemplate (data) {
             <meta name = "viewport" content = "width=device-width, initial-scale=1" />
             <link href="/ui/style.css" rel="stylesheet" />
         </head>
-        <body id="body">
+        <body background=${bgimage})>
             <h3 id="heading">Krithika's BlogApp</h3>
             <div id="header"> 
                     <div id="articles">
@@ -90,6 +91,10 @@ function createTemplate (data) {
         </html>
         `;
         return htmlTemplate;
+}
+
+function setbgimg(bgimage) {
+    
 }
 
 function hash(input, salt) {
