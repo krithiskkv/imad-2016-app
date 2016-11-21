@@ -208,8 +208,8 @@ app.get('/ui/office.jpg', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'office.jpg'));
 });
 
-app.get('/ui/books.jpg', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'books.jpg'));
+app.get('/ui/books1.jpg', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'books1.jpg'));
 });
 
 app.get('/ui/mf.png', function (req, res) {
