@@ -181,6 +181,10 @@ app.get('/ui/like.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'like.png'));
 });
 
+app.get('/ui/office.jpg', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'office.jpg'));
+});
+
 
 app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
