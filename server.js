@@ -43,10 +43,28 @@ function createTemplate (data) {
             <link href="/ui/style.css" rel="stylesheet" />
         </head>
         <body>
-            <div>
-                <a href="/">Home</a> 
-            </div>
-            <hr/>
+            <h3 id="heading">Krithika's BlogApp</h3>
+            <div id="header"> 
+                    <div id="articles">
+                        <ul id="nav-bar">
+                            <li class="dropdown"> 
+                                <a href="/" >Home</a>  
+                            </li>
+                            <li class="dropdown"> 
+                                <a href="#" class="dropbtn">Personal Interests</a>  
+                                <div id="PersList" class="dropdown-content"></div>
+                            </li>
+                            <li class="dropdown"> 
+                                <a href="#" class="dropbtn">Professional Interests</a>  
+                                <div id ="ProfList" class="dropdown-content"></div>
+                            </li>
+                            <li class="dropdown" id="login"> 
+                                <a href="#" class="dropbtn" id="loginbtn"></a>  
+                                <div id ="loginarea" class="dropdown-content"></div>
+                            </li>
+                        </ul>           
+                    </div>                
+            </div> 
             <div class="container">
                 <h3 id="heading">
                     ${heading}
