@@ -83,8 +83,8 @@ function createTemplate (data) {
                     <div id="cmntInput"></div>
                     <ul id="commlist"> </ul>
                 </div>
-                <script type="text/javascript" src="/ui/articles.js">
-                </script>
+                <script type="text/javascript" src="/ui/main.js"> </script>
+                <script type="text/javascript" src="/ui/articles.js"> </script>
             </div>
         </body>
         </html>
