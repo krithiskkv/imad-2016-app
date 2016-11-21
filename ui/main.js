@@ -146,7 +146,7 @@ function buildLogin() {
 
 function buildLogout(username) { 
     var loginbtn = document.getElementById('loginbtn');
-    loginbtn.innerHTML = 'Hi, ' + username;
+    loginbtn.innerHTML = 'Hi, ' + username + '<small>▼</small>';
     var loginarea = document.getElementById('loginarea');
     loginarea.innerHTML = '<a href="/logout">Logout</a>';
 }
