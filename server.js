@@ -213,7 +213,7 @@ app.get('/ui/books1.jpg', function (req, res) {
 });
 
 app.get('/ui/mf.png', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'mf.jpg'));
+  res.sendFile(path.join(__dirname, 'ui', 'mf.png'));
 });
 
 app.get('/ui/dining.jpg', function (req, res) {
