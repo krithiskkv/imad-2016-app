@@ -1,4 +1,4 @@
-var initrequest = new XMLHttpRequest();
+/* var initrequest = new XMLHttpRequest();
 initrequest.onreadystatechange = function() {
     if (initrequest.readyState === XMLHttpRequest.DONE) {
         if (initrequest.status === 200) {
@@ -9,7 +9,7 @@ initrequest.onreadystatechange = function() {
     }
 };
 initrequest.open('GET', 'http://krithiskkv.imad.hasura-app.io/getbgimg/' + articleName, true);
-initrequest.send(null);
+initrequest.send(null);*/
 
 
 
