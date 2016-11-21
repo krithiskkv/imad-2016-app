@@ -4,7 +4,7 @@ initrequest.onreadystatechange = function() {
         if (initrequest.status === 200) {
             var url = initrequest.responseText;
             var currentpage = document.getElementById('body');
-            currentpage.style.background-image = 'url(' + url + ')';
+            currentpage.style.backgroundImage = 'url(' + url + ')';
         }
     }
 };
