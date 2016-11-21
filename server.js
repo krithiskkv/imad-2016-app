@@ -207,12 +207,15 @@ app.get('/ui/background.jpg', function (req, res) {
 app.get('/ui/office.jpg', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'office.jpg'));
 });
+
 app.get('/ui/books.jpg', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'books.jpg'));
 });
+
 app.get('/ui/mf.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'mf.jpg'));
 });
+
 app.get('/ui/dining.jpg', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'dining.jpg'));
 });
@@ -220,6 +223,7 @@ app.get('/ui/dining.jpg', function (req, res) {
 app.get('/ui/ocjp6.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'ocjp6.png'));
 });
+
 // /initcounter/articleName obtains the current Likes counter for an article 
 
 var counter = 0;
