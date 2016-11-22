@@ -50,7 +50,13 @@ checkrequest.onreadystatechange = function() {
                 <textarea rows="2" cols="50" class="scrollabletextbox" id="comment" name="comments" ></textarea>
                 <br/>
                 <input type="submit" id="submit_btn" value="Submit"> </input>`;
-            document.getElementById('cmntInput').innerHTML = cmntarea;                
+            document.getElementById('cmntInput').innerHTML = cmntarea;
+            document.getElementById('comment').addEventListener("keyup",function(event) {
+                if (event.keyCode == 13 ) {
+                event.preventDefault();
+                document.getElementById('submit_btn').click();
+                }
+            });
             //on clicking Submit button, add the text in the comment box to the database and display the updated comments list 
             var submit = document.getElementById('submit_btn');
             submit.onclick = function() {
