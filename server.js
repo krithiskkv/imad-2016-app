@@ -224,8 +224,8 @@ app.get('/ui/mf.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'mf.png'));
 });
 
-app.get('/ui/dining.jpg', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'dining.jpg'));
+app.get('/ui/dining1.jpg', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'dining1.jpg'));
 });
 
 app.get('/ui/ocjp6.png', function (req, res) {
