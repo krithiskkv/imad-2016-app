@@ -34,6 +34,7 @@ function createTemplate (data) {
     var content = data.content;
     var count = 0;
     var bgimage = data.bgimage;
+    var cmntcnt = data.cmntcnt;
     
     var htmlTemplate = `<html>
         <head>
