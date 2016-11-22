@@ -80,9 +80,9 @@ function buildLogin() {
                             <br/> 
                             <input type=password id = password placeholder = password /> 
                             <br/>
-                            <small>Existing user</small>  <button id=Login>Login</button>  
+                            <small>Signed-up?</small>  <button id=Login>Sign-in</button>  
                             <br/>
-                            <small>New user</small> <button id=Register>Register</button>`;
+                            <small>New user</small> <button id=Register>Sign-up</button>`;
     var button2 = document.getElementById('Login');
     button2.onclick = function () {
         var request = new XMLHttpRequest();
