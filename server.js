@@ -60,7 +60,7 @@ function createTemplate (data) {
                                 <div id ="ProfList" class="dropdown-content"></div>
                             </li>
                             <li class="dropdown" id="login"> 
-                                <a href="#" class="dropbtn" id="loginbtn"></a>  
+                                <a href="#" class="dropbtn" id="loginbtn">            </a>  
                                 <div id ="loginarea" class="dropdown-content"></div>
                             </li>
                         </ul>           
@@ -74,12 +74,19 @@ function createTemplate (data) {
                 <div>
                     ${date.toDateString()}
                 </div>
+                
+                </br>
+                
+                <div> 
+                    <input id="counter" type="image" src="/ui/like.png" alt="Submit" width="50" height="20">
+                    <span id="count">   </span> Likes
+                    <input id="counter" type="image" src="/ui/comments.png" width="30" height="20">
+                    <a href="#comments"> ${cmntcnt} comments </a>
+                </div>
                 <div>
                     ${content}
                 </div>
-                <div class="footer">  
-                    <input id="counter" type="image" src="/ui/like.png" alt="Submit" width="50" height="20">
-                    <span id="count">   </span> Likes
+                <div class="comments">  
                     <br/>
                     <div id="cmntInput"></div>
                     <ul id="commlist"> </ul>
@@ -91,10 +98,6 @@ function createTemplate (data) {
         </html>
         `;
         return htmlTemplate;
-}
-
-function setbgimg(bgimage) {
-    
 }
 
 function hash(input, salt) {
@@ -183,6 +186,10 @@ app.get('/ui/prof.png', function (req, res) {
 });
 
 app.get('/ui/like.png', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'like.png'));
+});
+
+app.get('/ui/comments.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'like.png'));
 });
 
