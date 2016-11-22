@@ -313,8 +313,8 @@ app.post('/submit-cmnt/:articleName', function(req, res) {
                 res.status(404).send('Article not found'); }
             else {
                 var articleid = result.rows[0].id;
-                var cmntcnt   = result.rows[0].cmntcnt + 1;
-                pool.query("UPDATE article SET cmntcnt = $2 WHERE articlename = $1" , [articleid, cmntcnt], function(err,result) {
+                var updtcmntcnt   = result.rows[0].cmntcnt + 1;
+                pool.query("UPDATE article SET cmntcnt = $2 WHERE articlename = $1" , [articleid, updtcmntcnt], function(err,result) {
                     if (err) {
                        res.status(500).send(err.toString()); }
                     else {
