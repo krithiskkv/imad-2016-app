@@ -87,7 +87,7 @@ function createTemplate (data) {
                 <div>
                     ${content}
                 </div>
-                <div class="comments">  
+                <div id="comments">  
                     <br/>
                     <div id="cmntInput"></div>
                     <ul id="commlist"> </ul>
@@ -191,7 +191,7 @@ app.get('/ui/like.png', function (req, res) {
 });
 
 app.get('/ui/comments.png', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'like.png'));
+  res.sendFile(path.join(__dirname, 'ui', 'comments.png'));
 });
 
 app.get('/ui/office.jpg', function (req, res) {
