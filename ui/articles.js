@@ -80,7 +80,11 @@ checkrequest.onreadystatechange = function() {
                     document.getElementById('comment').value="";
                 }
             };
-        }    
+        }
+        else {
+            var promptlogin = 'Please login/signup to post comments!';
+            document.getElementById('cmntInput').innerHTML = promptlogin;
+        }
     }
 };
 
