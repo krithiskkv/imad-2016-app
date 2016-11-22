@@ -80,7 +80,7 @@ function buildLogin() {
                             <br/> 
                             <input type=password id = password placeholder = password /> 
                             <br/>
-                            Existing user?  New user? 
+                            <small> Existing user?  New user? </small> 
                             <br/>
                             <button id=Login>Login</button> <span>          </span> <button id=Register>Register</button>`;
     var button2 = document.getElementById('Login');
