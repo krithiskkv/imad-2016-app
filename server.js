@@ -303,8 +303,8 @@ app.post('/submit-cmnt/:articleName', function(req, res) {
     var datestring = formatdate.toString();
     var timestring = time.toString();
     
-    var commentData = {'comment' : comment, 'user_name': username, 'date': datestring};
-    commentsData.unshift(commentData);
+    var updtcmntcnt = 0;
+    
     pool.query("SELECT id , cmntcnt FROM article WHERE articlename = $1" , [req.params.articleName], function(err,result) {
         if (err) {
            res.status(500).send(err.toString()); }
@@ -313,8 +313,8 @@ app.post('/submit-cmnt/:articleName', function(req, res) {
                 res.status(404).send('Article not found'); }
             else {
                 var articleid = result.rows[0].id;
-                var updtcmntcnt   = result.rows[0].cmntcnt + 1;
-                pool.query("UPDATE article SET cmntcnt = $2 WHERE articlename = $1" , [articleid, updtcmntcnt], function(err,result) {
+                updtcmntcnt   = result.rows[0].cmntcnt + 1;
+                pool.query("UPDATE article SET cmntcnt = $2 WHERE id = $1" , [articleid, updtcmntcnt], function(err,result) {
                     if (err) {
                        res.status(500).send(err.toString()); }
                     else {
@@ -322,6 +322,8 @@ app.post('/submit-cmnt/:articleName', function(req, res) {
                                 if (err) { 
                                     res.status(500).send(err.toString());  }
                                 else { 
+                                    var commentData = {'comment' : comment, 'user_name': username, 'date': datestring, 'cmntcnt': updtcmntcnt};
+                                    commentsData.unshift(commentData);
                                     res.send(JSON.stringify(commentsData)); }
                             });
                     }
