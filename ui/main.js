@@ -82,7 +82,7 @@ function buildLogin() {
                             <br/>
                             <small>Signed-up?</small>  <button id=Login>Sign-in</button>  
                             <br/>
-                            <small>New user</small> <button id=Register>Sign-up</button>`;
+                            <small>New user?</small> <button id=Register>Sign-up</button>`;
     var button2 = document.getElementById('Login');
     button2.onclick = function () {
         var request = new XMLHttpRequest();
