@@ -1,18 +1,3 @@
-/* var initrequest = new XMLHttpRequest();
-initrequest.onreadystatechange = function() {
-    if (initrequest.readyState === XMLHttpRequest.DONE) {
-        if (initrequest.status === 200) {
-            var url = initrequest.responseText;
-            var currentpage = document.getElementById('body');
-            currentpage.style.backgroundImage = 'url(' + url + ')';
-        }
-    }
-};
-initrequest.open('GET', 'http://krithiskkv.imad.hasura-app.io/getbgimg/' + articleName, true);
-initrequest.send(null);*/
-
-
-
 var articleName = window.location.pathname.split('/')[2];
 // request the server for the current value of Likes counter and render the response 
 var initrequest = new XMLHttpRequest();
