@@ -304,7 +304,7 @@ app.post('/submit-cmnt/:articleName', function(req, res) {
     
     var commentData = {'comment' : comment, 'user_name': username, 'date': datestring};
     commentsData.unshift(commentData);
-    pool.query("SELECT id FROM article WHERE articlename = $1" , [req.params.articleName], function(err,result) {
+    pool.query("SELECT id , cmntcnt FROM article WHERE articlename = $1" , [req.params.articleName], function(err,result) {
         if (err) {
            res.status(500).send(err.toString()); }
         else {
@@ -312,13 +312,22 @@ app.post('/submit-cmnt/:articleName', function(req, res) {
                 res.status(404).send('Article not found'); }
             else {
                 var articleid = result.rows[0].id;
-                pool.query("INSERT INTO comment (article_id, comment, date, time, user_name) VALUES ($1, $2, $3, $4, $5)", [articleid, comment, datestring, timestring, username], function(err,result) 
-                {
-                    if (err) { 
-                        res.status(500).send(err.toString());  }
-                    else { 
-                        res.send(JSON.stringify(commentsData));
-                }
+                var cmntcnt   = result.rows[0].cmntcnt + 1;
+                pool.query("UPDATE article SET cmntcnt = $2 WHERE articlename = $1" , [articleid, cmntcnt], function(err,result) {
+                    if (err) {
+                       res.status(500).send(err.toString()); }
+                    else {
+                        if (result.rows.length === 0) {
+                            res.status(404).send('Comments Update failed'); }
+                        else {
+                            pool.query("INSERT INTO comment (article_id, comment, date, time, user_name) VALUES ($1, $2, $3, $4, $5)", [articleid, comment, datestring, timestring, username], function(err,result) {
+                                if (err) { 
+                                    res.status(500).send(err.toString());  }
+                                else { 
+                                    res.send(JSON.stringify(commentsData)); }
+                            }
+                        }
+                    }
                 });
             }
         }
