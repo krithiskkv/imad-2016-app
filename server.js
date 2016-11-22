@@ -318,16 +318,12 @@ app.post('/submit-cmnt/:articleName', function(req, res) {
                     if (err) {
                        res.status(500).send(err.toString()); }
                     else {
-                        if (result.rows.length === 0) {
-                            res.status(404).send('Comments Update failed'); }
-                        else {
                             pool.query("INSERT INTO comment (article_id, comment, date, time, user_name) VALUES ($1, $2, $3, $4, $5)", [articleid, comment, datestring, timestring, username], function(err,result) {
                                 if (err) { 
                                     res.status(500).send(err.toString());  }
                                 else { 
                                     res.send(JSON.stringify(commentsData)); }
                             });
-                        }
                     }
                 });
             }
