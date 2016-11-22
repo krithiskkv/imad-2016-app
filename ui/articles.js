@@ -83,8 +83,11 @@ checkrequest.onreadystatechange = function() {
                             }
                             var ul = document.getElementById('commlist');
                             ul.innerHTML = list;
+                            var cmntlink = document.getElementById('cmntlink');
+                            var cmntstring = commentsData[0].cmntcnt + ' comments';
+                            cmntlink.innerHTML = cmntstring;
                             }
-                        }
+                        } 
                     };
                     request.open('POST', 'http://krithiskkv.imad.hasura-app.io/submit-cmnt/' + articleName, true);
                     request.setRequestHeader('Content-Type','application/json');
