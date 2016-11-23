@@ -91,6 +91,7 @@ function createTemplate (data) {
                 <div id="comments">  
                     <hr/>
                     <a href="#top"> Go To Top </a>
+                    <br>
                     <h3> Comments </h3>
                     <div id="cmntInput"></div>
                     <ul id="commlist" style="width:750; height:250; overflow:auto"> </ul>
