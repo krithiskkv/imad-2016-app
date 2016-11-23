@@ -67,7 +67,7 @@ function createTemplate (data) {
                         </ul>           
                     </div>                
             </div>
-            <img src=${bgimage} style=width:1200px;height:300px></img>
+            <img src=${bgimage} style=width:1250px;height:300px></img>
             <div class="container">
                 <h3 id="heading" class="center">
                     ${heading}
