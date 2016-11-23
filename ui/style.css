@@ -7,9 +7,9 @@ body {
 
 
 .container {    
-                max-width: 1500px;
+                max-width: 800px;
                 margin: 0 auto;
-                color: light-green;
+                color: blue;
                 font-family: calibri; 
                 font-size: large;
                 padding-top: 20px;
