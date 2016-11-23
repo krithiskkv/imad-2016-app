@@ -88,9 +88,8 @@ function createTemplate (data) {
                 <div>
                     ${content}
                 </div>
-                <hr/>
                 <div id="comments">  
-                    <br/>
+                    <hr/>
                     <h3> Comments </h3>
                     <div id="cmntInput"></div>
                     <ul id="commlist" style="width:750; height:250; overflow:auto"> </ul>
