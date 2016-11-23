@@ -145,9 +145,17 @@ function buildLogin() {
     };
 }
 
+function escapeHTML (text)
+{
+    var $text = document.createTextNode(text);
+    var $div = document.createElement('div');
+    $div.appendChild($text);
+    return $div.innerHTML;
+}
+
 function buildLogout(username) { 
     var loginbtn = document.getElementById('loginbtn');
-    loginbtn.innerHTML = 'Hi, ' + username + '<small>▼</small>';
+    loginbtn.innerHTML = 'Hi, ' + escapeHTML(username) + '<small>▼</small>';
     var loginarea = document.getElementById('loginarea');
     loginarea.innerHTML = '<a href="/logout">Logout</a>';
 }
