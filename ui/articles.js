@@ -29,7 +29,7 @@ initcommrequest.onreadystatechange = function () {
         var commentsData = JSON.parse(this.responseText);
         var list = '';
         for (var i=0;i<commentsData.length;i++) {
-          list += '<li>' + escapeHTML(commentsData[i].comment) + '</li>' + '<span>' + ' by ' + commentsData[i].user_name + ' on ' + commentsData[i].date.split('T')[0] + '</span>';
+          list += '<li>' + escapeHTML(commentsData[i].comment) + '</li>' + '<span>' + ' by ' + escapeHTML(commentsData[i].user_name) + ' on ' + commentsData[i].date.split('T')[0] + '</span>';
         }
         var ul = document.getElementById('commlist');
         ul.innerHTML = list;
