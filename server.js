@@ -45,7 +45,7 @@ function createTemplate (data) {
             <link href="/ui/style.css" rel="stylesheet" />
         </head>
         <body>
-            <h3 id="heading">Krithika's BlogApp</h3>
+            <h3 id="top">Krithika's BlogApp</h3>
             <div id="header"> 
                     <div id="articles">
                         <ul id="nav-bar">
@@ -90,6 +90,7 @@ function createTemplate (data) {
                 </div>
                 <div id="comments">  
                     <hr/>
+                    <a href="#top"> Go To Top </href>
                     <h3> Comments </h3>
                     <div id="cmntInput"></div>
                     <ul id="commlist" style="width:750; height:250; overflow:auto"> </ul>
