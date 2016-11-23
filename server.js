@@ -44,7 +44,7 @@ function createTemplate (data) {
             <meta name = "viewport" content = "width=device-width, initial-scale=1" />
             <link href="/ui/style.css" rel="stylesheet" />
         </head>
-        <body background=${bgimage}>
+        <body>
             <h3 id="heading">Krithika's BlogApp</h3>
             <div id="header"> 
                     <div id="articles">
@@ -66,7 +66,8 @@ function createTemplate (data) {
                             </li>
                         </ul>           
                     </div>                
-            </div> 
+            </div>
+            <img src=${bgimage} style=width:750px;height:300px>
             <div class="container">
                 <h3 id="heading">
                     ${heading}
