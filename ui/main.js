@@ -93,8 +93,8 @@ function buildLogin() {
                 if (request.readyState === XMLHttpRequest.DONE) {
                     if (request.status === 200) {
                         alert('Login successful');
-                        location.reload(false);
                         buildLogout(username);
+                        location.reload(false);
                     }
                     else if (request.status === 403) {
                             alert('Username/password does not exist');
