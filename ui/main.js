@@ -98,7 +98,7 @@ function buildLogin() {
                         alert('Login successful');
                         buildLogout(username);
                         if (window.location.pathname.split('/')[1] === 'articles') {
-                            var username = this.responseText;
+                          //  var username = this.responseText;
                             var cmntarea = `
                                 Write a comment...
                                 <br/>
@@ -142,6 +142,7 @@ function buildLogin() {
                                 }
                             };
                         }
+                    }
                     else if (request.status === 403) {
                             alert('Username/password does not exist');
                             document.getElementById('username').value = '';
