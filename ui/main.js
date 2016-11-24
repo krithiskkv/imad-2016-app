@@ -88,7 +88,7 @@ function buildLogin() {
         var request = new XMLHttpRequest();
         var username = document.getElementById('username').value;
         var password = document.getElementById('password').value;
-        if (username > ' ' || password > ' ') {
+        if (username.trim.length() > 0 && password.trim.length() > 0) {
             request.onreadystatechange = function() {
                 if (request.readyState === XMLHttpRequest.DONE) {
                     if (request.status === 200) {
