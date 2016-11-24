@@ -194,6 +194,15 @@ app.get('/ui/like.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'like.png'));
 });
 
+
+app.get('/ui/gmail.png', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'gmail.png'));
+});
+
+app.get('/ui/linkedin.png', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'linkedin.png'));
+});
+
 app.get('/ui/comments.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'comments.png'));
 });
