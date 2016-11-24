@@ -1,5 +1,6 @@
 //as soon as the home page is loaded check to see if the user is logged in and build login/logout area accodingly
 checkLogin();
+window.location.reload(true);
 loadPersArticles();
 loadProfArticles();
 
@@ -94,7 +95,6 @@ function buildLogin() {
                     if (request.status === 200) {
                         alert('Login successful');
                         buildLogout(username);
-                        location.reload(true);
                     }
                     else if (request.status === 403) {
                             alert('Username/password does not exist');
