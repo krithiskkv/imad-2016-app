@@ -195,8 +195,8 @@ app.get('/ui/like.png', function (req, res) {
 });
 
 
-app.get('/ui/gmail.png', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'gmail.png'));
+app.get('/ui/Gmail.png', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'Gmail.png'));
 });
 
 app.get('/ui/linkedin.png', function (req, res) {
