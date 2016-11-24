@@ -93,7 +93,7 @@ function buildLogin() {
                 if (request.readyState === XMLHttpRequest.DONE) {
                     if (request.status === 200) {
                         alert('Login successful');
-                        location.reload();
+                        location.reload(false);
                         buildLogout(username);
                     }
                     else if (request.status === 403) {
