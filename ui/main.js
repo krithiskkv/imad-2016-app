@@ -94,7 +94,7 @@ function buildLogin() {
                     if (request.status === 200) {
                         alert('Login successful');
                         buildLogout(username);
-                        location.reload(false);
+                        location.reload(true);
                     }
                     else if (request.status === 403) {
                             alert('Username/password does not exist');
@@ -157,7 +157,7 @@ function buildLogout(username) {
     var loginbtn = document.getElementById('loginbtn');
     loginbtn.innerHTML = 'Hi, ' + escapeHTML(username) + '<small>▼</small>';
     var loginarea = document.getElementById('loginarea');
-    loginarea.innerHTML = '<a href="/logout" onclick="window.location.reload(false);">Logout</a>';
+    loginarea.innerHTML = '<a href="/logout">Logout</a>';
 }
 
 
