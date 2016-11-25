@@ -97,51 +97,14 @@ function buildLogin() {
                     if (request.status === 200) {
                         alert('Login successful');
                         buildLogout(username);
-                        if (window.location.pathname.split('/')[1] === 'articles') {
-                          //  var username = this.responseText;
-                            var cmntarea = `
-                                Write a comment...
-                                <br/>
-                                <textarea rows="2" cols="50" class="scrollabletextbox" id="comment" name="comments" ></textarea>
-                                <br/>
-                                <input type="submit" id="submit_btn" value="Submit"> </input>`;
-                            document.getElementById('cmntInput').innerHTML = cmntarea;
-                            document.getElementById('comment').addEventListener("keyup",function(event) {
-                                if (event.keyCode == 13 ) {
-                                event.preventDefault();
-                                document.getElementById('submit_btn').click();
-                                }
-                            });
-                            //on clicking Submit button, add the text in the comment box to the database and display the updated comments list 
-                            var submit = document.getElementById('submit_btn');
-                            submit.onclick = function() {
-                                var commInput = document.getElementById('comment');
-                                var comment = commInput.value;
-                                if (comment > " ") {
-                                    var request = new XMLHttpRequest();
-                                    request.onreadystatechange = function () {
-                                        if (request.readyState === XMLHttpRequest.DONE) {
-                                        if (request.status === 200) {
-                                            var commentsData = JSON.parse(this.responseText);
-                                            var list = '';
-                                            for (var i=0;i<commentsData.length;i++) {
-                                              list += '<li>' + escapeHTML(commentsData[i].comment) + '</li>' + '<small>' + '-- ' + escapeHTML(commentsData[i].user_name) + ' ' + commentsData[i].date.split('T')[0] + '</small>';
-                                            }
-                                            var ul = document.getElementById('commlist');
-                                            ul.innerHTML = list;
-                                            var cmntlink = document.getElementById('cmntlink');
-                                            var cmntstring = commentsData[0].cmntcnt + ' comments';
-                                            cmntlink.innerHTML = cmntstring;
-                                            }
-                                        } 
-                                    };
-                                    request.open('POST', 'http://krithiskkv.imad.hasura-app.io/submit-cmnt/' + articleName, true);
-                                    request.setRequestHeader('Content-Type','application/json');
-                                    request.send(JSON.stringify({comment : comment, username : username}));
-                                    document.getElementById('comment').value="";
-                                }
-                            };
-                        }
+                        switch (window.location.pathname.split('/')[1]){
+                            case 'articles':
+                               buildsubcmnt();
+                               break;
+                            case 'post-article':
+                               buildpostart();
+                               break;
+                        } 
                     }
                     else if (request.status === 403) {
                             alert('Username/password does not exist');
@@ -190,6 +153,55 @@ function buildLogin() {
             alert('Username/password cannot be blank');
         }
     };
+}
+
+function buildsubcmnt() {
+    var cmntarea = `
+                    Write a comment...
+                    <br/>
+                    <textarea rows="2" cols="50" class="scrollabletextbox" id="comment" name="comments" ></textarea>
+                    <br/>
+                <input type="submit" id="submit_btn" value="Submit"> </input>`;
+    document.getElementById('cmntInput').innerHTML = cmntarea;
+    document.getElementById('comment').addEventListener("keyup",function(event) {
+        if (event.keyCode == 13 ) {
+        event.preventDefault();
+        document.getElementById('submit_btn').click();
+        }
+    });
+    //on clicking Submit button, add the text in the comment box to the database and display the updated comments list 
+    var submit = document.getElementById('submit_btn');
+    submit.onclick = function() {
+        var commInput = document.getElementById('comment');
+        var comment = commInput.value;
+        if (comment > " ") {
+            var request = new XMLHttpRequest();
+            request.onreadystatechange = function () {
+                if (request.readyState === XMLHttpRequest.DONE) {
+                if (request.status === 200) {
+                    var commentsData = JSON.parse(this.responseText);
+                    var list = '';
+                    for (var i=0;i<commentsData.length;i++) {
+                      list += '<li>' + escapeHTML(commentsData[i].comment) + '</li>' + '<small>' + '-- ' + escapeHTML(commentsData[i].user_name) + ' ' + commentsData[i].date.split('T')[0] + '</small>';
+                    }
+                    var ul = document.getElementById('commlist');
+                    ul.innerHTML = list;
+                    var cmntlink = document.getElementById('cmntlink');
+                    var cmntstring = commentsData[0].cmntcnt + ' comments';
+                    cmntlink.innerHTML = cmntstring;
+                    }
+                } 
+            };
+            request.open('POST', 'http://krithiskkv.imad.hasura-app.io/submit-cmnt/' + articleName, true);
+            request.setRequestHeader('Content-Type','application/json');
+            request.send(JSON.stringify({comment : comment, username : username}));
+            document.getElementById('comment').value="";
+        }
+    };
+}
+
+function buildpostart() {
+    
 }
 
 function escapeHTML (text)
