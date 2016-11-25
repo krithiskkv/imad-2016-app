@@ -5,50 +5,35 @@
     </head>
     <body link="white" vlink="red" background="/ui/office.jpg">
         <div class="container">
-            <h3 id="heading">Krithika's BlogApp</h3>
+            <center> <h3 id="heading">Krithika's BlogApp</h3> </center>
             <div id="header"> 
                     <div id="articles">
                         <ul id="nav-bar">
                             <li class="dropdown"> 
                                 <a href="/" >Home</a>  
                             </li>
-                            <li class="dropdown"> 
-                                <a href="#" class="dropbtn">Personal Interests</a>  
-                                <div id="PersList" class="dropdown-content"></div>
-                            </li>
-                            <li class="dropdown"> 
-                                <a href="#" class="dropbtn">Professional Interests</a>  
-                                <div id ="ProfList" class="dropdown-content"></div>
-                            </li>
-                            <li id="post_btn" class="dropdown"> 
-                                <a href="#">Post An Article</a> 
-                            </li>
-                            <li class="dropdown" id="login"> 
-                                <a href="#" class="dropbtn" id="loginbtn"></a>  
-                                <div id ="loginarea" class="dropdown-content"></div>
-                            </li>
                         </ul>           
                 </div>                
                               
             </div>   
             <div id="main-text">
-                Enter Short Name of Article:
+                Enter Short Name of Article   :
                 <input type=text placeholder="ShortName" /> 
                 <br/> 
-                Enter Heading of Article:
+                Enter Heading of Article      :
                 <input type=text placeholder="Heading" /> 
                 <br/> 
-                Enter Tab Title of Article:
+                Enter Tab Title of Article    :
                 <input type=text placeholder="Tab Title" /> 
-                <br/> 
-                Enter Text of Article:
-                <input type=text placeholder="Text Content" /> 
                 <br/> 
                 Enter Link to Image of Article:
                 <input type=text placeholder="Image Link" /> 
+                <br/>
+                Enter Text of Article         :
+                <textarea rows="20" cols="200" class="scrollabletextbox" id="content" name="article" ></textarea> 
                 <br/> 
                 <br/>
-                <textarea rows="20" cols="200" class="scrollabletextbox" id="content" name="article" ></textarea>
+                <input type="submit" id="post_btn" value="Submit Article" /> 
             </div>
            
             <hr/>           
