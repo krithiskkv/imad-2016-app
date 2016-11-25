@@ -356,14 +356,14 @@ app.post('/submit-cmnt/:articleName', function(req, res) {
                             });
                     }
                 });
-            }
+            } 
         }
     });
 });
 
 //get the list of all articles in a particular category
 app.get('/get-articles/:category', function (req, res) {
-      pool.query("SELECT * FROM article WHERE category=$1 ORDER BY date DESC", [req.params.category], function(err,result) {
+      pool.query("SELECT * FROM article WHERE category=$1 AND aprv_ind = TRUE ORDER BY date DESC", [req.params.category], function(err,result) {
         if (err) {
            res.status(500).send(err.toString());
         } else {
