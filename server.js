@@ -60,8 +60,8 @@ function createTemplate (data) {
                                 <a href="#" class="dropbtn">Professional Interests</a>  
                                 <div id ="ProfList" class="dropdown-content"></div>
                             </li>
-                            <li id="post_btn"> 
-                                <a href="/post-article">Post An Article</a> 
+                            <li id="post_btn" class="dropdown"> 
+                                <a href="#">Post An Article</a> 
                             </li>
                             <li class="dropdown" id="login"> 
                                 <a href="#" class="dropbtn" id="loginbtn">            </a>  
