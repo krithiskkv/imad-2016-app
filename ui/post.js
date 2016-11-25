@@ -13,22 +13,21 @@ submit.onclick = function() {
         request.onreadystatechange = function () {
             if (request.readyState === XMLHttpRequest.DONE) {
             if (request.status === 200) {
-                var commentsData = JSON.parse(this.responseText);
-                var list = '';
-                for (var i=0;i<commentsData.length;i++) {
-                  list += '<li>' + escapeHTML(commentsData[i].comment) + '</li>' + '<small>' + '-- ' + escapeHTML(commentsData[i].user_name) + ' ' + commentsData[i].date.split('T')[0] + '</small>';
+                alert('Article data recorded successfully, will be posted after approval');
+                document.getElementById('heading').value    = '';
+                document.getElementById('title').value      = '';
+                document.getElementById('shortname').value  = '';
+                document.getElementById('category').value   = '';
+                document.getElementById('content').value    = '';
                 }
-                var ul = document.getElementById('commlist');
-                ul.innerHTML = list;
-                var cmntlink = document.getElementById('cmntlink');
-                var cmntstring = commentsData[0].cmntcnt + ' comments';
-                cmntlink.innerHTML = cmntstring;
-                }
-            } 
+            }
+            else if (request.status === 500) {
+                alert('Sorry, something went wrong. Try again');
+            }
         };
-        request.open('POST', 'http://krithiskkv.imad.hasura-app.io/submit-cmnt/' + articleName, true);
+        request.open('POST', 'http://krithiskkv.imad.hasura-app.io/submit-article', true);
         request.setRequestHeader('Content-Type','application/json');
-        request.send(JSON.stringify({comment : comment, username : username}));
-        document.getElementById('comment').value="";
+        request.send(JSON.stringify(articleData));
+        
     }  
 };
