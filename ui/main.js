@@ -3,23 +3,10 @@ checkLogin();
 loadPersArticles();
 loadProfArticles();
 
-var post_btn = document.getElementById('post_btn');
-post_btn.onclick = function() { 
-    var request = new XMLHttpRequest();
-    request.onreadystatechange = function() {
-        if (request.readyState === XMLHttpRequest.DONE) {
-            if (request.status === 200) {
-                
-                }
-            else {
-                alert('Please login to post articles');
-            }
-        }
-    };
-    request.open('GET', 'http://krithiskkv.imad.hasura-app.io/check-login', true);
-    request.send(null);
-    
-};
+function buildpost() {
+    var post_btn = document.getElementById('post_btn');
+    post_btn.innerHTML = '<a href="/post-article">Post An Article</a>';
+}
 
 function checkLogin() {
     var request = new XMLHttpRequest();
@@ -112,6 +99,7 @@ function buildLogin() {
                     if (request.status === 200) {
                         alert('Login successful');
                         buildLogout(username);
+                        buildpost();
                         if (window.location.pathname.split('/')[1] === 'articles'){
                             buildsubcmnt();
                         } 
