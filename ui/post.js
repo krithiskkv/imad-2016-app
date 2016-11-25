@@ -17,10 +17,10 @@ submit.onclick = function() {
             if (request.status === 200) {
                 alert('Article data recorded successfully, will be posted after approval');
                 document.getElementById('heading').value    = '';
-                document. getElementById('title').value      = '';
+                document.getElementById('title').value      = '';
                 document.getElementById('shortname').value  = '';
                 document.getElementById('category').value   = '';
-                document.getElementById('content').value    = '';
+                document.getElementById('imglink').value    = '';
                 }
             }
             else if (request.status === 500) {
