@@ -60,6 +60,9 @@ function createTemplate (data) {
                                 <a href="#" class="dropbtn">Professional Interests</a>  
                                 <div id ="ProfList" class="dropdown-content"></div>
                             </li>
+                            <li class="dropdown"> 
+                                <a href="/post-article">Post An Article</a> 
+                            </li>
                             <li class="dropdown" id="login"> 
                                 <a href="#" class="dropbtn" id="loginbtn">            </a>  
                                 <div id ="loginarea" class="dropdown-content"></div>
@@ -117,6 +120,12 @@ function hash(input, salt) {
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
+
+//page for posting new article 
+app.get('/post-article', function (req, res) {
+    res.sendFile(path.join(__dirname,'ui', 'postarticle.html'));
+});
+
 
 app.get('/hash/:input', function(req, res) {
     var hashedString = hash(req.params.input, 'random-string' );
@@ -349,6 +358,7 @@ app.post('/submit-cmnt/:articleName', function(req, res) {
     });
 });
 
+//get the list of all articles in a particular category
 app.get('/get-articles/:category', function (req, res) {
       pool.query("SELECT * FROM article WHERE category=$1 ORDER BY date DESC", [req.params.category], function(err,result) {
         if (err) {
@@ -363,6 +373,17 @@ app.get('/get-articles/:category', function (req, res) {
      }); 
 });
 
+//insert new article data into database
+app.post('/submit-article', function (req, res) {
+    pool.query("INSERT INTO article (title, content, author_id, authorname, category, articlename, heading, date, bgimage) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)", [req.body.title, req.body.content, id, req.body.authorname, req.body.category, req.body.articlename, req.body.heading, req.body.date, req.body.bgimage], function(err,result) {
+        if (err) {
+           res.status(500).send(err.toString());
+        } else 
+        {
+            res.send('Article data recorded successfully and will be posted after approval');
+        }
+    }); 
+});
 
 //select data needed to build the page requested from the database and render it using the createTemplate function
 app.get('/articles/:articleName', function (req, res) {
