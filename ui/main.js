@@ -14,6 +14,7 @@ function checkLogin() {
         if (request.readyState === XMLHttpRequest.DONE) {
             if (request.status === 200) {
                 buildLogout(this.responseText);
+                buildpost();
                 }
             else {
                 buildLogin();
