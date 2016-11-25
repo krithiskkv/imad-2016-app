@@ -5,10 +5,12 @@ submit.onclick = function() {
     var shortname = document.getElementById('shortname').value.trim();
     var category  = document.getElementById('category').value.trim();
     var content   = document.getElementById('content').value.trim();
+    var imglink   = document.getElementById('imglink').value.trim();
     
     if (heading === '' || title === '' || shortname === '' || category === '' || content === '') {
         alert('*Required fields cannot be blank'); }
     else {
+        var articleData = {'heading': heading, 'title': title, 'shortname': shortname, 'category': category, 'content': content, 'imglink': imglink}; 
         var request = new XMLHttpRequest();
         request.onreadystatechange = function () {
             if (request.readyState === XMLHttpRequest.DONE) {
