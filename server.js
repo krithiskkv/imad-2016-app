@@ -378,7 +378,7 @@ app.get('/get-articles/:category', function (req, res) {
 
 //insert new article data into database
 app.post('/submit-article', function (req, res) {
-    pool.query("INSERT INTO article (title, content, author_id, authorname, category, articlename, heading, date, bgimage) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)", [req.body.title, req.body.content, id, req.body.authorname, req.body.category, req.body.articlename, req.body.heading, req.body.date, req.body.bgimage], function(err,result) {
+    pool.query("INSERT INTO article (title, content, author_id, authorname, category, articlename, heading, date, bgimage) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)", [req.body.title, req.body.content, id, req.body.authorname, req.body.category, req.body.shortname, req.body.heading, req.body.date, req.body.imglink], function(err,result) {
         if (err) {
            res.status(500).send(err.toString());
         } else 
