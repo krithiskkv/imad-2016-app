@@ -1,12 +1,12 @@
 var submit = document.getElementById('subarticle_btn');
 submit.onclick = function() {
     var request = new XMLHttpRequest();
-    var heading   = document.getElementById('heading').value;
-    var title     = document.getElementById('title').value;
-    var shortname = document.getElementById('shortname').value;
-    var category  = document.getElementById('category').value;
-    var content   = document.getElementById('content').value;
-    var imglink   = document.getElementById('imglink').value;
+    var heading   = document.getElementById("heading").value;
+    var title     = document.getElementById("title").value;
+    var shortname = document.getElementById("shortname").value;
+    var category  = document.getElementById("category").value;
+    var content   = document.getElementById("content").value;
+    var imglink   = document.getElementById("imglink").value;
     
     console.log(heading);
     
