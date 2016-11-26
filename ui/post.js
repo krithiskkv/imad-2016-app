@@ -1,5 +1,6 @@
 var submit = document.getElementById('subarticle_btn');
 submit.onclick = function() {
+    var request = new XMLHttpRequest();
     var heading   = document.getElementById('heading').value;
     var title     = document.getElementById('title').value;
     var shortname = document.getElementById('shortname').value;
@@ -19,7 +20,7 @@ submit.onclick = function() {
         imglink = imglink.trim();
         
         var articleData = {'heading': heading, 'title': title, 'shortname': shortname, 'category': category, 'content': content, 'imglink': imglink}; 
-        var request = new XMLHttpRequest();
+        
         request.onreadystatechange = function () {
             if (request.readyState === XMLHttpRequest.DONE) {
             if (request.status === 200) {
