@@ -312,24 +312,25 @@ app.get('/initcmnt/:articleName', function(req, res) {
 
 // /submit-cmnt adds the new comment into the comment list and comment table
 
+var date = new Date();
+var yyyy = date.getFullYear().toString();
+var mm = (date.getMonth()+1).toString();
+var dd  = date.getDate().toString();
+
+var mmChars = mm.split('');
+var ddChars = dd.split('');
+
+var formatdate= yyyy + '-' + (mmChars[1]?mm:"0"+mmChars[0]) + '-' + (ddChars[1]?dd:"0"+ddChars[0]);
+
+var time = (("0" + date.getHours()).slice(-2)   + ":" + 
+            ("0" + date.getMinutes()).slice(-2) + ":" + 
+            ("0" + date.getSeconds()).slice(-2));
+var datestring = formatdate.toString();
+var timestring = time.toString();
+
 app.post('/submit-cmnt/:articleName', function(req, res) {
     var comment = req.body.comment; 
     var username = req.body.username;
-    var date = new Date();
-    var yyyy = date.getFullYear().toString();
-    var mm = (date.getMonth()+1).toString();
-    var dd  = date.getDate().toString();
-
-    var mmChars = mm.split('');
-    var ddChars = dd.split('');
-
-    var formatdate= yyyy + '-' + (mmChars[1]?mm:"0"+mmChars[0]) + '-' + (ddChars[1]?dd:"0"+ddChars[0]);
-
-    var time = (("0" + date.getHours()).slice(-2)   + ":" + 
-                ("0" + date.getMinutes()).slice(-2) + ":" + 
-                ("0" + date.getSeconds()).slice(-2));
-    var datestring = formatdate.toString();
-    var timestring = time.toString();
     
     var updtcmntcnt = 0;
     
@@ -378,13 +379,14 @@ app.get('/get-articles/:category', function (req, res) {
 
 //insert new article data into database
 app.post('/submit-article', function (req, res) {
-    pool.query("INSERT INTO article (title, content, author_id, authorname, category, articlename, heading, date, bgimage) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)", [req.body.title, req.body.content, id, req.body.authorname, req.body.category, req.body.shortname, req.body.heading, req.body.date, req.body.imglink], function(err,result) {
-        if (err) {
-           res.status(500).send(err.toString());
-        } else 
-        {
-            res.send('Article data recorded successfully and will be posted after approval');
-        }
+    if (req.body.imglink.trim() === '') {req.body.imglink = '/ui/defaultimg.png';}  
+    pool.query("INSERT INTO article (title, content, author_id, authorname, category, articlename, heading, date, bgimage) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)", [req.body.title, req.body.content, req.session.auth.userId, req.body.authorname, req.body.category, req.body.shortname, req.body.heading, datestring, req.body.imglink], function(err,result) {
+            if (err) {
+               res.status(500).send(err.toString());
+            } else 
+            {
+                res.send('Article data recorded successfully and will be posted after approval');
+            }
     }); 
 });
 
