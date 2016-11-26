@@ -7,7 +7,7 @@ submit.onclick = function() {
     var content   = document.getElementById('content').value;
     var imglink   = document.getElementById('imglink').value;
     
-    if (heading.trim() === '' || title.trim() === '' || shortname.trim() === '' || category.trim() === '' || content.trim() === '') {
+    if (heading.trim().length === 0 || title.trim().length === 0 || shortname.trim().length === 0 || category.trim().length === 0 || content.trim().length === 0) {
         alert('*Required fields cannot be blank'); }
     else {
         
