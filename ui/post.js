@@ -7,16 +7,17 @@ submit.onclick = function() {
     var content   = document.getElementById('content').value;
     var imglink   = document.getElementById('imglink').value;
     
-    heading = heading.trim();
-    title   = title.trim();
-    shortname = shortname.trim();
-    category = category.trim();
-    content = content.trim();
-    imglink = imglink.trim();
-    
-    if (heading === '' || title === '' || shortname === '' || category === '' || content === '') {
+    if (heading.trim() === '' || title.trim() === '' || shortname.trim() === '' || category.trim() === '' || content.trim() === '') {
         alert('*Required fields cannot be blank'); }
     else {
+        
+        heading = heading.trim();
+        title   = title.trim();
+        shortname = shortname.trim();
+        category = category.trim();
+        content = content.trim();
+        imglink = imglink.trim();
+        
         var articleData = {'heading': heading, 'title': title, 'shortname': shortname, 'category': category, 'content': content, 'imglink': imglink}; 
         var request = new XMLHttpRequest();
         request.onreadystatechange = function () {
