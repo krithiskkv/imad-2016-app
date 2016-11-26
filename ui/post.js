@@ -1,25 +1,23 @@
 var submit = document.getElementById('subarticle_btn');
 submit.onclick = function() {
     var request = new XMLHttpRequest();
-    var heading   = document.getElementById("artheading").value;
-    var title     = document.getElementById("arttitle").value;
-    var shortname = document.getElementById("artshortname").value;
-    var category  = document.getElementById("artcategory").value;
-    var content   = document.getElementById("artcontent").value;
-    var imglink   = document.getElementById("artimglink").value;
+    var heading   = document.getElementById("artheading").value.trim();
+    var title     = document.getElementById("arttitle").value.trim();
+    var shortname = document.getElementById("artshortname").value.trim();
+    var category  = document.getElementById("artcategory").value.trim();
+    var content   = document.getElementById("artcontent").value.trim();
+    var imglink   = document.getElementById("artimglink").value.trim();
     
-    console.log(heading);
-    
-    if (heading.trim().length === 0 || title.trim().length === 0 || shortname.trim().length === 0 || category.trim().length === 0 || content.trim().length === 0) {
+    if (heading.length === 0 || title.length === 0 || shortname.length === 0 || category.length === 0 || content.length === 0) {
         alert('*Required fields cannot be blank'); }
     else {
         
-        heading = heading.trim();
+        /*heading = heading.trim();
         title   = title.trim();
         shortname = shortname.trim();
         category = category.trim();
         content = content.trim();
-        imglink = imglink.trim();
+        imglink = imglink.trim();*/
         
         var articleData = {'heading': heading, 'title': title, 'shortname': shortname, 'category': category, 'content': content, 'imglink': imglink}; 
         
