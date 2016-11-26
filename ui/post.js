@@ -1,7 +1,7 @@
 var submit = document.getElementById('subarticle_btn');
 submit.onclick = function() {
     var request = new XMLHttpRequest();
-    var heading   = document.getElementById("artheading");
+    var heading   = document.getElementById("artheading").value;
     var title     = document.getElementById("title").value;
     var shortname = document.getElementById("shortname").value;
     var category  = document.getElementById("category").value;
