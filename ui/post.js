@@ -2,11 +2,11 @@ var submit = document.getElementById('subarticle_btn');
 submit.onclick = function() {
     var request = new XMLHttpRequest();
     var heading   = document.getElementById("artheading").value;
-    var title     = document.getElementById("title").value;
-    var shortname = document.getElementById("shortname").value;
-    var category  = document.getElementById("category").value;
-    var content   = document.getElementById("content").value;
-    var imglink   = document.getElementById("imglink").value;
+    var title     = document.getElementById("arttitle").value;
+    var shortname = document.getElementById("artshortname").value;
+    var category  = document.getElementById("artcategory").value;
+    var content   = document.getElementById("artcontent").value;
+    var imglink   = document.getElementById("artimglink").value;
     
     console.log(heading);
     
@@ -27,11 +27,12 @@ submit.onclick = function() {
             if (request.readyState === XMLHttpRequest.DONE) {
             if (request.status === 200) {
                 alert('Article data recorded successfully, will be posted after approval');
-                document.getElementById('heading').value    = '';
-                document.getElementById('title').value      = '';
-                document.getElementById('shortname').value  = '';
-                document.getElementById('category').value   = '';
-                document.getElementById('imglink').value    = '';
+                document.getElementById('artheading').value    = '';
+                document.getElementById('arttitle').value      = '';
+                document.getElementById('artshortname').value  = '';
+                document.getElementById('artcategory').value   = '';
+                document.getElementById('artimglink').value    = '';
+                document.getElementById('artcontent').value    = '';
                 }
             }
             else if (request.status === 500) {
