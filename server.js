@@ -260,6 +260,15 @@ app.get('/ui/ocjp6.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'ocjp6.png'));
 });
 
+app.get('/ui/defaultimg.png', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'defaultimg.png'));
+});
+
+app.get('/ui/submit.png', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'submit.png'));
+});
+
+
 // /initcounter/articleName obtains the current Likes counter for an article 
 
 var counter = 0;
