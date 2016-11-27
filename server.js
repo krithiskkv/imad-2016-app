@@ -235,8 +235,8 @@ app.get('/ui/articles.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'articles.js'));
 });
 
-app.get('/ui/background.jpg', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'background.jpg'));
+app.get('/ui/background.png', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'background.png'));
 });
 
 
