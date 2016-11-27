@@ -268,6 +268,9 @@ app.get('/ui/submit.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'submit.png'));
 });
 
+app.get('/ui/resort.png', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'resort.png'));
+});
 
 // /initcounter/articleName obtains the current Likes counter for an article 
 
