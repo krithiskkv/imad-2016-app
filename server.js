@@ -38,19 +38,19 @@ function escapeHTML (text)
 
 function createTemplate (data) {
 
-    var title = escapeHTML(data.title);
-    var heading = escapeHTML(data.heading);
+    var title = data.title;
+    var heading = data.heading;
     var date = data.date;
-    var content = escapeHTML(data.content);
+    var content = data.content;
     var count = 0;
-    var bgimage = escapeHTML(data.bgimage);
-    var authorname = escapeHTML(data.authorname);
+    var bgimage = data.bgimage;
+    var authorname = data.authorname;
     var cmntcnt = data.cmntcnt;
     
     var htmlTemplate = `<html>
         <head>
             <title>
-                ${title} 
+                ${escapeHTML(title)} 
             </title>
             <meta name = "viewport" content = "width=device-width, initial-scale=1" />
             <link href="/ui/style.css" rel="stylesheet" />
@@ -80,13 +80,13 @@ function createTemplate (data) {
                         </ul>           
                     </div>                
             </div>
-            <img src=${bgimage} style=width:1250px;height:300px></img>
+            <img src=${escapeHTML(bgimage)} style=width:1250px;height:300px></img>
             <div class="container">
                 <h3 id="heading" >
-                    ${heading}
+                    ${escapeHTML(heading)}
                 </h3>
                 <div>
-                    by  ${authorname}
+                    by  ${escapeHTML(authorname)}
                 </div>            
                 <div>
                     ${date.toDateString()}
@@ -104,7 +104,7 @@ function createTemplate (data) {
                     <a id="cmntlink" href="#comments"> ${cmntcnt} comments </a>
                 </div>
                 <div>
-                    ${content}
+                    ${escapeHTML(content)}
                 </div>
                 <div id="comments">  
                     <hr/>
