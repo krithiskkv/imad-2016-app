@@ -28,13 +28,13 @@ app.use(session({
 
 function createTemplate (data) {
 
-    var title = data.title;
-    var heading = data.heading;
-    var date = data.date;
-    var content = data.content;
+    var title = '"' + data.title + '"';
+    var heading = '"' +data.heading+ '"';
+    var date = '"' +data.date+ '"';
+    var content = '"' +data.content+ '"';
     var count = 0;
-    var bgimage = data.bgimage;
-    var authorname = data.authorname;
+    var bgimage = '"' +data.bgimage+ '"';
+    var authorname = '"' +data.authorname+ '"';
     var cmntcnt = data.cmntcnt;
     
     var htmlTemplate = `<html>
