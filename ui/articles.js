@@ -15,6 +15,7 @@ artrequest.onreadystatechange = function() {
             var articleData = artrequest.responseText;
             var content_area = document.getElementById('content');
             content_area.innerHTML = escapeHTML(articleData.content);
+            console.log(content_area.innerHTML);
             var title_area = document.getElementById('title');
             title_area.innerHTML = escapeHTML(articleData.title);
             var heading_area = document.getElementById('heading');
