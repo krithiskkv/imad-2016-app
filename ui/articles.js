@@ -7,10 +7,16 @@ function escapeHTML (text)
     $div.appendChild($text);
     return $div.innerHTML;
 }
-
-var content = document.getElementById('content');
-var unsafestr = content.innerHTML;
-content.innerHTML = escapeHTML(unsafestr);
+var content_area = document.getElementById('content');
+content_area.innerHTML = escapeHTML(content);
+var title_area = document.getElementById('title');
+title_area.innerHTML = escapeHTML(title);
+var heading_area = document.getElementById('heading');
+heading_area.innerHTML = escapeHTML(heading);
+var author_area = document.getElementById('author');
+author_area.innerHTML = escapeHTML(author);
+var img_area = document.getElementById('bgimg');
+img_area.innerHTML = escapeHTML(img_area);
 
 // request the server for the current value of Likes counter and render the response 
 var initrequest = new XMLHttpRequest();
