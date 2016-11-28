@@ -93,8 +93,8 @@ function createTemplate (data) {
                     <input id="counter" type="image" src="/ui/comments.png" width="30" height="20">
                     <a id="cmntlink" href="#comments"> ${cmntcnt} comments </a>
                 </div>
-                <div>
-                    <div> '"' ${content} '"' </div>
+                <div id="content">
+                    ${content}
                 </div>
                 <div id="comments">  
                     <hr/>
