@@ -7,6 +7,7 @@ function escapeHTML (text)
     $div.appendChild($text);
     return $div.innerHTML;
 }
+
 var content_area = document.getElementById('content');
 content_area.innerHTML = escapeHTML(content);
 var title_area = document.getElementById('title');
