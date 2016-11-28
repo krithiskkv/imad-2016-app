@@ -129,7 +129,7 @@ app.get('/post-article', function (req, res) {
 });
 
 app.get('/articles/:articleName', function (req, res) {
-    res.sendFile(path.join(__dirname,'ui', 'article.html'));
+    res.sendFile(path.join(__dirname, 'article.html'));
 });
 
 app.get('/hash/:input', function(req, res) {
