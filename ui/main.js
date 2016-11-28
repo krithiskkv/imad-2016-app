@@ -25,14 +25,6 @@ function checkLogin() {
     request.send(null);
 }
 
-function escapeHTML (text)
-{
-    var $text = document.createTextNode(text);
-    var $div = document.createElement('div');
-    $div.appendChild($text);
-    return $div.innerHTML;
-}
-
 function loadPersArticles() {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function () {
