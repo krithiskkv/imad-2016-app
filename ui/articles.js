@@ -17,7 +17,7 @@ heading_area.innerHTML = escapeHTML(heading);
 var author_area = document.getElementById('author');
 author_area.innerHTML = escapeHTML(author);
 var img_area = document.getElementById('bgimg');
-img_area.innerHTML = escapeHTML(img_area);
+img_area.innerHTML = '<img src=${escapeHTML(bgimg)} style=width:1250px;height:300px></img>';
 
 // request the server for the current value of Likes counter and render the response 
 var initrequest = new XMLHttpRequest();
