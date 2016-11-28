@@ -14,15 +14,15 @@ artrequest.onreadystatechange = function() {
         if (artrequest.status === 200) {
             var articleData = artrequest.responseText;
             var content_area = document.getElementById('content');
-            content_area.innerHTML = escapeHTML(content);
+            content_area.innerHTML = escapeHTML(articleData.content);
             var title_area = document.getElementById('title');
-            title_area.innerHTML = escapeHTML(title);
+            title_area.innerHTML = escapeHTML(articleData.title);
             var heading_area = document.getElementById('heading');
-            heading_area.innerHTML = escapeHTML(heading);
+            heading_area.innerHTML = escapeHTML(articleData.heading);
             var author_area = document.getElementById('author');
-            author_area.innerHTML = escapeHTML(author);
+            author_area.innerHTML = escapeHTML(articleData.author);
             var img_area = document.getElementById('bgimg');
-            var bgimage = escapeHTML(bgimg);
+            var bgimage = escapeHTML(articleData.bgimage);
             img_area.innerHTML = '<img src=${bgimage} style=width:1250px;height:300px></img>';
             
         }
