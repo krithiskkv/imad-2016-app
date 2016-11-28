@@ -1,4 +1,17 @@
 var articleName = window.location.pathname.split('/')[2];
+
+function escapeHTML (text)
+{
+    var $text = document.createTextNode(text);
+    var $div = document.createElement('div');
+    $div.appendChild($text);
+    return $div.innerHTML;
+}
+
+var content = document.getElementById('content');
+var unsafestr = content.innerHTML;
+content.innerHTML = escapeHTML(unsafestr);
+
 // request the server for the current value of Likes counter and render the response 
 var initrequest = new XMLHttpRequest();
 initrequest.onreadystatechange = function() {
@@ -13,13 +26,6 @@ initrequest.onreadystatechange = function() {
 initrequest.open('GET', 'http://krithiskkv.imad.hasura-app.io/initcounter/' + articleName, true);
 initrequest.send(null);
 
-function escapeHTML (text)
-{
-    var $text = document.createTextNode(text);
-    var $div = document.createElement('div');
-    $div.appendChild($text);
-    return $div.innerHTML;
-}
 
 // request server for the current comment list and render the comments
 var initcommrequest = new XMLHttpRequest();
