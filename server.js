@@ -24,16 +24,27 @@ app.use(session({
     cookie: { maxAge: 1000 * 60 * 60 * 24 * 30 }
 }));
 
+function escapeHTML (text)
+{
+    var $text = document.createTextNode(text);
+    var $div = document.createElement('div');
+    $div.appendChild($text);
+    return $div.innerHTML;
+}
+
+
 //fuction to create individual pages by injecting data specific to the pages into a template
+
 
 function createTemplate (data) {
 
-    var title = data.title;
-    var heading = data.heading;
+    var title = escapeHTML(data.title);
+    var heading = escapeHTML(data.heading);
     var date = data.date;
-    var content = data.content;
+    var content = escapeHTML(data.content);
     var count = 0;
-    var bgimage = data.bgimage;
+    var bgimage = escapeHTML(data.bgimage);
+    var authorname = escapeHTML(data.authorname);
     var cmntcnt = data.cmntcnt;
     
     var htmlTemplate = `<html>
@@ -71,10 +82,12 @@ function createTemplate (data) {
             </div>
             <img src=${bgimage} style=width:1250px;height:300px></img>
             <div class="container">
-                <h3 id="heading" class="center">
+                <h3 id="heading" >
                     ${heading}
                 </h3>
-            
+                <div>
+                    by  ${authorname}
+                </div>            
                 <div>
                     ${date.toDateString()}
                 </div>
