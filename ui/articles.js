@@ -21,11 +21,12 @@ artrequest.onreadystatechange = function() {
             var heading_area = document.getElementById('heading');
             heading_area.innerHTML = escapeHTML(articleData.heading);
             var author_area = document.getElementById('author');
-            author_area.innerHTML = escapeHTML(articleData.author);
+            author_area.innerHTML = escapeHTML(articleData.authorname);
             var img_area = document.getElementById('img_area');
-            var bgimage = escapeHTML(articleData.bgimage);
-            img_area.innerHTML = '<img src=${bgimage} style=width:1250px;height:300px></img>';
-            
+            var bgimage = articleData.bgimage;
+            var date_area = document.getElementById('date_area');
+            date_area.innerHTML = articleData.date;
+            img_area.innerHTML = '<img src=${bgimagdate}, width:1250px;height:300px></img>';        
         }
     }
 };
