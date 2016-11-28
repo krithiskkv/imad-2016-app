@@ -21,7 +21,7 @@ artrequest.onreadystatechange = function() {
             heading_area.innerHTML = escapeHTML(articleData.heading);
             var author_area = document.getElementById('author');
             author_area.innerHTML = escapeHTML(articleData.author);
-            var img_area = document.getElementById('bgimg');
+            var img_area = document.getElementById('img_area');
             var bgimage = escapeHTML(articleData.bgimage);
             img_area.innerHTML = '<img src=${bgimage} style=width:1250px;height:300px></img>';
             
