@@ -26,7 +26,7 @@ app.use(session({
 
 //fuction to create individual pages by injecting data specific to the pages into a template
 
-function createTemplate (data) {
+/*function createTemplate (data) {
 
     var title       = data.title ;
     var heading     = data.heading;
@@ -37,7 +37,7 @@ function createTemplate (data) {
     var authorname  = data.authorname;
     var cmntcnt     = data.cmntcnt;
     
-    /*var htmlTemplate = `<html>
+    var htmlTemplate = `<html>
         <head>
             <title>
                 ${title} 
@@ -417,7 +417,7 @@ app.post('/submit-article', function (req, res) {
 
 //select data needed to build the page requested from the database and render it using the createTemplate function
 app.get('/build-article/:articleName', function (req, res) {
-      pool.query("SELECT * FROM article WHERE articlename=$1", [req.params.articleName], function(err,result) {
+    pool.query("SELECT * FROM article WHERE articlename=$1", [req.params.articleName], function(err,result) {
         if (err) {
            res.status(500).send(err.toString());
         } else {
@@ -425,10 +425,10 @@ app.get('/build-article/:articleName', function (req, res) {
                 res.status(404).send('Article not found');
             } else {
                 var articleData = result.rows[0];
-                res.send(articleData);
+                res.send(JSON.stringify(articleData));
             }
         }
-     }); 
+    }); 
 });
 
 
