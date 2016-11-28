@@ -151,27 +151,30 @@ app.post('/create-user', function(req, res) {
 app.post('/login', function(req, res) {
     var username = req.body.username;
     var password = req.body.password;
-    
-    pool.query('SELECT * FROM "user" WHERE username = $1', [username], function(err, result) {
-        if (err) {
-           res.status(500).send(err.toString()); }
-        else {
-            if (result.rows.length === 0) {
-                res.status(403).send('Username/passsword is invalid!');
-            }
+    if (username.trim().length > 0 && password.trim().length > 0) { 
+        pool.query('SELECT * FROM "user" WHERE username = $1', [username], function(err, result) {
+            if (err) {
+               res.status(500).send(err.toString()); }
             else {
-                var dbString = result.rows[0].password;
-                var salt = dbString.split('$')[2];
-                var hashedPwd = hash(password, salt);
-                
-                if (hashedPwd === dbString)
-                   { req.session.auth = {userId: result.rows[0].id};
-                     res.send(result.rows[0].username); }
-                else
-                    { res.status(403).send('Username/passsword is invalid!');}
-            }    
-        }
-    });
+                if (result.rows.length === 0) {
+                    res.status(403).send('Username/passsword is invalid!');
+                }
+                else {
+                    var dbString = result.rows[0].password;
+                    var salt = dbString.split('$')[2];
+                    var hashedPwd = hash(password, salt);
+                    
+                    if (hashedPwd === dbString)
+                       { req.session.auth = {userId: result.rows[0].id};
+                         res.send(result.rows[0].username); }
+                    else
+                        { res.status(403).send('Username/passsword is invalid!');}
+                }    
+            }
+        });
+    } else {
+        res.send('Username/password cannot be blank');
+    }
 });
 
 app.get('/check-login', function(req, res) {
