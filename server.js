@@ -37,7 +37,7 @@ function createTemplate (data) {
     var authorname  = data.authorname;
     var cmntcnt     = data.cmntcnt;
     
-    var htmlTemplate = `<html>
+    /*var htmlTemplate = `<html>
         <head>
             <title>
                 ${title} 
@@ -111,7 +111,7 @@ function createTemplate (data) {
         </html>
         `;
         return htmlTemplate;
-}
+}*/
 
 function hash(input, salt) {
     var hashed = crypto.pbkdf2Sync(input, salt, 10000, 512, 'sha512');
@@ -128,6 +128,9 @@ app.get('/post-article', function (req, res) {
     res.sendFile(path.join(__dirname,'ui', 'postarticle.html'));
 });
 
+app.get('/articles/:articleName', function (req, res) {
+    res.sendFile(path.join(__dirname,'ui', 'article.html'));
+});
 
 app.get('/hash/:input', function(req, res) {
     var hashedString = hash(req.params.input, 'random-string' );
@@ -413,7 +416,7 @@ app.post('/submit-article', function (req, res) {
 });
 
 //select data needed to build the page requested from the database and render it using the createTemplate function
-app.get('/articles/:articleName', function (req, res) {
+app.get('/build-article/:articleName', function (req, res) {
       pool.query("SELECT * FROM article WHERE articlename=$1", [req.params.articleName], function(err,result) {
         if (err) {
            res.status(500).send(err.toString());
@@ -422,7 +425,7 @@ app.get('/articles/:articleName', function (req, res) {
                 res.status(404).send('Article not found');
             } else {
                 var articleData = result.rows[0];
-                res.send(createTemplate(articleData));
+                res.send(articleData);
             }
         }
      }); 
