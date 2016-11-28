@@ -8,16 +8,28 @@ function escapeHTML (text)
     return $div.innerHTML;
 }
 
-var content_area = document.getElementById('content');
-content_area.innerHTML = escapeHTML(content);
-var title_area = document.getElementById('title');
-title_area.innerHTML = escapeHTML(title);
-var heading_area = document.getElementById('heading');
-heading_area.innerHTML = escapeHTML(heading);
-var author_area = document.getElementById('author');
-author_area.innerHTML = escapeHTML(author);
-var img_area = document.getElementById('bgimg');
-img_area.innerHTML = '<img src=${escapeHTML(bgimg)} style=width:1250px;height:300px></img>';
+var artrequest = new XMLHttpRequest();
+artrequest.onreadystatechange = function() {
+    if (artrequest.readyState === XMLHttpRequest.DONE) {
+        if (artrequest.status === 200) {
+            var articleData = artrequest.responseText;
+            var content_area = document.getElementById('content');
+            content_area.innerHTML = escapeHTML(content);
+            var title_area = document.getElementById('title');
+            title_area.innerHTML = escapeHTML(title);
+            var heading_area = document.getElementById('heading');
+            heading_area.innerHTML = escapeHTML(heading);
+            var author_area = document.getElementById('author');
+            author_area.innerHTML = escapeHTML(author);
+            var img_area = document.getElementById('bgimg');
+            var bgimage = escapeHTML(bgimg);
+            img_area.innerHTML = '<img src=${bgimage} style=width:1250px;height:300px></img>';
+            
+        }
+    }
+};
+artrequest.open('GET', 'http://krithiskkv.imad.hasura-app.io/build-article/' + articleName, true);
+artrequest.send(null);
 
 // request the server for the current value of Likes counter and render the response 
 var initrequest = new XMLHttpRequest();
