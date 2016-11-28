@@ -12,7 +12,7 @@ var artrequest = new XMLHttpRequest();
 artrequest.onreadystatechange = function() {
     if (artrequest.readyState === XMLHttpRequest.DONE) {
         if (artrequest.status === 200) {
-            var articleData = artrequest.responseText;
+            var articleData = JSON.parse(artrequest.responseText);
             var content_area = document.getElementById('content');
             content_area.innerHTML = escapeHTML(articleData.content);
             console.log(content_area.innerHTML);
