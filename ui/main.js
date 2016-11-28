@@ -25,21 +25,26 @@ function checkLogin() {
     request.send(null);
 }
 
+function escapeHTML (text)
+{
+    var $text = document.createTextNode(text);
+    var $div = document.createElement('div');
+    $div.appendChild($text);
+    return $div.innerHTML;
+}
+
 function loadPersArticles() {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function () {
         if (request.readyState === XMLHttpRequest.DONE) {
             var articles = document.getElementById('PersList');
             if (request.status === 200) {
-                //var content = '<ul>';
                 var content = '';
                 var articleData = JSON.parse(this.responseText);
                 for (var i=0; i< articleData.length; i++) {
-                //    content += `<li>
-                    content += `<a href="/articles/${articleData[i].articlename}">${articleData[i].articlename}</a>`;
-                //    (${articleData[i].date.split('T')[0]})`;
+                    var articleName = escapeHTML(articleData[i].articlename);
+                    content += `<a href="/articles/${articleName}">${articleName}</a>`;
                 }
-                //content += "</ul>";
                 articles.innerHTML = content;
             } else {
                 articles.innerHTML('Oops! Could not load all articles!');
