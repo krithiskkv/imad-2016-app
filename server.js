@@ -94,7 +94,7 @@ function createTemplate (data) {
                     <a id="cmntlink" href="#comments"> ${cmntcnt} comments </a>
                 </div>
                 <div>
-                    '"' ${content} '"'
+                    <div> '"' ${content} '"' <div>
                 </div>
                 <div id="comments">  
                     <hr/>
