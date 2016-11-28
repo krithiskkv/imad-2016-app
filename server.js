@@ -24,17 +24,7 @@ app.use(session({
     cookie: { maxAge: 1000 * 60 * 60 * 24 * 30 }
 }));
 
-function escapeHTML (text)
-{
-    var $text = document.createTextNode(text);
-    var $div = document.createElement('div');
-    $div.appendChild($text);
-    return $div.innerHTML;
-}
-
-
 //fuction to create individual pages by injecting data specific to the pages into a template
-
 
 function createTemplate (data) {
 
@@ -50,7 +40,7 @@ function createTemplate (data) {
     var htmlTemplate = `<html>
         <head>
             <title>
-                ${escapeHTML(title)} 
+                ${title} 
             </title>
             <meta name = "viewport" content = "width=device-width, initial-scale=1" />
             <link href="/ui/style.css" rel="stylesheet" />
@@ -80,13 +70,13 @@ function createTemplate (data) {
                         </ul>           
                     </div>                
             </div>
-            <img src=${escapeHTML(bgimage)} style=width:1250px;height:300px></img>
+            <img src=${bgimage} style=width:1250px;height:300px></img>
             <div class="container">
                 <h3 id="heading" >
-                    ${escapeHTML(heading)}
+                    ${heading}
                 </h3>
                 <div>
-                    by  ${escapeHTML(authorname)}
+                    by  ${authorname}
                 </div>            
                 <div>
                     ${date.toDateString()}
@@ -104,7 +94,7 @@ function createTemplate (data) {
                     <a id="cmntlink" href="#comments"> ${cmntcnt} comments </a>
                 </div>
                 <div>
-                    ${escapeHTML(content)}
+                    ${content}
                 </div>
                 <div id="comments">  
                     <hr/>
