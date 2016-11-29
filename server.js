@@ -46,7 +46,7 @@ function createTemplate (data) {
             <link href="/ui/style.css" rel="stylesheet" />
         </head>
         <body background="/ui/background-2.jpg">
-            <h3 id="top">Krithika's BlogApp</h3>
+            <center> <h3 id="top">Krithika's BlogApp</h3> </center>
             <div id="header"> 
                     <div id="articles">
                         <ul id="nav-bar">
@@ -72,10 +72,11 @@ function createTemplate (data) {
             </div>
             <img src=${bgimage} style=width:1250px;height:300px></img>
             <div class="container">
-                <h3 id="heading" class="center">
-                    ${heading}
+                <center>
+                <h3 id="heading">
+                     ${heading} 
                 </h3>
-            
+                </center>
                 <div>
                     <pre> by ${authorname} ${date.toDateString()} </pre>
                 </div>
