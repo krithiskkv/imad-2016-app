@@ -45,7 +45,7 @@ function createTemplate (data) {
             <meta name = "viewport" content = "width=device-width, initial-scale=1" />
             <link href="/ui/style.css" rel="stylesheet" />
         </head>
-        <body>
+        <body background="/ui/background-2.jpg">
             <h3 id="top">Krithika's BlogApp</h3>
             <div id="header"> 
                     <div id="articles">
@@ -243,8 +243,8 @@ app.get('/ui/articles.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'articles.js'));
 });
 
-app.get('/ui/background.png', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'background.png'));
+app.get('/ui/background-2.jpg', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'background-2.jpg'));
 });
 
 
