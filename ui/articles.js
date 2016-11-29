@@ -1,38 +1,4 @@
 var articleName = window.location.pathname.split('/')[2];
-
-function escapeHTML (text)
-{
-    var $text = document.createTextNode(text);
-    var $div = document.createElement('div');
-    $div.appendChild($text);
-    return $div.innerHTML;
-}
-
-var artrequest = new XMLHttpRequest();
-artrequest.onreadystatechange = function() {
-    if (artrequest.readyState === XMLHttpRequest.DONE) {
-        if (artrequest.status === 200) {
-            var articleData = JSON.parse(artrequest.responseText);
-            var content_area = document.getElementById('content');
-            content_area.innerHTML = escapeHTML(articleData.content);
-            console.log(content_area.innerHTML);
-            var title_area = document.getElementById('title');
-            title_area.innerHTML = escapeHTML(articleData.title);
-            var heading_area = document.getElementById('heading');
-            heading_area.innerHTML = escapeHTML(articleData.heading);
-            var author_area = document.getElementById('author');
-            author_area.innerHTML = escapeHTML(articleData.authorname);
-            var img_area = document.getElementById('img_area');
-            var bgimage = articleData.bgimage;
-            var date_area = document.getElementById('date');
-            date_area.innerHTML = articleData.date;
-            img_area.innerHTML = '<img src=${bgimagdate}, width:1250px;height:300px></img>';        
-        }
-    }
-};
-artrequest.open('GET', 'http://krithiskkv.imad.hasura-app.io/build-article/' + articleName, true);
-artrequest.send(null);
-
 // request the server for the current value of Likes counter and render the response 
 var initrequest = new XMLHttpRequest();
 initrequest.onreadystatechange = function() {
@@ -47,6 +13,13 @@ initrequest.onreadystatechange = function() {
 initrequest.open('GET', 'http://krithiskkv.imad.hasura-app.io/initcounter/' + articleName, true);
 initrequest.send(null);
 
+function escapeHTML (text)
+{
+    var $text = document.createTextNode(text);
+    var $div = document.createElement('div');
+    $div.appendChild($text);
+    return $div.innerHTML;
+}
 
 // request server for the current comment list and render the comments
 var initcommrequest = new XMLHttpRequest();
