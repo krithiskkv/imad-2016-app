@@ -5,7 +5,7 @@ loadProfArticles();
 
 function buildpost() {
     var post_btn = document.getElementById('post_btn');
-    post_btn.innerHTML = '<a href="/post-article">Post An Article</a>';
+    post_btn.innerHTML = '<a href="/post-article">Submit An Article</a>';
 }
 
 function checkLogin() {
