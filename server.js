@@ -26,16 +26,15 @@ app.use(session({
 
 //fuction to create individual pages by injecting data specific to the pages into a template
 
-/*function createTemplate (data) {
+function createTemplate (data) {
 
-    var title       = data.title ;
-    var heading     = data.heading;
-    var date        = data.date;
-    var content     = data.content;
-    var count       = 0;
-    var bgimage     = data.bgimage;
-    var authorname  = data.authorname;
-    var cmntcnt     = data.cmntcnt;
+    var title = data.title;
+    var heading = data.heading;
+    var date = data.date;
+    var content = data.content;
+    var count = 0;
+    var bgimage = data.bgimage;
+    var cmntcnt = data.cmntcnt;
     
     var htmlTemplate = `<html>
         <head>
@@ -72,12 +71,10 @@ app.use(session({
             </div>
             <img src=${bgimage} style=width:1250px;height:300px></img>
             <div class="container">
-                <h3 id="heading" >
+                <h3 id="heading" class="center">
                     ${heading}
                 </h3>
-                <div>
-                    by  ${authorname}
-                </div>            
+            
                 <div>
                     ${date.toDateString()}
                 </div>
@@ -93,7 +90,7 @@ app.use(session({
                     <input id="counter" type="image" src="/ui/comments.png" width="30" height="20">
                     <a id="cmntlink" href="#comments"> ${cmntcnt} comments </a>
                 </div>
-                <div id="content">
+                <div>
                     ${content}
                 </div>
                 <div id="comments">  
@@ -111,7 +108,7 @@ app.use(session({
         </html>
         `;
         return htmlTemplate;
-}*/
+}
 
 function hash(input, salt) {
     var hashed = crypto.pbkdf2Sync(input, salt, 10000, 512, 'sha512');
@@ -128,9 +125,6 @@ app.get('/post-article', function (req, res) {
     res.sendFile(path.join(__dirname,'ui', 'postarticle.html'));
 });
 
-app.get('/articles/:articleName', function (req, res) {
-    res.sendFile(path.join(__dirname, 'article.html'));
-});
 
 app.get('/hash/:input', function(req, res) {
     var hashedString = hash(req.params.input, 'random-string' );
@@ -140,47 +134,40 @@ app.get('/hash/:input', function(req, res) {
 app.post('/create-user', function(req, res) {
     var username = req.body.username;
     var password = req.body.password;
-    if (username.trim().length > 0 && password.trim().length > 0) {
-        var salt = crypto.randomBytes(128).toString('hex');
-        var dbString = hash(password, salt);
-        pool.query('INSERT INTO "user" (username, password) VALUES ($1, $2)', [username, dbString], function(err, result) {
-            if (err) {
-               res.status(500).send(err.toString()); }
-            else {
-                 res.send('User successfully created' + username); }
+    var salt = crypto.randomBytes(128).toString('hex');
+    var dbString = hash(password, salt);
+    pool.query('INSERT INTO "user" (username, password) VALUES ($1, $2)', [username, dbString], function(err, result) {
+        if (err) {
+           res.status(500).send(err.toString()); }
+        else {
+             res.send('User successfully created' + username); }
         });
-    } else {
-        res.send('Username/password cannot be blank');
-    }
 });
 
 app.post('/login', function(req, res) {
     var username = req.body.username;
     var password = req.body.password;
-    if (username.trim().length > 0 && password.trim().length > 0) { 
-        pool.query('SELECT * FROM "user" WHERE username = $1', [username], function(err, result) {
-            if (err) {
-               res.status(500).send(err.toString()); }
-            else {
-                if (result.rows.length === 0) {
-                    res.status(403).send('Username/passsword is invalid!');
-                }
-                else {
-                    var dbString = result.rows[0].password;
-                    var salt = dbString.split('$')[2];
-                    var hashedPwd = hash(password, salt);
-                    
-                    if (hashedPwd === dbString)
-                       { req.session.auth = {userId: result.rows[0].id};
-                         res.send(result.rows[0].username); }
-                    else
-                        { res.status(403).send('Username/passsword is invalid!');}
-                }    
+    
+    pool.query('SELECT * FROM "user" WHERE username = $1', [username], function(err, result) {
+        if (err) {
+           res.status(500).send(err.toString()); }
+        else {
+            if (result.rows.length === 0) {
+                res.status(403).send('Username/passsword is invalid!');
             }
-        });
-    } else {
-        res.send('Username/password cannot be blank');
-    }
+            else {
+                var dbString = result.rows[0].password;
+                var salt = dbString.split('$')[2];
+                var hashedPwd = hash(password, salt);
+                
+                if (hashedPwd === dbString)
+                   { req.session.auth = {userId: result.rows[0].id};
+                     res.send(result.rows[0].username); }
+                else
+                    { res.status(403).send('Username/passsword is invalid!');}
+            }    
+        }
+    });
 });
 
 app.get('/check-login', function(req, res) {
@@ -416,8 +403,8 @@ app.post('/submit-article', function (req, res) {
 });
 
 //select data needed to build the page requested from the database and render it using the createTemplate function
-app.get('/build-article/:articleName', function (req, res) {
-    pool.query("SELECT * FROM article WHERE articlename=$1", [req.params.articleName], function(err,result) {
+app.get('/articles/:articleName', function (req, res) {
+      pool.query("SELECT * FROM article WHERE articlename=$1", [req.params.articleName], function(err,result) {
         if (err) {
            res.status(500).send(err.toString());
         } else {
@@ -425,10 +412,10 @@ app.get('/build-article/:articleName', function (req, res) {
                 res.status(404).send('Article not found');
             } else {
                 var articleData = result.rows[0];
-                res.send(JSON.stringify(articleData));
+                res.send(createTemplate(articleData));
             }
         }
-    }); 
+     }); 
 });
 
 
