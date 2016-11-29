@@ -76,7 +76,7 @@ function createTemplate (data) {
                 </h3>
             
                 <div>
-                    ${date.toDateString()}
+                    <pre> by ${authorname} ${date.toDateString()} </pre>
                 </div>
                 
                 </br>
