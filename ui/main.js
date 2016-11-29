@@ -88,6 +88,7 @@ function buildLogin() {
                             <small>New user?</small> <button id=Register>Sign-up</button>`;
     var button2 = document.getElementById('Login');
     button2.onclick = function () {
+        button2.innerHTML = 'Signing in..';
         var request = new XMLHttpRequest();
         var username = document.getElementById('username').value;
         var password = document.getElementById('password').value;
@@ -112,6 +113,7 @@ function buildLogin() {
                         document.getElementById('username').value = '';
                         document.getElementById('password').value = '';
                     }
+                    button2.innerHTML = 'Sign-in';
                 }
             };
             request.open('POST', 'http://krithiskkv.imad.hasura-app.io/login', true);
@@ -125,6 +127,7 @@ function buildLogin() {
 
     var button3 = document.getElementById('Register');
     button3.onclick = function () {
+        button3.innerHTML = 'Registering..';
         var request = new XMLHttpRequest();
         var username = document.getElementById('username').value;
         var password = document.getElementById('password').value;
@@ -139,6 +142,7 @@ function buildLogin() {
                         document.getElementById('username').value = '';
                         document.getElementById('password').value = '';
                     }
+                button3.innerHTML = 'Register';
                 }
             };
             request.open('POST', 'http://krithiskkv.imad.hasura-app.io/create-user', true);
