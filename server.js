@@ -35,6 +35,7 @@ function createTemplate (data) {
     var count = 0;
     var bgimage = data.bgimage;
     var cmntcnt = data.cmntcnt;
+    var authorname = data.authorname;
     
     var htmlTemplate = `<html>
         <head>
