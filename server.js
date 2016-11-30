@@ -76,17 +76,12 @@ function createTemplate (data) {
             </center>
             <br/>
             <br/>
-            <a href="https://twitter.com/intent/tweet?screen_name=krithiskkv" class="twitter-mention-button" data-text=" " data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-            <pre>     </pre>
-            <a target="_blank" href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=krithiskkv@gmail.com&body=Hi Krithika"><img src="/ui/Gmail.png" width="30" height="30" alt="Mail to krithiskkv@gmail.com" style="vertical-align:middle;" border="0"></a>
-            <pre>     </pre>
-            <a target="_blank" href="https://in.linkedin.com/pub/krithika-subramanian/131/a95/821" style="text-decoration:none;"><span style="font: 80% Arial,sans-serif; color:#0783B6;"><img src="/ui/linkedin.png" width="30" height="30" alt="View Krithika Subramanian's LinkedIn profile" style="vertical-align:middle;" border="0">&nbsp;</span></a>
-            <pre>     </pre>
-            <a target="_blank" href="https://github.com/krithiskkv" style="text-decoration:none;"><span style="font: 80% Arial,sans-serif; color:#0783B6;"><img src="/ui/github.png" width="30" height="30" alt="View Krithika Subramanian's Github repo" style="vertical-align:middle;" border="0">&nbsp;</span></a>
-            <pre>     </pre>
+            <a href="https://twitter.com/intent/tweet?screen_name=krithiskkv" class="twitter-mention-button" data-text=" " data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script> <pre>     </pre>
+            <a target="_blank" href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=krithiskkv@gmail.com&body=Hi Krithika"><img src="/ui/Gmail.png" width="30" height="30" alt="Mail to krithiskkv@gmail.com" style="vertical-align:middle;" border="0"></a> <pre>     </pre>
+            <a target="_blank" href="https://in.linkedin.com/pub/krithika-subramanian/131/a95/821" style="text-decoration:none;"><span style="font: 80% Arial,sans-serif; color:#0783B6;"><img src="/ui/linkedin.png" width="30" height="30" alt="View Krithika Subramanian's LinkedIn profile" style="vertical-align:middle;" border="0">&nbsp;</span></a> <pre>     </pre>
+            <a target="_blank" href="https://github.com/krithiskkv" style="text-decoration:none;"><span style="font: 80% Arial,sans-serif; color:#0783B6;"><img src="/ui/github.png" width="30" height="30" alt="View Krithika Subramanian's Github repo" style="vertical-align:middle;" border="0">&nbsp;</span></a> <pre>     </pre>
             <input id="counter" type="image" src="/ui/like.png" alt="Submit" width="50" height="20">
-            <span id="count">   </span> Likes
-            <pre>     </pre>
+            <span id="count">   </span> Likes  <pre>     </pre>
             <input id="counter" type="image" src="/ui/comments.png" width="30" height="20">
             <a id="cmntlink" href="#comments"> ${cmntcnt} comments </a>
             
