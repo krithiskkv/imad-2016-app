@@ -25,6 +25,13 @@ h3 {
     
 }
 
+h1 {
+    display:inline-block;
+    text-shadow: 0 0 4px #ff0000;
+    
+}
+
+
 .center {
     text-align: center;
 }
