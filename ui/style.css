@@ -5,7 +5,7 @@ body {
 
 div {
     border-style: ridge;
-    border-color: transparent;
+    border-color: red;
     max-width: 800px;
     margin: 0 auto;
     color: black;
@@ -15,10 +15,6 @@ div {
     padding-left: 20px;
     padding-right: 20px;
     font-weight: bold;
-}
-
-.div:hover {
-    border-color: red;
 }
 
 pre {
