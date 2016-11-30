@@ -73,7 +73,6 @@ function createTemplate (data) {
             </h3>
             <br/>
             <pre> by ${authorname} ${date.toDateString()} </pre>
-            </center>
             <br/>
             <br/>
             <a href="https://twitter.com/intent/tweet?screen_name=krithiskkv" class="twitter-mention-button" data-text=" " data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>  
@@ -84,6 +83,7 @@ function createTemplate (data) {
             <span id="count">   </span> Likes   
             <input id="counter" type="image" src="/ui/comments.png" width="30" height="20">
             <a id="cmntlink" href="#comments"> ${cmntcnt} comments </a>
+            </center>
             
             <div>
                 ${content}
