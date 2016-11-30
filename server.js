@@ -47,35 +47,33 @@ function createTemplate (data) {
         </head>
         <body background="/ui/background-2.jpg">
             <center> <h1 id="top">Krithika's BlogApp</h1> </center>
-            <div id="articles">
-                <ul id="nav-bar">
-                    <li class="dropdown"> 
-                        <a href="/" >Home</a>  
-                    </li>
-                    <li class="dropdown"> 
-                        <a href="#" class="dropbtn">Personal Interests</a>  
-                        <div id="PersList" class="dropdown-content"></div>
-                    </li>
-                    <li class="dropdown"> 
-                        <a href="#" class="dropbtn">Professional Interests</a>  
-                        <div id ="ProfList" class="dropdown-content"></div>
-                    </li>
-                    <li id="post_btn" class="dropdown"> 
-                    </li>
-                    <li class="dropdown" id="login"> 
-                        <a href="#" class="dropbtn" id="loginbtn">            </a>  
-                        <div id ="loginarea" class="dropdown-content"></div>
-                    </li>
-                </ul>           
-            </div>                
+            <ul id="nav-bar">
+                <li class="dropdown"> 
+                    <a href="/" >Home</a>  
+                </li>
+                <li class="dropdown"> 
+                    <a href="#" class="dropbtn">Personal Interests</a>  
+                    <div id="PersList" class="dropdown-content"></div>
+                </li>
+                <li class="dropdown"> 
+                    <a href="#" class="dropbtn">Professional Interests</a>  
+                    <div id ="ProfList" class="dropdown-content"></div>
+                </li>
+                <li id="post_btn" class="dropdown"> 
+                </li>
+                <li class="dropdown" id="login"> 
+                    <a href="#" class="dropbtn" id="loginbtn">            </a>  
+                    <div id ="loginarea" class="dropdown-content"></div>
+                </li>
+            </ul>           
             <img src=${bgimage} style=width:1250px;height:300px></img>
-                <center>
+            <center>
             <h3 id="heading">
                  ${heading} 
             </h3>
-            </center>
             <br/>
             <pre> by ${authorname} ${date.toDateString()} </pre>
+            </center>
             
             <div>
                 <a href="https://twitter.com/intent/tweet?screen_name=krithiskkv" class="twitter-mention-button" data-text=" " data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
