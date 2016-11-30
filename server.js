@@ -46,7 +46,7 @@ function createTemplate (data) {
             <link href="/ui/style.css" rel="stylesheet" />
         </head>
         <body background="/ui/background-2.jpg">
-            <center> <h3 id="top">Krithika's BlogApp</h3> </center>
+            <center> <h1 id="top">Krithika's BlogApp</h1> </center>
             <div id="header"> 
                     <div id="articles">
                         <ul id="nav-bar">
