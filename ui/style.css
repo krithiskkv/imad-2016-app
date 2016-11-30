@@ -63,6 +63,10 @@ h1 {
     height: 200px;
 }
 
+li.comment {
+    box-shadow: 5px 5px 5px grey;
+}
+
 #nav-bar {
     list-style-type: none;
     margin: 0;
