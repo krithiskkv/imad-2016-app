@@ -64,7 +64,7 @@ h1 {
 }
 
 li.comment {
-    box-shadow: 5px 5px 5px grey;
+    box-shadow: 5px 5px 5px outset;
 }
 
 #nav-bar {
