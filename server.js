@@ -92,7 +92,7 @@ function createTemplate (data) {
                 <br>
                 <h3> Comments </h3>
                 <p id="cmntInput"></p>
-                <ul id="commlist" style="width:750; height:250; overflow:auto"> </ul>
+                <ul id="commlist" style="width:750; height:250; overflow:auto; list-style-type: none;"> </ul>
             </div>
             <script type="text/javascript" src="/ui/main.js"> </script>
             <script type="text/javascript" src="/ui/articles.js"> </script>
