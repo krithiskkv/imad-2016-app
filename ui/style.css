@@ -3,8 +3,13 @@ body {
     margin-top: 20px;
 }
 
+div {
+    box-shadow: 5px 5px 5px #888888;
+}
+
 pre {
     white-space: pre-wrap;
+    font-family: calibri;
 }
 
 .container {    
