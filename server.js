@@ -47,29 +47,27 @@ function createTemplate (data) {
         </head>
         <body background="/ui/background-2.jpg">
             <center> <h1 id="top">Krithika's BlogApp</h1> </center>
-            <div id="header"> 
-                    <div id="articles">
-                        <ul id="nav-bar">
-                            <li class="dropdown"> 
-                                <a href="/" >Home</a>  
-                            </li>
-                            <li class="dropdown"> 
-                                <a href="#" class="dropbtn">Personal Interests</a>  
-                                <div id="PersList" class="dropdown-content"></div>
-                            </li>
-                            <li class="dropdown"> 
-                                <a href="#" class="dropbtn">Professional Interests</a>  
-                                <div id ="ProfList" class="dropdown-content"></div>
-                            </li>
-                            <li id="post_btn" class="dropdown"> 
-                            </li>
-                            <li class="dropdown" id="login"> 
-                                <a href="#" class="dropbtn" id="loginbtn">            </a>  
-                                <div id ="loginarea" class="dropdown-content"></div>
-                            </li>
-                        </ul>           
-                    </div>                
-            </div>
+            <div id="articles">
+                <ul id="nav-bar">
+                    <li class="dropdown"> 
+                        <a href="/" >Home</a>  
+                    </li>
+                    <li class="dropdown"> 
+                        <a href="#" class="dropbtn">Personal Interests</a>  
+                        <div id="PersList" class="dropdown-content"></div>
+                    </li>
+                    <li class="dropdown"> 
+                        <a href="#" class="dropbtn">Professional Interests</a>  
+                        <div id ="ProfList" class="dropdown-content"></div>
+                    </li>
+                    <li id="post_btn" class="dropdown"> 
+                    </li>
+                    <li class="dropdown" id="login"> 
+                        <a href="#" class="dropbtn" id="loginbtn">            </a>  
+                        <div id ="loginarea" class="dropdown-content"></div>
+                    </li>
+                </ul>           
+            </div>                
             <img src=${bgimage} style=width:1250px;height:300px></img>
             <div class="container">
                 <center>
@@ -77,11 +75,8 @@ function createTemplate (data) {
                      ${heading} 
                 </h3>
                 </center>
-                <div>
-                    <pre> by ${authorname} ${date.toDateString()} </pre>
-                </div>
-                
-                </br>
+                <br/>
+                <pre> by ${authorname} ${date.toDateString()} </pre>
                 
                 <div>
                     <hr/>
