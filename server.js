@@ -69,41 +69,36 @@ function createTemplate (data) {
                 </ul>           
             </div>                
             <img src=${bgimage} style=width:1250px;height:300px></img>
-            <div class="container">
                 <center>
-                <h3 id="heading">
-                     ${heading} 
-                </h3>
-                </center>
-                <br/>
-                <pre> by ${authorname} ${date.toDateString()} </pre>
-                
-                <div>
-                    <hr/>
-                    <a href="https://twitter.com/intent/tweet?screen_name=krithiskkv" class="twitter-mention-button" data-text=" " data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-                    <a target="_blank" href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=krithiskkv@gmail.com&body=Hi Krithika"><img src="/ui/Gmail.png" width="30" height="30" alt="Mail to krithiskkv@gmail.com" style="vertical-align:middle;" border="0"></a>
-                    <a target="_blank" href="https://in.linkedin.com/pub/krithika-subramanian/131/a95/821" style="text-decoration:none;"><span style="font: 80% Arial,sans-serif; color:#0783B6;"><img src="/ui/linkedin.png" width="30" height="30" alt="View Krithika Subramanian's LinkedIn profile" style="vertical-align:middle;" border="0">&nbsp;</span></a>
-                    <a target="_blank" href="https://github.com/krithiskkv" style="text-decoration:none;"><span style="font: 80% Arial,sans-serif; color:#0783B6;"><img src="/ui/github.png" width="30" height="30" alt="View Krithika Subramanian's Github repo" style="vertical-align:middle;" border="0">&nbsp;</span></a>
-                    <hr/>
-                    <input id="counter" type="image" src="/ui/like.png" alt="Submit" width="50" height="20">
-                    <span id="count">   </span> Likes
-                    <input id="counter" type="image" src="/ui/comments.png" width="30" height="20">
-                    <a id="cmntlink" href="#comments"> ${cmntcnt} comments </a>
-                </div>
-                <div>
-                    ${content}
-                </div>
-                <div id="comments">  
-                    <hr/>
-                    <a href="#top"> Go To Top </a>
-                    <br>
-                    <h3> Comments </h3>
-                    <div id="cmntInput"></div>
-                    <ul id="commlist" style="width:750; height:250; overflow:auto"> </ul>
-                </div>
-                <script type="text/javascript" src="/ui/main.js"> </script>
-                <script type="text/javascript" src="/ui/articles.js"> </script>
+            <h3 id="heading">
+                 ${heading} 
+            </h3>
+            </center>
+            <br/>
+            <pre> by ${authorname} ${date.toDateString()} </pre>
+            
+            <div>
+                <a href="https://twitter.com/intent/tweet?screen_name=krithiskkv" class="twitter-mention-button" data-text=" " data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                <a target="_blank" href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=krithiskkv@gmail.com&body=Hi Krithika"><img src="/ui/Gmail.png" width="30" height="30" alt="Mail to krithiskkv@gmail.com" style="vertical-align:middle;" border="0"></a>
+                <a target="_blank" href="https://in.linkedin.com/pub/krithika-subramanian/131/a95/821" style="text-decoration:none;"><span style="font: 80% Arial,sans-serif; color:#0783B6;"><img src="/ui/linkedin.png" width="30" height="30" alt="View Krithika Subramanian's LinkedIn profile" style="vertical-align:middle;" border="0">&nbsp;</span></a>
+                <a target="_blank" href="https://github.com/krithiskkv" style="text-decoration:none;"><span style="font: 80% Arial,sans-serif; color:#0783B6;"><img src="/ui/github.png" width="30" height="30" alt="View Krithika Subramanian's Github repo" style="vertical-align:middle;" border="0">&nbsp;</span></a>
+                <input id="counter" type="image" src="/ui/like.png" alt="Submit" width="50" height="20">
+                <span id="count">   </span> Likes
+                <input id="counter" type="image" src="/ui/comments.png" width="30" height="20">
+                <a id="cmntlink" href="#comments"> ${cmntcnt} comments </a>
             </div>
+            <div>
+                ${content}
+            </div>
+            <div id="comments">  
+                <a href="#top"> Go To Top </a>
+                <br>
+                <h3> Comments </h3>
+                <div id="cmntInput"></div>
+                <ul id="commlist" style="width:750; height:250; overflow:auto"> </ul>
+            </div>
+            <script type="text/javascript" src="/ui/main.js"> </script>
+            <script type="text/javascript" src="/ui/articles.js"> </script>
         </body>
         </html>
         `;
