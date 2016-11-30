@@ -5,7 +5,7 @@ body {
 
 div {
     border-style: ridge;
-    border-color: red;
+    border-color: transparent;
     max-width: 800px;
     margin: 0 auto;
     color: black;
