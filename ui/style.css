@@ -5,15 +5,20 @@ body {
 
 div {
     border-style: ridge;
+    border-color: transparent;
     max-width: 800px;
     margin: 0 auto;
     color: black;
     font-family: calibri; 
     font-size: large;
-    padding-top: 0px;
+    padding-top: 0;
     padding-left: 20px;
     padding-right: 20px;
     font-weight: bold;
+}
+
+.div:hover {
+    border-color: red;
 }
 
 pre {
