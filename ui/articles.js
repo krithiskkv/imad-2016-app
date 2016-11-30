@@ -29,7 +29,7 @@ initcommrequest.onreadystatechange = function () {
         var commentsData = JSON.parse(this.responseText);
         var list = '';
         for (var i=0;i<commentsData.length;i++) {
-          list += '<li>' + escapeHTML(commentsData[i].comment) + '</li>' + '<small>' + '-- ' + escapeHTML(commentsData[i].user_name) + ' ' + commentsData[i].date.split('T')[0] + '</small>';
+          list += '<li class="comment">' + escapeHTML(commentsData[i].comment) + '</li>' + '<small>' + '-- ' + escapeHTML(commentsData[i].user_name) + ' ' + commentsData[i].date.split('T')[0] + '</small>';
         }
         var ul = document.getElementById('commlist');
         ul.innerHTML = list;
@@ -70,7 +70,7 @@ checkrequest.onreadystatechange = function() {
                             var commentsData = JSON.parse(this.responseText);
                             var list = '';
                             for (var i=0;i<commentsData.length;i++) {
-                              list += '<li>' + escapeHTML(commentsData[i].comment) + '</li>' + '<small>' + '-- ' + escapeHTML(commentsData[i].user_name) + ' ' + commentsData[i].date.split('T')[0] + '</small>';
+                              list += '<li class="comment">' + escapeHTML(commentsData[i].comment) + '</li>' + '<small>' + '-- ' + escapeHTML(commentsData[i].user_name) + ' ' + commentsData[i].date.split('T')[0] + '</small>';
                             }
                             var ul = document.getElementById('commlist');
                             ul.innerHTML = list;
