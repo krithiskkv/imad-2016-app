@@ -70,7 +70,7 @@ checkrequest.onreadystatechange = function() {
                             var commentsData = JSON.parse(this.responseText);
                             var list = '';
                             for (var i=0;i<commentsData.length;i++) {
-                              list += '<li class="comment">' + escapeHTML(commentsData[i].comment)  + '<small>' + '-- ' + escapeHTML(commentsData[i].user_name) + ' ' + commentsData[i].date.split('T')[0] + '</small>' + '</li>';
+                              list += '<li class="comment">' + escapeHTML(commentsData[i].comment)  + '<small>' + '-- ' + escapeHTML(commentsData[i].user_name) + ' ' + commentsData[i].date.split('T')[0] + '</small>' + '</li>' + '<br/>'
                             }
                             var ul = document.getElementById('commlist');
                             ul.innerHTML = list;
