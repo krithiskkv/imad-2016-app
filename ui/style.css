@@ -65,6 +65,7 @@ h1 {
 
 .comment {
     box-shadow: 5px 5px 5px;
+    width: 200px;
 }
 
 #nav-bar {
