@@ -63,8 +63,8 @@ h1 {
     height: 200px;
 }
 
-li.comment {
-    box-shadow: 5px 5px 5px outset;
+.comment {
+    box-shadow: 5px 5px 5px;
 }
 
 #nav-bar {
