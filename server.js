@@ -86,7 +86,8 @@ function createTemplate (data) {
             <div>
                 ${content}
             </div>
-            
+            <br/>
+            <br/>
             <div id="comments">  
                 <a href="#top"> Go To Top </a>
                 <br>
