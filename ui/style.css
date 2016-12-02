@@ -4,8 +4,8 @@ body {
 }
 
 div {
-    border-style: ridge;
-    border-color: transparent;
+    border: 2px solid #a1a1a1;
+    border-radius: 5px;
     max-width: 800px;
     margin: 0 auto;
     color: black;
@@ -28,7 +28,7 @@ pre {
                 color: black;
                 font-family: calibri; 
                 font-size: large;
-                padding-top: 0px;
+                padding-top: 0;
                 padding-left: 20px;
                 padding-right: 20px;
                 font-weight: bold;
