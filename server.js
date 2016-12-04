@@ -52,11 +52,11 @@ function createTemplate (data) {
                     <a href="/" >Home</a>  
                 </li>
                 <li class="dropdown"> 
-                    <a href="#" class="dropbtn">Personal Interests</a>  
+                    <a href="#" class="dropbtn">Personal Blogs</a>  
                     <div id="PersList" class="dropdown-content"></div>
                 </li>
                 <li class="dropdown"> 
-                    <a href="#" class="dropbtn">Professional Interests</a>  
+                    <a href="#" class="dropbtn">Professional Blogs</a>  
                     <div id ="ProfList" class="dropdown-content"></div>
                 </li>
                 <li id="post_btn" class="dropdown"> 
