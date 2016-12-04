@@ -71,7 +71,7 @@ function createTemplate (data) {
             <h3 id="heading">
                  ${heading} 
             </h3>
-            <pre> by ${authorname} ${date.toDateString()} </pre>
+            <pre> <bold> by ${authorname} ${date.toDateString()} </bold> </pre>
             
             <a href="https://twitter.com/intent/tweet?screen_name=krithiskkv" class="twitter-mention-button" data-text=" " data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>  
             <a target="_blank" href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=krithiskkv@gmail.com&body=Hi Krithika"><img src="/ui/Gmail.png" width="30" height="30" alt="Mail to krithiskkv@gmail.com" style="vertical-align:middle;" border="0"></a>  
@@ -245,8 +245,8 @@ app.get('/ui/books1.jpg', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'books1.jpg'));
 });
 
-app.get('/ui/mf.png', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'mf.png'));
+app.get('/ui/mainframe.png', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'mainframe.png'));
 });
 
 app.get('/ui/dining1.jpg', function (req, res) {
