@@ -11,7 +11,7 @@ var config = {
     database: 'krithiskkv',
     host: 'db.imad.hasura-app.io',
     port: '5432',
-    password: 'db-krithiskkv-77739'
+    password: 
 };
 
 var pool = new Pool(config);
