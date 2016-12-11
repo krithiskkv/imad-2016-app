@@ -68,9 +68,9 @@ function createTemplate (data) {
             </ul>           
             <img src=${bgimage} style=width:1250px;height:300px></img>
             <center>
-            <h3 id="heading">
+            <h2 id="heading">
                  ${heading} 
-            </h3>
+            </h2>
             <pre> <bold> by ${authorname} ${date.toDateString()} </bold> </pre>
             
             <a href="https://twitter.com/intent/tweet?screen_name=krithiskkv" class="twitter-mention-button" data-text=" " data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>  
