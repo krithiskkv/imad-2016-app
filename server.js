@@ -84,7 +84,7 @@ function createTemplate (data) {
             </center>
             <br/>
             <div>
-                ${content}
+                <pre> ${content} <pre>
             </div>
             <br/>
             <br/>
