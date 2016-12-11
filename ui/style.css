@@ -34,11 +34,6 @@ pre {
                 font-weight: bold;
 }
 
-h3 {
-    display:inline-block;
-    text-shadow: 0 0 4px #ff0000;
-    
-}
 
 h1 {
     display:inline-block;
@@ -46,6 +41,17 @@ h1 {
     
 }
 
+h2 {
+    display:inline-block;
+    text-shadow: 0 0 4px #ff0000;
+    
+}
+
+h3 {
+    display:inline-block;
+    text-shadow: 0 0 4px #ff0000;
+    
+}
 
 .center {
     text-align: center;
