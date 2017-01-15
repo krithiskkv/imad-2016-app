@@ -66,7 +66,7 @@ function createTemplate (data) {
                     <div id ="loginarea" class="dropdown-content"></div>
                 </li>
             </ul>           
-            <img src=${bgimage} style=width:1250px;height:300px></img>
+            <img src=${bgimage} style=width:100%;height:30%></img>
             <center>
             <h2 id="heading">
                  ${heading} 
