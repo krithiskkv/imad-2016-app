@@ -1,61 +1,308 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-    <head>
-        <link href="/ui/style.css" rel="stylesheet" />
-        <meta name = "viewport" content = "width=device-width, initial-scale=1" />
-    </head>
-    <body link="white" vlink="red" background="/ui/office.jpg">
-            <center> <h1 id="heading">Krithika's BlogApp</h1> </center>
-            <ul id="nav-bar">
-                <li class="dropdown"> 
-                    <a href="/" >Home</a>  
-                </li>
-                <li class="dropdown"> 
-                    <a href="#" class="dropbtn">Personal Blogs</a>  
-                    <div id="PersList" class="dropdown-content"></div>
-                </li>
-                <li class="dropdown"> 
-                    <a href="#" class="dropbtn">Professional Blogs</a>  
-                    <div id ="ProfList" class="dropdown-content"></div>
-                </li>
-                <li id="post_btn" class="dropdown">
-                </li>
-                <li class="dropdown" id="login"> 
-                    <a href="#" class="dropbtn" id="loginbtn"></a>  
-                    <div id ="loginarea" class="dropdown-content"></div>
-                </li>
-            </ul> 
-            <br/>
-            <br/>
-            <div id="main-text">
-                 
-                <p> Hi! I am Krithika - Web and Mobile technology enthusiast, former Mainframe techie in the Banking and Financials domain </p>
-                <p> Avid reader, foodie, traveler</p>
-                <p> This is my profile page and my first webapp</p>
-                <p> This webapp features some of my thoughts on various topics and are availabe for viewing under the Professional Blogs and Personal Blogs tabs. Please sign-up and login to post comments on these posts or submit your own posts.</p>
-                <p> Thank you for your interest in this site!</p>
-                <br/>
-                <h3> Technical Features: </h3>
-                <p> Built on the IMAD console, an nginx server acting as reverse proxy</p>
-                <p> Built from scratch without using any templates, with JavaScript, CSS and HTML</p>
-                <p> Stack is PostgreSQL, express js, node js</p>
-                <p> PostgreSQL database used is normalised and has no data redundancy</p>
-                <p> SQL injection proof and XSS attacks proof!</p>
-                
-            </div>
-           
-            <hr/>           
-            <center> 
-            <a href="https://twitter.com/intent/tweet?screen_name=krithiskkv" class="twitter-mention-button" data-text=" " data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-            
-            <a target="_blank" href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=krithiskkv@gmail.com&body=Hi Krithika"><img src="/ui/Gmail.png" width="40" height="40" alt="Mail to krithiskkv@gmail.com" style="vertical-align:middle;" border="0"></a>
-            
-            <a target="_blank" href="https://in.linkedin.com/pub/krithika-subramanian/131/a95/821" style="text-decoration:none;"><span style="font: 80% Arial,sans-serif; color:#0783B6;"><img src="/ui/linkedin.png" width="40" height="40" alt="View Krithika Subramanian's LinkedIn profile" style="vertical-align:middle;" border="0">&nbsp;</span></a>
-            <a target="_blank" href="https://github.com/krithiskkv" style="text-decoration:none;"><span style="font: 80% Arial,sans-serif; color:#0783B6;"><img src="/ui/github.png" width="40" height="40" alt="View Krithika Subramanian's Github repo" style="vertical-align:middle;" border="0">&nbsp;</span></a>
-            </center>
-        
-        
-        <script type="text/javascript" src="/ui/main.js">
-        </script>
-    </body>
+<title>Krithika's Blogapp</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+<body id="myPage">
+
+<!-- Side Navigation on click -->
+<nav class="w3-sidenav w3-white w3-card-2 w3-animate-left" style="display:none;z-index:2" id="mySidenav">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-closenav w3-xxxlarge w3-text-teal">Close
+    <i class="fa fa-remove"></i>
+  </a>
+  <a href="#">Link 1</a>
+  <a href="#">Link 2</a>
+  <a href="#">Link 3</a>
+  <a href="#">Link 4</a>
+  <a href="#">Link 5</a>
+</nav>
+
+<!--Login modal form on click -->
+<div id="id01" class="w3-modal">
+    <div class="w3-modal-content w3-card-8 w3-animate-zoom" style="max-width:600px">
+
+      <div class="w3-center"><br>
+        <span onclick="document.getElementById('id01').style.display='none'" class="w3-closebtn w3-hover-red w3-container w3-padding-8 w3-display-topright" title="Close Modal">&times;</span>
+      </div>
+
+      <!-- <form class="w3-container" action="form.asp"> -->
+        <div class="w3-section">
+          <label><b>Username</b></label>
+          <input id="username" class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="usrname" required>
+          <label><b>Password</b></label>
+          <input id="password" class="w3-input w3-border" type="password" placeholder="Enter Password" name="psw" required>
+          <button class="w3-btn-block w3-green w3-section w3-padding" type="submit" id="Login">Login</button>
+         </div> 
+      <!-- </form> -->
+      <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+        <button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-btn w3-red">Cancel</button>
+      </div>
+    </div>
+</div>
+
+<!--Sign-up modal form on click -->
+<div id="id02" class="w3-modal">
+    <div class="w3-modal-content w3-card-8 w3-animate-zoom" style="max-width:600px">
+
+      <div class="w3-center"><br>
+        <span onclick="document.getElementById('id02').style.display='none'" class="w3-closebtn w3-hover-red w3-container w3-padding-8 w3-display-topright" title="Close Modal">&times;</span>
+      </div>
+
+      <form class="w3-container" action="form.asp">
+        <div class="w3-section">
+          <label><b>Username</b></label>
+          <input id="username" class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="usrname" required>
+          <label><b>Password</b></label>
+          <input id="password" class="w3-input w3-border" type="password" placeholder="Set A Password" name="psw" required>
+          <button class="w3-btn-block w3-green w3-section w3-padding" type="submit" id="Register">Sign-up</button>
+          </div>
+      </form>
+      <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+        <button onclick="document.getElementById('id02').style.display='none'" type="button" class="w3-btn w3-red">Cancel</button>
+      </div>
+    </div>
+</div>
+
+<!-- Navbar -->
+<div class="w3-top">
+ <ul class="w3-navbar w3-theme-d2 w3-left-align">
+  <li class="w3-hide-medium w3-hide-large w3-opennav w3-right">
+    <a class="w3-hover-white w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
+  </li>
+  <li><a href="#" class="w3-teal"><i class="fa fa-home w3-margin-right"></i>Krithika's Blogapp</a></li>
+  <li class="w3-hide-small"><a href="#about" class="w3-hover-white">About</a></li>
+  <li class="w3-hide-small"><a href="#tech" class="w3-hover-white">Technical Features</a></li>
+  <li id="post_btn" class="w3-hide-small"> </li>
+  <li class="w3-hide-small"><a href="#contact" class="w3-hover-white">Contact</a></li>
+  <li class="w3-hide-small w3-dropdown-hover">
+    <a href="javascript:void(0);" title="Personal Blog">Personal Blogs <i class="fa fa-caret-down"></i></a>     
+    <div id="PersList" class="w3-dropdown-content w3-white w3-card-4">
+    </div>
+  </li>
+  <li class="w3-hide-small w3-dropdown-hover">
+    <a href="javascript:void(0);" title="Professional Blog">Professional Blogs <i class="fa fa-caret-down"></i></a>     
+    <div id="ProfList" class="w3-dropdown-content w3-white w3-card-4">
+    </div>
+  </li>
+  <li class="w3-hide-small w3-dropdown-hover">
+    <a href="javascript:void(0);" title="login/logout" id="loginbtn"></a>     
+    <div id="loginarea" class="w3-dropdown-content w3-white w3-card-4">
+    </div>
+  </li>
+</ul>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-hide w3-hide-large w3-hide-medium">
+    <ul class="w3-navbar w3-left-align w3-theme">
+      <li><a href="#about">About</a></li>
+      <li><a href="#tech">Technical Features</a></li>
+      <li><a href="#post">Post Article</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li class="w3-dropdown-hover">
+      <a href="javascript:void(0);" title="Personal Blog">Personal Blogs <i class="fa fa-caret-down"></i></a>     
+      <div id="PersList" class="w3-dropdown-content w3-light-grey w3-card-4">
+      </div>
+      </li>
+      <li class="w3-dropdown-hover">
+      <a href="javascript:void(0);" title="Professional Blog">Professional Blogs <i class="fa fa-caret-down"></i></a>     
+      <div id="ProfList" class="w3-dropdown-content w3-light-grey w3-card-4">
+      </div>
+      </li> 
+      <li class="w3-hide-small w3-dropdown-hover">
+      <a href="javascript:void(0);" title="Login/logout" id="loginbtn"></a>     
+      <div id="loginarea" class="w3-dropdown-content w3-white w3-card-4">
+      </div>
+      </li>  
+    </ul>
+  </div>
+</div>
+
+<!-- Image Header -->
+<div class="w3-display-container w3-animate-opacity">
+  <img src="/ui/office.jpg" alt="boat" style="width:100%;min-height:350px;max-height:500px;">
+</div>
+
+<!-- About Container -->
+<div class="w3-container w3-padding-64 w3-center" id="about">
+<h2>ABOUT ME</h2>
+<p>All about me</p>
+  <div class="w3-row"><br>
+      <img src="/ui/prof.png" alt="Krithika" style="width:70%" class="w3-circle w3-hover-opacity">
+      <h3>Krithika S</h3>
+      <p>Web Developer, former Mainframe techie, Electrical Engineer</p>
+      <p>Avid reader, Traveler, Foodie</p>
+      <p>Guest users can only view blogs and comments in this site. Registered users can post articles and comments on this site.</p>
+  </div>
+</div>
+
+<!-- Technical Features Row -->
+<div class="w3-row-padding w3-padding-64 w3-theme-l1" id="tech">
+
+<div class="w3-container">
+  <h2>Technical Features</h2>
+  <p> This webapp is built on the IMAD console, an nginx server acting as reverse proxy</p>
+</div>
+
+<div class="w3-quarter">
+<div class="w3-card-2 w3-white">
+  <div class="w3-container">
+  <h3>Front End</h3>
+  <p>The front end is built with W3 CSS templates using HTML CSS and jQuery. The site is responsive and works well with devices of all sizes. Different templates are used for the home page and blog pages</p>
+  </div>
+  </div>
+</div>
+
+<div class="w3-quarter">
+<div class="w3-card-2 w3-white">
+  <div class="w3-container">
+  <h3>Back End</h3>
+  <p>The server side code is built with JavaScript, Express.js and node.js. express-session is used for session control and crypto module is used for hashing passwords</p>
+  </div>
+  </div>
+</div>
+
+<div class="w3-quarter">
+<div class="w3-card-2 w3-white">
+  <div class="w3-container">
+  <h3>Database</h3>
+  <p>The database used is PostGRESql. The PostGres tables store blog data such as the content of the blog, comments and likes. Postgres tables are normalised to prevent data redundancy</p>
+  </div>
+  </div>
+</div>
+
+<div class="w3-quarter">
+<div class="w3-card-2 w3-white">
+  <div class="w3-container">
+  <h3>Additional Features</h3>
+  <p>This website is SQL Injection proof and XSS attacks proof! The code follows DRY principle - the blog drop downs and blog post pages are generated dynamically without repeating any code! </p>
+  </div>
+  </div>
+</div>
+<!-- Container -->
+<div class="w3-container" style="position:relative">
+  <a onclick="w3_open()" class="w3-btn-floating-large w3-teal" style="position:absolute;top:-28px;right:24px;z-index:0;">
+  <i class="fa fa-plus"></i></a>
+</div>
+
+<!-- Post Article Row -->
+<div class="w3-row-padding w3-center w3-padding-64" id="post">
+</div>
+
+<!-- Contact Container -->
+<div class="w3-container w3-padding-64 w3-theme-l5" id="contact">
+  <div class="w3-row">
+    <div class="w3-col m5">
+    <div class="w3-padding-16"><span class="w3-xlarge w3-border-teal w3-bottombar">Contact Us</span></div>
+      <h3>Address</h3>
+      <p>Swing by for a cup of coffee, or whatever.</p>
+      <p><i class="fa fa-map-marker w3-text-teal w3-xlarge"></i>  Chicago, US</p>
+      <p><i class="fa fa-phone w3-text-teal w3-xlarge"></i>  +00 1515151515</p>
+      <p><i class="fa fa-envelope-o w3-text-teal w3-xlarge"></i>  test@test.com</p>
+    </div>
+    <div class="w3-col m7">
+      <form class="w3-container w3-card-4 w3-padding-16 w3-white" action="form.asp" target="_blank">
+      <div class="w3-group">      
+        <label class="w3-label">Name</label>
+        <input class="w3-input" type="text" name="Name" required>
+      </div>
+      <div class="w3-group">      
+        <label class="w3-label">Email</label>
+        <input class="w3-input" type="text" name="Email" required>
+      </div>
+      <div class="w3-group">      
+        <label class="w3-label">Message</label>
+        <input class="w3-input" type="text" name="Message" required>
+      </div>  
+      <input class="w3-check" type="checkbox" checked name="Like">
+      <label class="w3-validate">I Like it!</label>
+      <button type="submit" class="w3-btn w3-right w3-theme">Send</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="w3-row-padding w3-center w3-padding-64" id="login">
+</div>
+
+<!-- Google Maps -->
+<div id="googleMap" style="width:100%;height:420px;"></div>
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script>
+var myCenter = new google.maps.LatLng(41.878114, -87.629798);
+
+function initialize() {
+var mapProp = {
+  center: myCenter,
+  zoom: 5,
+  scrollwheel: false,
+  draggable: false,
+  mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+
+var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+var marker = new google.maps.Marker({
+  position: myCenter,
+});
+
+marker.setMap(map);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
+  <h4>Follow Me</h4>
+  <a class="w3-btn-floating w3-teal" href="https://twitter.com/intent/tweet?screen_name=krithiskkv" title="Twitter"><i class="fa fa-twitter"></i></a>
+  <a class="w3-btn-floating w3-teal" href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=krithiskkv@gmail.com&body=Hi Krithika" title="Mail"><i class="fa fa-envelope"></i></a>
+  <a class="w3-btn-floating w3-teal w3-hide-small" href="https://in.linkedin.com/pub/krithika-subramanian/131/a95/821" title="Linkedin"><i class="fa fa-linkedin"></i></a>
+  <a class="w3-btn-floating w3-teal" href="https://github.com/krithiskkv" title="Github"><i class="fa fa-github"></i></a>
+  <p>Powered by <a href="http://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+
+  <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
+    <span class="w3-text w3-padding w3-teal w3-hide-small">Go To Top</span>   
+    <a class="w3-btn w3-theme" href="#myPage"><span class="w3-xlarge">
+    <i class="fa fa-chevron-circle-up"></i></span></a>
+  </div>
+</footer>
+
+<!-- Script for Nav Bar dropdowns and login/logout -->
+<script type="text/javascript" src="/ui/main.js">
+</script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script type="text/javascript" src="/js/index.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- Script For Side Navigation -->
+<script>
+function w3_open() {
+    var x = document.getElementById("mySidenav");
+    x.style.width = "300px";
+    x.style.textAlign = "center";
+    x.style.fontSize = "40px";
+    x.style.paddingTop = "10%";
+    x.style.display = "block";
+}
+function w3_close() {
+    document.getElementById("mySidenav").style.display = "none";
+}
+
+// Used to toggle the menu on smaller screens when clicking on the menu button
+function openNav() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else { 
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+
+</script>
+
+</body>
 </html>
